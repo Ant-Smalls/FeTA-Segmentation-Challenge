@@ -1,0 +1,27 @@
+Assignment guidelines for best standard of the assignment for report & code:
+
+Strength of the paper: Are there any novel or particularly interesting aspects?
+Novel formulation and original use of the data. Demonstration of clinical feasibility, a novel application and a particularly strong evaluation.
+
+
+
+Clarity and Organisation of the paper
+Excellent presentation, organisation and other stylistic aspects of the paper. The paper is clear and a pleasure to read.
+
+
+Reproducibility of the paper
+Code with comments, a clear and detailed description of the dataset, model, parameters and evaluation.
+
+
+Defining the dataloader
+Correctly defined an 'init', '__len__' and '__getitem__' method in a data loader class. Data loader object is created and used properly throughout model training.
+
+
+Defining the model class
+Correctly defined an 'init' and 'forward' method in a class to define a model. Novelty shown when defining the architecture of the model. Model object is created and used properly throughout model training. 
+
+
+Training Process
+Use of suitable loss function and optimiser. Correctly developing a training loop that iterates through a number of epochs and within each epoch, retrieves batches of data, inputs the data into the model, calculates the loss, the gradients and updates the model weights accordingly. Use of techniques such as early stopping to prevent overfitting. Hyper-parameter tuning to find optimal hyper-parameters. Suitable evaluation (test set or cross validation)
+
+
