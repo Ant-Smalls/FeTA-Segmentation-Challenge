@@ -1,1 +1,23 @@
 .cursor
+
+# OS
+**/.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Raw MRI data (huge, pulled from the HPC / challenge data drop, never committed).
+# Generated artifacts that other roles depend on (code/src/data/splits/split_v1.json,
+# code/src/data/config.yaml) are intentionally NOT covered by this rule and must stay tracked.
+code/src/data/mri_gz/
+
+# Model checkpoints / experiment outputs (large, role-generated)
+**/checkpoints/
+**/*.pt
+**/*.pth

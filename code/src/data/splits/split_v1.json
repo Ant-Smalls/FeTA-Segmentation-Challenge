@@ -1,0 +1,823 @@
+{
+  "seed": 42,
+  "fractions": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "assignments": {
+    "train": [
+      {
+        "subject_id": "sub-073",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-048",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-080",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-059",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-045",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-078",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-057",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-046",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-066",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-069",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-062",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-061",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-076",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-065",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-051",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-068",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-072",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-071",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-067",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-047",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-070",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-052",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-064",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-050",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-077",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-063",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-060",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-044",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-014",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-031",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-035",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-028",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-023",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-016",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-001",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-007",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-036",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-032",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-037",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-033",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-026",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-019",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-005",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-027",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-024",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-018",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-008",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-029",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-013",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-009",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-011",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-040",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-006",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-002",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-030",
+        "rec_type": "mial"
+      }
+    ],
+    "val": [
+      {
+        "subject_id": "sub-041",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-056",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-058",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-075",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-053",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-055",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-010",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-003",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-004",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-012",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-015",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-021",
+        "rec_type": "mial"
+      }
+    ],
+    "test": [
+      {
+        "subject_id": "sub-079",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-043",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-074",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-042",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-054",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-049",
+        "rec_type": "irtk"
+      },
+      {
+        "subject_id": "sub-020",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-034",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-039",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-025",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-038",
+        "rec_type": "mial"
+      },
+      {
+        "subject_id": "sub-017",
+        "rec_type": "mial"
+      }
+    ]
+  },
+  "train_median_spacing_mm": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "qc_log": [
+    {
+      "subject_id": "sub-001",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-002",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-003",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-004",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-005",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-006",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-007",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-008",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-009",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-010",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-011",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-012",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-013",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-014",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-015",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-016",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-017",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-018",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-019",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-020",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-021",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-022",
+      "rec_type": "mial",
+      "passed": false,
+      "failure_reasons": [
+        "implausible_volume_class_1: 0.83cm3 not in [2.03, 5915.10]",
+        "implausible_volume_class_2: 3.93cm3 not in [7.28, 375.52]",
+        "implausible_volume_class_7: 0.43cm3 not in [0.54, 48.24]"
+      ]
+    },
+    {
+      "subject_id": "sub-023",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-024",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-025",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-026",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-027",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-028",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-029",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-030",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-031",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-032",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-033",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-034",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-035",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-036",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-037",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-038",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-039",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-040",
+      "rec_type": "mial",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-041",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-042",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-043",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-044",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-045",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-046",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-047",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-048",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-049",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-050",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-051",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-052",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-053",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-054",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-055",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-056",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-057",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-058",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-059",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-060",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-061",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-062",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-063",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-064",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-065",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-066",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-067",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-068",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-069",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-070",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-071",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-072",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-073",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-074",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-075",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-076",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-077",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-078",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-079",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    },
+    {
+      "subject_id": "sub-080",
+      "rec_type": "irtk",
+      "passed": true,
+      "failure_reasons": []
+    }
+  ]
+}
