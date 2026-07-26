@@ -8,10 +8,7 @@
   augmentation) and 'eval' mode (full-volume) with one __getitem__ call per
   split, to catch contract problems a preprocess_case-only sweep wouldn't
   (shape/dtype, patch padding on small volumes).
-- Prints a timing/memory summary at the end. This is an HPC-scale sanity
-  check, not a correctness test suite -- Phase 1-3 already covered that
-  against the 2 local sample cases. Exits non-zero on any failure so it can
-  safely gate a downstream job.
+- Prints a timing/memory summary at the end.
 """
 
 from __future__ import annotations
