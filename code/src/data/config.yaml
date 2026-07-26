@@ -1,0 +1,86 @@
+# Shared configuration for the FeTA Option 3 (Uncertainty-Guided Boundary
+# Refinement) pipeline. Every role reads these values from here rather than
+# hardcoding or re-deriving them. Owned by the data preprocessing &
+# transformation role; other roles may propose changes but should not silently
+# diverge from this file.
+#
+# STATUS: Frozen. qc_and_split.py / preprocessing.py / dataset.py have been
+# validated end-to-end against the real 80-case HPC data drop (Phases 5-6):
+# 79/80 cases passed QC (see src/data/splits/split_v1.json's qc_log for the
+# one exclusion) and every case in the resulting 55/12/12 train/val/test
+# split preprocesses successfully. See code/docs/data_preprocessing_preparation.md
+# for the full handoff.
+
+paths:
+  # Relative to the "code/" directory (i.e. code_root), not the repo root.
+  data_root: src/data/mri_gz
+  split_file: src/data/splits/split_v1.json
+
+qc:
+  # Per-class lower-bound divisor applied to the FeTA README's median volume
+  # (upper bound stays median.max * multiplier, never tripped in practice).
+  # Recalibrated against the first full 80-case HPC run, where a flat 3.0
+  # excluded 19/80 (23.75%) cases, almost all low-side "implausible_volume"
+  # flags rather than genuine corruption -- none of those cases were also
+  # "degenerate_class_X" (min_voxels_per_class), i.e. the tissue was present,
+  # just proportionally smaller than the README's reference median. eCSF (1)
+  # and dGM (6) needed the largest multiplier to clear real GA-driven
+  # variance; "default" covers the other 5 classes. See qc_and_split.py's
+  # module docstring for the exact per-case numbers this was derived from.
+  volume_plausibility_multiplier:
+    default: 4.0
+    1: 30.0 # eCSF -- most GA-sensitive class per the literature review
+    5: 6.0 # Cerebellum
+    6: 15.0 # dGM
+    7: 6.0 # Brainstem
+  # README reports 0.43mm as a rounded display value; real headers store
+  # 0.4297mm for the same nominal spacing, which failed a strict >= 0.43.
+  spacing_min_mm: 0.42
+  spacing_max_mm: 1.0
+  min_labels_present: 7 # labels 1-7 must all be present and non-degenerate
+  min_voxels_per_class: 10 # a class with fewer voxels than this is "degenerate"
+  # np.allclose's default atol (1e-8) is tighter than real-world floating
+  # point differences between how T2w/dseg affines get saved, even for a
+  # genuinely matching grid -- 1e-3 mm is still far tighter than any spacing
+  # or orientation error that would actually matter.
+  affine_atol: 1.0e-3
+
+preprocessing:
+  normalization: zscore_per_volume
+  # Computed by qc_and_split.py's compute_median_spacing over the 55 real
+  # TRAIN-split cases in split_v1.json (Phase 5 HPC run). Matches the FeTA
+  # README's reported ~0.5mm isotropic almost exactly.
+  target_spacing_mm: [0.5, 0.5, 0.5]
+
+patch_sampling:
+  patch_size: [128, 128, 128]
+  foreground_oversample_prob: 0.33
+
+augmentation:
+  enabled_in_train_mode_only: true
+  flip_prob: 0.5
+  rotate_prob: 0.2
+  rotate_max_degrees: 10
+  noise_prob: 0.15
+  noise_std: 0.01
+
+split:
+  seed: 42
+  train_frac: 0.70
+  val_frac: 0.15
+  test_frac: 0.15
+  # rec-mial = sub-001..sub-040, rec-irtk = sub-041..sub-080 (site/institution
+  # proxy label) -- split MUST be stratified across this boundary.
+  stratify_by: rec_type
+
+eval:
+  # Dice/ED/uncertainty-calibration are all computed in preprocessed
+  # (crop+resample) space, never mapped back to original resolution.
+  space: preprocessed
+  # Recommended default for dataset.reconstruct_from_patches's overlapping
+  # sliding-window stitching (role 3's uncertainty averaging, role 5's
+  # Dice/ED scoring). "gaussian" downweights patch edges so tile seams don't
+  # show; "mean" is a simpler uniform-average fallback. Not auto-read by
+  # reconstruct_from_patches itself (it's a free function called directly by
+  # roles 3/5) -- callers should pass this value explicitly for consistency.
+  patch_aggregation: gaussian
