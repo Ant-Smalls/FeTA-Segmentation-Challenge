@@ -1,0 +1,26 @@
+# Example config for a quick local sanity check with a handful of downloaded
+# cases. Copy split_v1.json to split_local_test.json first and trim its
+# "train"/"val" lists down to whatever cases you actually have locally.
+# NEVER commit split_local_test.json or edit the real split_v1.json.
+
+code_root: "."
+checkpoint_dir: "src/training/checkpoints_local_test"
+run_name: "local_test"
+
+split_filename: "split_local_test.json"
+
+seed: 42
+batch_size: 2
+learning_rate: 0.0001
+max_epochs: 5
+early_stopping_patience: 5
+num_workers: 0
+patch_size: [128, 128, 128]
+
+uncertainty_loss_weight: 0.0
+
+lr_scheduler: false
+lr_scheduler_factor: 0.5
+lr_scheduler_patience: 5
+
+class_weights: null

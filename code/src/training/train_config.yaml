@@ -1,0 +1,37 @@
+# Role 4 - training-specific config (separate from the frozen data config.yaml)
+# Adjust freely -- unlike src/data/config.yaml, nothing here is frozen.
+
+code_root: "."                  # "." if running from inside code/, "code" if running from the repo root
+checkpoint_dir: "src/training/checkpoints"
+run_name: "baseline"            # used to name saved history files, e.g. baseline_history.png -- set to "comparative" etc. per run
+
+# Which split file to use. Default is the real, frozen split. For a local
+# sanity check against just a handful of downloaded cases, copy split_v1.json
+# to e.g. split_local_test.json, trim it down to the cases you actually have,
+# and point this at that instead. Do not edit or commit a trimmed split_v1.json.
+split_filename: "split_v1.json"
+
+seed: 42
+batch_size: 2                   # start small; 128^3 patches are memory-heavy
+learning_rate: 0.0001
+max_epochs: 100
+early_stopping_patience: 10
+num_workers: 0                  # >0 can be flaky on Windows; raise if stable on your machine
+patch_size: [128, 128, 128]     # must match FeTADataset's training patch size (nnU-Net default)
+
+# Option-3-specific, only used once MODEL_RETURNS_UNCERTAINTY = True in train.py
+uncertainty_loss_weight: 0.0
+
+# LR scheduler (ReduceLROnPlateau on val_dice). Off by default -- turn on once
+# training real models for longer runs where a plateau is expected.
+lr_scheduler: false
+lr_scheduler_factor: 0.5      # multiply LR by this when triggered
+lr_scheduler_patience: 5      # epochs with no val_dice improvement before triggering
+
+# Class weighting for the CE loss. Off by default (null = unweighted).
+# The 7 tissue classes are heavily imbalanced (see README.md volume stats) --
+# worth turning on once real models are training, to avoid the model
+# collapsing to mostly-WM/background predictions. Provide 8 floats
+# (background + 7 tissues, same order as the dataset's class indices), e.g.:
+# class_weights: [0.1, 1.0, 1.0, 0.5, 1.0, 1.5, 1.5, 1.5]
+class_weights: null

@@ -17,7 +17,17 @@ venv/
 # code/src/data/config.yaml) are intentionally NOT covered by this rule and must stay tracked.
 code/src/data/mri_gz/
 
+# Local-only trimmed split file used for individual sanity checks -- never commit,
+# the real split_v1.json above stays tracked and frozen.
+code/src/data/splits/split_local_test.json
+
 # Model checkpoints / experiment outputs (large, role-generated)
 **/checkpoints/
+**/checkpoints_local_test/
 **/*.pt
 **/*.pth
+
+# Training history figures/logs (saved inside checkpoint dirs above, but
+# listed explicitly in case a run ever writes them elsewhere)
+**/*_history.json
+**/*_history.png
