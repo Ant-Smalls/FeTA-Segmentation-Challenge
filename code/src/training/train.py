@@ -174,6 +174,9 @@ def sliding_window_inference(model, image, patch_size, device):
         orig_h = dy.stop - dy.start
         orig_w = dx.stop - dx.start
         logits = logits[:, :, :orig_d, :orig_h, :orig_w]
+        assert logits.shape[2] == orig_d, f"D mismatch: {logits.shape[2]} vs {orig_d}"
+        assert logits.shape[3] == orig_h, f"H mismatch: {logits.shape[3]} vs {orig_h}"
+        assert logits.shape[4] == orig_w, f"W mismatch: {logits.shape[4]} vs {orig_w}"
         patches.append(logits.squeeze(0).cpu())  # (num_classes, pd, ph, pw)
         patch_coords.append((dz, dy, dx))
 
