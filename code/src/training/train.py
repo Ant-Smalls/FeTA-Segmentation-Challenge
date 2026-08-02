@@ -177,8 +177,12 @@ def sliding_window_inference(model, image, patch_size, device):
         assert logits.shape[1] == orig_d, f"D mismatch: {logits.shape[1]} vs {orig_d}"
         assert logits.shape[2] == orig_h, f"H mismatch: {logits.shape[2]} vs {orig_h}"
         assert logits.shape[3] == orig_w, f"W mismatch: {logits.shape[3]} vs {orig_w}"
-        patches.append(logits.squeeze(0).cpu())  # (num_classes, pd, ph, pw)
-        patch_coords.append((dz, dy, dx))
+        patches.append(logits.cpu())
+        patch_coords.append((
+            slice(dz.start, dz.start + orig_d),
+            slice(dy.start, dy.start + orig_h),
+            slice(dx.start, dx.start + orig_w),
+        ))
 
     full_logits = reconstruct_from_patches(
         patches, patch_coords, full_volume_shape=(D, H, W), aggregation="gaussian"
