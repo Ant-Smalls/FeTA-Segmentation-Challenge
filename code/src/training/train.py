@@ -170,9 +170,9 @@ def sliding_window_inference(model, image, patch_size, device):
         output = model(patch)
         logits = output[0] if MODEL_RETURNS_UNCERTAINTY else output.squeeze(0)
         # Crop logits back to original (possibly smaller) slice size
-        orig_d = dz.stop - dz.start
-        orig_h = dy.stop - dy.start
-        orig_w = dx.stop - dx.start
+        orig_d = min(dz.stop, D) - dz.start
+        orig_h = min(dy.stop, H) - dy.start
+        orig_w = min(dx.stop, W) - dx.start
         logits = logits[:, :orig_d, :orig_h, :orig_w]
         assert logits.shape[1] == orig_d, f"D mismatch: {logits.shape[1]} vs {orig_d}"
         assert logits.shape[2] == orig_h, f"H mismatch: {logits.shape[2]} vs {orig_h}"
