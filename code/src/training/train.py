@@ -274,7 +274,8 @@ def train(config: dict):
 
     patch_size = tuple(config.get("patch_size", [128, 128, 128]))
 
-    model = DummyModel(NUM_CLASSES).to(device)
+    from src.models.baseline import BaselineUNet
+    model = BaselineUNet(in_channels=1, num_classes=NUM_CLASSES).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"])
     uncertainty_loss_weight = config.get("uncertainty_loss_weight", 0.0)
 
