@@ -160,7 +160,13 @@ def sliding_window_inference(model, image, patch_size, device):
 
     patches, patch_coords = [], []
     for dz, dy, dx in coords:
-        patch = image[:, dz, dy, dx].unsqueeze(0).to(device)  # (1, 1, pd, ph, pw)
+        raw = image[:, dz, dy, dx]
+        # Pad to full patch size if slice hits volume boundary
+        pad = []
+        for dim_size, p in zip(raw.shape[1:], patch_size):
+            pad = [0, p - dim_size] + pad
+        raw = F.pad(raw, pad)
+        patch = raw.unsqueeze(0).to(device)  # (1, 1, pd, ph, pw)
         output = model(patch)
         logits = output[0] if MODEL_RETURNS_UNCERTAINTY else output
         patches.append(logits.squeeze(0).cpu())  # (num_classes, pd, ph, pw)
