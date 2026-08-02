@@ -169,6 +169,11 @@ def sliding_window_inference(model, image, patch_size, device):
         patch = raw.unsqueeze(0).to(device)  # (1, 1, pd, ph, pw)
         output = model(patch)
         logits = output[0] if MODEL_RETURNS_UNCERTAINTY else output
+        # Crop logits back to original (possibly smaller) slice size
+        orig_d = dz.stop - dz.start
+        orig_h = dy.stop - dy.start
+        orig_w = dx.stop - dx.start
+        logits = logits[:, :, :orig_d, :orig_h, :orig_w]
         patches.append(logits.squeeze(0).cpu())  # (num_classes, pd, ph, pw)
         patch_coords.append((dz, dy, dx))
 
