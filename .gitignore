@@ -31,3 +31,5 @@ code/src/data/splits/split_local_test.json
 # listed explicitly in case a run ever writes them elsewhere)
 **/*_history.json
 **/*_history.png*.zip
+*.pt
+*.zip
