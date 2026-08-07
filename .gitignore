@@ -33,3 +33,6 @@ code/src/data/splits/split_local_test.json
 **/*_history.png*.zip
 *.pt
 *.zip
+
+# Generated explainability figures (role-generated, per-checkpoint output)
+code/src/explainability/figures/
