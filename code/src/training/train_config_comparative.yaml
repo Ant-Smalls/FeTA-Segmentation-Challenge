@@ -1,0 +1,29 @@
+# Same hyperparameters as train_config_baseline.yaml, apart from model_type/
+# run_name/checkpoint_dir -- keep these two configs in sync for every field
+# below "run_name" so baseline vs. comparative stays a fair comparison.
+
+model_type: "comparative"
+code_root: "."
+checkpoint_dir: "src/training/checkpoints_comparative"
+run_name: "comparative"
+
+split_filename: "split_v1.json"
+
+seed: 42
+batch_size: 2
+learning_rate: 0.0001
+max_epochs: 100
+early_stopping_patience: 10
+num_workers: 0
+patch_size: [128, 128, 128]
+
+# Uncertainty loss weight -- this is the axis being swept for this model.
+# Set to a single starting value here; the sweep script runs multiple copies
+# of this config with different values and separate run_names/checkpoint dirs.
+uncertainty_loss_weight: 0.1
+
+lr_scheduler: false
+lr_scheduler_factor: 0.5
+lr_scheduler_patience: 5
+
+class_weights: null

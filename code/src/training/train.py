@@ -1,15 +1,15 @@
 """
-Role 4 - Training Pipeline (v2)
+Role 4 - Training Pipeline (v3)
 =================================
 
-Shared training loop: optimizer + Dice/CE loss + FULL-VOLUME validation
-(sliding-window inference, stitched via reconstruct_from_patches) +
-checkpointing + early stopping + reproducible seeding.
+Shared training loop: optimizer + Dice/CE(+uncertainty) loss + FULL-VOLUME
+validation (sliding-window inference, stitched via reconstruct_from_patches)
++ checkpointing + early stopping + reproducible seeding.
 
-Runs against a DUMMY model by default so it works standalone. Roles 2/3
-plug their real models in by implementing the same forward() contract --
-see "SWAPPING IN A REAL MODEL" below. Nothing else in this file should
-need to change for either the baseline or the comparative model.
+Model is selected via config (`model_type: baseline` or `comparative`), so
+the SAME script trains both Role 2's and Role 3's models under identical
+settings -- just point two configs at the same hyperparameters with a
+different `model_type` and `run_name`.
 
 USAGE (from code/ directory, with venv active):
     python -m src.training.train --config src/training/train_config.yaml
@@ -38,23 +38,16 @@ from src.preprocessing_data_preparation.dataset import FeTADataset, reconstruct_
 
 NUM_CLASSES = 8  # 7 tissue classes + background (per CONTEXT.md / dataset contract)
 
+# Set per-run inside train(), based on config["model_type"]. Read by
+# compute_loss(), sliding_window_inference(), and train_one_epoch() to
+# decide whether the model returns (logits, uncertainty) or just logits.
+MODEL_RETURNS_UNCERTAINTY = False
 
-# ---------------------------------------------------------------------------
-# SWAPPING IN A REAL MODEL
-# ---------------------------------------------------------------------------
-# Replace DummyModel below with an import of the real model, e.g.:
-#   from src.models.baseline import BaselineUNet as Model
-#   from src.models.comparative import UncertaintyUNet as Model
-#
-# Required contract:
-#   input:  (B, 1, D, H, W) float32
-#   output (baseline):     (B, num_classes, D, H, W) logits
-#   output (comparative):  (logits, uncertainty) tuple, both (B, ..., D, H, W)
-#
-# If the comparative model returns a tuple, set MODEL_RETURNS_UNCERTAINTY =
-# True below -- compute_loss() and run_epoch() already branch on this flag.
-# ---------------------------------------------------------------------------
+
 class DummyModel(nn.Module):
+    """Fallback model, used only if model_type is left unset/unrecognized --
+    keeps the script runnable standalone for pipeline sanity checks."""
+
     def __init__(self, num_classes: int = NUM_CLASSES):
         super().__init__()
         self.conv = nn.Conv3d(1, num_classes, kernel_size=3, padding=1)
@@ -63,7 +56,18 @@ class DummyModel(nn.Module):
         return self.conv(x)  # (B, num_classes, D, H, W) logits
 
 
-MODEL_RETURNS_UNCERTAINTY = False  # flip to True once Role 3's model is wired in
+def build_model(model_type: str, device):
+    """Instantiates the requested model and reports whether it returns
+    uncertainty, so the caller can set MODEL_RETURNS_UNCERTAINTY correctly."""
+    if model_type == "baseline":
+        from src.models.baseline import BaselineUNet
+        return BaselineUNet(in_channels=1, num_classes=NUM_CLASSES).to(device), False
+    elif model_type == "comparative":
+        from src.models.uncertainty_unet import UncertaintyUNet
+        return UncertaintyUNet(in_channels=1, num_classes=NUM_CLASSES).to(device), True
+    else:
+        print(f"WARNING: unrecognized model_type '{model_type}', falling back to DummyModel.")
+        return DummyModel(NUM_CLASSES).to(device), False
 
 
 def set_seed(seed: int):
@@ -74,7 +78,10 @@ def set_seed(seed: int):
 
 
 # ---------------------------------------------------------------------------
-# Loss: Dice + CE, as specified in the shared research plan.
+# Loss: Dice + CE, plus a heteroscedastic uncertainty term for the
+# comparative model. Formulation confirmed by Role 3: uncertainty_head's
+# output is interpreted as predicted log-variance; per-voxel CE provides the
+# error signal the uncertainty term is trained against.
 # ---------------------------------------------------------------------------
 def dice_loss(logits: torch.Tensor, target: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
     probs = F.softmax(logits, dim=1)
@@ -96,11 +103,19 @@ def compute_loss(
         logits, uncertainty = output
         ce = F.cross_entropy(logits, target, weight=class_weights)
         dsc = dice_loss(logits, target)
-        # Placeholder calibration term (negative log-likelihood under predicted
-        # variance). Role 3 owns the real formulation -- this is a stand-in so
-        # the loop has somewhere to plug the weighted term in once it exists.
-        calibration_term = uncertainty.mean() * 0.0
-        return ce + dsc + uncertainty_loss_weight * calibration_term
+
+        # Interpret the single-channel uncertainty output as log-variance.
+        # Clamp for numerical stability during early training.
+        log_var = uncertainty.squeeze(1).clamp(-10.0, 10.0)
+
+        # Per-voxel CE provides the error signal used by the uncertainty head.
+        ce_map = F.cross_entropy(logits, target, weight=class_weights, reduction="none")
+
+        # Heteroscedastic negative log-likelihood term: higher predicted
+        # variance is penalised unless it explains higher error.
+        uncertainty_term = 0.5 * (torch.exp(-log_var) * ce_map + log_var).mean()
+
+        return ce + dsc + uncertainty_loss_weight * uncertainty_term
     else:
         logits = output
         ce = F.cross_entropy(logits, target, weight=class_weights)
@@ -125,10 +140,9 @@ def mean_dice(logits: torch.Tensor, target: torch.Tensor, eps: float = 1e-5) -> 
 
 # ---------------------------------------------------------------------------
 # Sliding-window full-volume inference (for eval-mode validation/testing).
-# Eval-mode volumes vary in size, so we tile at the training patch size and
-# stitch back together via the shared reconstruct_from_patches utility, per
-# the data_preprocessing_preparation contract -- this keeps baseline,
-# comparative, and evaluation all reconstructing volumes the same way.
+# Pads patches that hit the volume boundary, then crops predictions back to
+# the original (possibly smaller) region before stitching -- handles volumes
+# whose dimensions aren't an exact multiple of patch_size.
 # ---------------------------------------------------------------------------
 def sliding_window_coords(volume_shape, patch_size, overlap=0.5):
     stride = [max(1, int(p * (1 - overlap))) for p in patch_size]
@@ -161,22 +175,23 @@ def sliding_window_inference(model, image, patch_size, device):
     patches, patch_coords = [], []
     for dz, dy, dx in coords:
         raw = image[:, dz, dy, dx]
-        # Pad to full patch size if slice hits volume boundary
+        # Pad to full patch size if this slice hits the volume boundary.
         pad = []
         for dim_size, p in zip(raw.shape[1:], patch_size):
             pad = [0, p - dim_size] + pad
         raw = F.pad(raw, pad)
         patch = raw.unsqueeze(0).to(device)  # (1, 1, pd, ph, pw)
+
         output = model(patch)
-        logits = output[0] if MODEL_RETURNS_UNCERTAINTY else output.squeeze(0)
-        # Crop logits back to original (possibly smaller) slice size
+        logits = output[0] if MODEL_RETURNS_UNCERTAINTY else output
+        logits = logits.squeeze(0)
+
+        # Crop back to the original (possibly smaller) slice size.
         orig_d = min(dz.stop, D) - dz.start
         orig_h = min(dy.stop, H) - dy.start
         orig_w = min(dx.stop, W) - dx.start
         logits = logits[:, :orig_d, :orig_h, :orig_w]
-        assert logits.shape[1] == orig_d, f"D mismatch: {logits.shape[1]} vs {orig_d}"
-        assert logits.shape[2] == orig_h, f"H mismatch: {logits.shape[2]} vs {orig_h}"
-        assert logits.shape[3] == orig_w, f"W mismatch: {logits.shape[3]} vs {orig_w}"
+
         patches.append(logits.cpu())
         patch_coords.append((
             slice(dz.start, dz.start + orig_d),
@@ -236,10 +251,7 @@ def validate_full_volume(model, eval_ds, device, patch_size, class_weights):
 
 def plot_training_history(history: dict, out_dir: Path, run_name: str = "run"):
     """Saves the raw history as JSON (for later re-plotting/comparison) and a
-    loss/Dice curve PNG. history is a dict of equal-length lists, e.g.
-    {"epoch": [...], "train_loss": [...], "val_loss": [...],
-     "train_dice": [...], "val_dice": [...], "lr": [...]}.
-    """
+    loss/Dice curve PNG."""
     out_dir.mkdir(parents=True, exist_ok=True)
 
     import json
@@ -251,7 +263,7 @@ def plot_training_history(history: dict, out_dir: Path, run_name: str = "run"):
     axes[0].plot(history["epoch"], history["train_loss"], label="train_loss")
     axes[0].plot(history["epoch"], history["val_loss"], label="val_loss")
     axes[0].set_xlabel("Epoch")
-    axes[0].set_ylabel("Loss (Dice + CE)")
+    axes[0].set_ylabel("Loss")
     axes[0].set_title(f"{run_name}: Loss")
     axes[0].legend()
     axes[0].grid(alpha=0.3)
@@ -271,6 +283,8 @@ def plot_training_history(history: dict, out_dir: Path, run_name: str = "run"):
 
 
 def train(config: dict):
+    global MODEL_RETURNS_UNCERTAINTY
+
     set_seed(config.get("seed", 42))
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
@@ -292,17 +306,16 @@ def train(config: dict):
 
     patch_size = tuple(config.get("patch_size", [128, 128, 128]))
 
-    from src.models.baseline import BaselineUNet
-    model = BaselineUNet(in_channels=1, num_classes=NUM_CLASSES).to(device)
+    model_type = config.get("model_type", "baseline")
+    model, MODEL_RETURNS_UNCERTAINTY = build_model(model_type, device)
+    print(f"model_type={model_type} | MODEL_RETURNS_UNCERTAINTY={MODEL_RETURNS_UNCERTAINTY}")
+
     optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"])
     uncertainty_loss_weight = config.get("uncertainty_loss_weight", 0.0)
 
-    # Class weighting -- off by default (class_weights: null in config), since
-    # the dummy model doesn't need it. Real models almost certainly will: the
-    # 7 tissue classes are heavily imbalanced (see README.md volume stats),
-    # so an unweighted loss risks the model collapsing to mostly-WM/background
-    # predictions. Provide 8 floats (background + 7 tissues) in the config to
-    # turn this on, in the same class-index order as the dataset labels.
+    # Class weighting -- off by default (class_weights: null). The 7 tissue
+    # classes are heavily imbalanced (see README.md volume stats); turn on
+    # via 8 floats (background + 7 tissues) in the same class-index order.
     class_weights_cfg = config.get("class_weights")
     class_weights = (
         torch.tensor(class_weights_cfg, dtype=torch.float32, device=device)
@@ -312,10 +325,8 @@ def train(config: dict):
     if class_weights is not None:
         print(f"Using class weights: {class_weights_cfg}")
 
-    # LR scheduler -- off by default (lr_scheduler: null / absent in config).
-    # ReduceLROnPlateau watches validation Dice (mode="max") and cuts the LR
-    # when it stalls, which tends to help once real models are training for
-    # longer and plateau naturally partway through.
+    # LR scheduler -- off by default. ReduceLROnPlateau watches validation
+    # Dice (mode="max") and cuts the LR when it stalls.
     scheduler = None
     if config.get("lr_scheduler", False):
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(

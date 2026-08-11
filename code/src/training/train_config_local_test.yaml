@@ -3,6 +3,7 @@
 # "train"/"val" lists down to whatever cases you actually have locally.
 # NEVER commit split_local_test.json or edit the real split_v1.json.
 
+model_type: "baseline"          # switch to "comparative" to sanity-check Role 3's model instead
 code_root: "."
 checkpoint_dir: "src/training/checkpoints_local_test"
 run_name: "local_test"
@@ -17,7 +18,7 @@ early_stopping_patience: 5
 num_workers: 0
 patch_size: [128, 128, 128]
 
-uncertainty_loss_weight: 0.0
+uncertainty_loss_weight: 0.1
 
 lr_scheduler: false
 lr_scheduler_factor: 0.5
