@@ -24,6 +24,7 @@ code/src/data/splits/split_local_test.json
 # Model checkpoints / experiment outputs (large, role-generated)
 **/checkpoints/
 **/checkpoints_local_test/
+**/checkpoints_comparative/
 **/*.pt
 **/*.pth
 
@@ -36,3 +37,7 @@ code/src/data/splits/split_local_test.json
 
 # Generated explainability figures (role-generated, per-checkpoint output)
 code/src/explainability/figures/
+
+# Personal draft/notes, not part of the shared report or codebase
+code/docs/role6_clinical_framing.md
+sonic.md

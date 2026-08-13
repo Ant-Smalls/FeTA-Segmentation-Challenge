@@ -1,21 +1,24 @@
 """
-Role 6 - Explainability & Clinical Presentation
-==================================================
+Explainability & Clinical Presentation
+=======================================
 
-Turns model output into a clinically legible story: slice-level overlays of
-ground truth vs. prediction (and, once Role 3 lands, uncertainty heatmaps),
-tied to specific test-split cases and named clinical phenomena (eCSF/GM
-boundary disagreement in particular -- see CONTEXT.md).
+Slice-level overlays of ground truth vs. prediction, plus uncertainty
+heatmaps for the comparative model, focused on eCSF/GM boundary disagreement.
 
-STATUS: scaffolding only. Roles 3 (comparative uncertainty model) and 5
-(evaluation / case selection) haven't landed yet -- this currently runs
-end-to-end against the Role 2 baseline checkpoint so the plotting path is
-proven out ahead of time. See README.md for how to swap in the comparative
-model and Role 5's case selection once they exist.
+`--model-type comparative` runs UncertaintyUNet through MC-Dropout
+sliding-window inference (see mc_dropout_sliding_window_inference) and
+produces a 4-panel figure. `pick_informative_slice` is a heuristic slice
+picker.
 
 USAGE (from code/ directory, with venv active):
     python -m src.explainability.visualize \
         --checkpoint src/training/checkpoints/best_model.pt \
+        --split test --case-index 0 --out-dir src/explainability/figures
+
+    # Once a trained comparative checkpoint exists:
+    python -m src.explainability.visualize \
+        --checkpoint src/training/checkpoints/comparative_best.pt \
+        --model-type comparative --refine \
         --split test --case-index 0 --out-dir src/explainability/figures
 """
 
@@ -27,9 +30,11 @@ matplotlib.use("Agg")  # non-interactive backend, safe for headless/HPC runs
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
-from src.preprocessing_data_preparation.dataset import FeTADataset
-from src.training.train import NUM_CLASSES, sliding_window_inference
+from src.preprocessing_data_preparation.dataset import FeTADataset, reconstruct_from_patches
+from src.training.train import NUM_CLASSES, sliding_window_inference, sliding_window_coords
 
 # Label indices per CONTEXT.md.
 CLASS_NAMES = {
@@ -44,33 +49,116 @@ CLASS_NAMES = {
 }
 
 
-def load_model(checkpoint_path: Path, device: torch.device):
-    """Loads the Role 2 baseline. Swap for
-    `from src.models.comparative import UncertaintyUNet as Model` once
-    Role 3 lands -- see README.md for the MODEL_RETURNS_UNCERTAINTY gotcha
-    that comes with it."""
-    from src.models.baseline import BaselineUNet
+def load_model(checkpoint_path: Path, device: torch.device, model_type: str = "baseline"):
+    """Loads BaselineUNet or UncertaintyUNet."""
+    if model_type == "comparative":
+        from src.models.uncertainty_unet import UncertaintyUNet as Model
+    else:
+        from src.models.baseline import BaselineUNet as Model
 
-    model = BaselineUNet(in_channels=1, num_classes=NUM_CLASSES).to(device)
+    model = Model(in_channels=1, num_classes=NUM_CLASSES).to(device)
     state_dict = torch.load(checkpoint_path, map_location=device)
     model.load_state_dict(state_dict)
     model.eval()
     return model
 
 
+def mc_dropout_sliding_window_inference(model, image, patch_size, device, n_samples=10):
+    """MC-Dropout counterpart to sliding_window_inference, for models
+    returning (logits, uncertainty_head_output).
+
+    Runs n dropout-enabled forward passes per patch, averages class
+    probabilities, computes predictive entropy, and stitches both via
+    reconstruct_from_patches.
+
+    image: (1, D, H, W). Returns (pred_labels, entropy), both (D, H, W).
+    """
+    _, D, H, W = image.shape
+    coords = sliding_window_coords((D, H, W), patch_size)
+
+    model.eval()
+    for module in model.modules():
+        if isinstance(module, nn.Dropout3d):
+            module.train()
+
+    patches, patch_coords = [], []
+    with torch.no_grad():
+        for dz, dy, dx in coords:
+            raw = image[:, dz, dy, dx]
+            # Pad to full patch size if this slice hits the volume boundary.
+            pad = []
+            for dim_size, p in zip(raw.shape[1:], patch_size):
+                pad = [0, p - dim_size] + pad
+            raw = F.pad(raw, pad)
+            patch = raw.unsqueeze(0).to(device)  # (1, 1, pd, ph, pw)
+
+            probs = []
+            for _ in range(n_samples):
+                logits, _ = model(patch)
+                probs.append(torch.softmax(logits, dim=1))
+            mean_prob = torch.stack(probs, dim=0).mean(dim=0).squeeze(0)  # (C, pd, ph, pw)
+
+            entropy = -torch.sum(mean_prob * torch.log(mean_prob + 1e-8), dim=0, keepdim=True)
+            entropy = entropy / torch.log(
+                torch.tensor(float(mean_prob.shape[0]), device=mean_prob.device)
+            )
+
+            combined = torch.cat([mean_prob, entropy], dim=0)  # (C+1, pd, ph, pw)
+
+            # Crop back to the original (possibly smaller) slice size.
+            orig_d = min(dz.stop, D) - dz.start
+            orig_h = min(dy.stop, H) - dy.start
+            orig_w = min(dx.stop, W) - dx.start
+            combined = combined[:, :orig_d, :orig_h, :orig_w]
+
+            patches.append(combined.cpu())
+            patch_coords.append((
+                slice(dz.start, dz.start + orig_d),
+                slice(dy.start, dy.start + orig_h),
+                slice(dx.start, dx.start + orig_w),
+            ))
+
+    stitched = reconstruct_from_patches(
+        patches, patch_coords, full_volume_shape=(D, H, W), aggregation="gaussian"
+    )
+    mean_prob_full, entropy_full = stitched[:-1], stitched[-1]
+    pred_labels = torch.argmax(mean_prob_full, dim=0)
+    return pred_labels, entropy_full
+
+
 @torch.no_grad()
-def run_inference(model, image, patch_size, device):
+def run_inference(
+    model,
+    image,
+    patch_size,
+    device,
+    model_type: str = "baseline",
+    mc_samples: int = 10,
+    refine: bool = False,
+    refine_threshold: float = 0.5,
+):
     """Returns (pred_labels, uncertainty_or_None) for one full eval-mode
     volume. image: (1, D, H, W)."""
+    if model_type == "comparative":
+        pred_labels, uncertainty = mc_dropout_sliding_window_inference(
+            model, image, patch_size, device, n_samples=mc_samples
+        )
+        if refine:
+            from src.models.uncertainty_unet import refine_prediction
+
+            pred_labels = refine_prediction(
+                pred_labels.unsqueeze(0), uncertainty.unsqueeze(0), threshold=refine_threshold
+            ).squeeze(0)
+        return pred_labels.cpu().numpy(), uncertainty.cpu().numpy()
+
     logits = sliding_window_inference(model, image, patch_size, device)
     pred_labels = torch.argmax(logits, dim=1).squeeze(0).cpu().numpy()
-    return pred_labels, None  # uncertainty slot filled in once Role 3 lands
+    return pred_labels, None
 
 
 def pick_informative_slice(label_volume: np.ndarray, classes=(1, 2)) -> int:
     """Picks the axial slice with the most combined voxels of the given
-    classes (default eCSF/GM, the boundary this option cares about most) --
-    a heuristic stand-in for Role 5's per-case Dice-driven case selection."""
+    classes (default eCSF/GM)."""
     mask = np.isin(label_volume, classes)
     counts = mask.sum(axis=(1, 2))
     return int(np.argmax(counts))
@@ -123,8 +211,20 @@ def main():
     parser.add_argument("--case-index", type=int, default=0)
     parser.add_argument("--out-dir", type=str, default="src/explainability/figures")
     parser.add_argument("--patch-size", type=int, nargs=3, default=[128, 128, 128])
+    parser.add_argument(
+        "--model-type", type=str, default="baseline", choices=["baseline", "comparative"]
+    )
+    parser.add_argument(
+        "--mc-samples", type=int, default=10, help="MC-Dropout forward passes per patch (comparative model only)"
+    )
+    parser.add_argument(
+        "--refine", action="store_true", help="Apply uncertainty-guided boundary refinement (comparative model only)"
+    )
+    parser.add_argument("--refine-threshold", type=float, default=0.5)
     args = parser.parse_args()
 
+    # torch==2.2.2 doesn't support Conv3D on MPS, so 3D models like
+    # BaselineUNet must run on CPU on Apple Silicon.
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     code_root = Path(__file__).resolve().parents[2]
@@ -134,8 +234,17 @@ def main():
     eval_ds = FeTADataset(split_path, config_path, split_name=args.split, mode="eval")
     image, label, meta = eval_ds[args.case_index]
 
-    model = load_model(Path(args.checkpoint), device)
-    pred, uncertainty = run_inference(model, image, tuple(args.patch_size), device)
+    model = load_model(Path(args.checkpoint), device, model_type=args.model_type)
+    pred, uncertainty = run_inference(
+        model,
+        image,
+        tuple(args.patch_size),
+        device,
+        model_type=args.model_type,
+        mc_samples=args.mc_samples,
+        refine=args.refine,
+        refine_threshold=args.refine_threshold,
+    )
 
     plot_case(image, label, pred, meta["subject_id"], Path(args.out_dir), uncertainty=uncertainty)
 
