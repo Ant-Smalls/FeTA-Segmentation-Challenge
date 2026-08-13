@@ -33,6 +33,7 @@ import matplotlib
 matplotlib.use("Agg")  # non-interactive backend, safe for headless/HPC runs
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
+from tqdm import tqdm
 
 from src.preprocessing_data_preparation.dataset import FeTADataset, reconstruct_from_patches
 
@@ -208,11 +209,12 @@ def sliding_window_inference(model, image, patch_size, device):
 # ---------------------------------------------------------------------------
 # Train / validate
 # ---------------------------------------------------------------------------
-def train_one_epoch(model, loader, optimizer, device, uncertainty_loss_weight, class_weights):
+def train_one_epoch(model, loader, optimizer, device, uncertainty_loss_weight, class_weights, epoch: int = 0):
     model.train()
     total_loss, total_dice, n_batches = 0.0, 0.0, 0
 
-    for image, label in loader:
+    pbar = tqdm(loader, desc=f"Epoch {epoch:03d} train", leave=True, dynamic_ncols=True)
+    for image, label in pbar:
         image, label = image.to(device), label.to(device)
 
         optimizer.zero_grad()
@@ -225,17 +227,19 @@ def train_one_epoch(model, loader, optimizer, device, uncertainty_loss_weight, c
         total_loss += loss.item()
         total_dice += mean_dice(logits, label)
         n_batches += 1
+        pbar.set_postfix(loss=f"{total_loss / n_batches:.4f}", dice=f"{total_dice / n_batches:.4f}")
 
     return total_loss / n_batches, total_dice / n_batches
 
 
 @torch.no_grad()
-def validate_full_volume(model, eval_ds, device, patch_size, class_weights):
+def validate_full_volume(model, eval_ds, device, patch_size, class_weights, epoch: int = 0):
     """Full-volume validation via sliding-window inference, per case."""
     model.eval()
     total_loss, total_dice, n_cases = 0.0, 0.0, 0
 
-    for i in range(len(eval_ds)):
+    pbar = tqdm(range(len(eval_ds)), desc=f"Epoch {epoch:03d} val  ", leave=True, dynamic_ncols=True)
+    for i in pbar:
         image, label, meta = eval_ds[i]
         label = label.unsqueeze(0).to(device)  # (1, D, H, W)
 
@@ -245,6 +249,7 @@ def validate_full_volume(model, eval_ds, device, patch_size, class_weights):
         total_loss += loss.item()
         total_dice += mean_dice(logits, label)
         n_cases += 1
+        pbar.set_postfix(loss=f"{total_loss / n_cases:.4f}", dice=f"{total_dice / n_cases:.4f}")
 
     return total_loss / n_cases, total_dice / n_cases
 
@@ -345,9 +350,11 @@ def train(config: dict):
     for epoch in range(1, config["max_epochs"] + 1):
         start = time.time()
         train_loss, train_dice = train_one_epoch(
-            model, train_loader, optimizer, device, uncertainty_loss_weight, class_weights
+            model, train_loader, optimizer, device, uncertainty_loss_weight, class_weights, epoch=epoch
         )
-        val_loss, val_dice = validate_full_volume(model, val_ds_eval, device, patch_size, class_weights)
+        val_loss, val_dice = validate_full_volume(
+            model, val_ds_eval, device, patch_size, class_weights, epoch=epoch
+        )
         elapsed = time.time() - start
 
         current_lr = optimizer.param_groups[0]["lr"]
