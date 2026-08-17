@@ -131,6 +131,7 @@ single-channel uncertainty head.
         x, skips = self.encoder(x)
         x = self.bottleneck(x)
         x = self.decoder(x, list(reversed(skips)))
+        x = self.mc_dropout(x)  # once, before both heads
 
         logits = self.head(x)
         uncertainty = self.uncertainty_head(x)

@@ -114,6 +114,34 @@ A self-configuring 3D U-Net CNN framework that automatically adapts its architec
 A convolutional neural network architecture with encoder-decoder structure and skip connections, operating on volumetric 3D data for semantic segmentation.
 *Avoid*: U-Net, volumetric U-Net
 
+**Baseline model**:
+The control 3D U-Net: one segmentation head, Dice plus cross-entropy only, no uncertainty signal and no refinement.
+*Avoid*: control network, Role 2 model, confident model
+
+**Comparative model**:
+The treatment 3D U-Net: the same backbone as the baseline model, plus a predicted-variance head and an optional refinement rule.
+*Avoid*: UncertaintyUNet, treatment model, uncertainty model
+
+**Predicted variance**:
+A per-voxel aleatoric value from the 1-channel training head. It is a learned log-variance of label noise, not disagreement with the manual label.
+*Avoid*: uncertainty head output, aleatoric map, variance map
+
+**Predictive entropy**:
+A per-voxel epistemic value computed at inference from Monte Carlo Dropout. It is high when repeated stochastic forward passes disagree on the class. It is not a distance or entropy between the prediction and the ground-truth boundary.
+*Avoid*: MC entropy, dropout uncertainty, model disagreement
+
+**Uncertainty map**:
+The voxel-wise signal used at inference for refinement and explainability. In this project it means predictive entropy unless stated otherwise.
+*Avoid*: uncertainty, unsure map
+
+**Refinement**:
+A reversible rule: a local majority vote on voxels that are both a class boundary and above an uncertainty threshold. The goal is better overlap with the manual labels, not lower predictive entropy. It is not a second trained network.
+*Avoid*: cleanup, tidy step, post-processing network, DAE
+
+**Calibration check**:
+The test of whether high predictive entropy coincides with voxels the model gets wrong versus the manual labels.
+*Avoid*: reliability plot, uncertainty-error correlation
+
 **Denoising Autoencoder (DAE)**:
 A post-processing neural network trained to fix topological errors (holes, disconnections) in initial segmentation predictions by learning to map noisy outputs to clean anatomically plausible masks.
 *Avoid*: Denoiser, cleanup network, post-processing network
