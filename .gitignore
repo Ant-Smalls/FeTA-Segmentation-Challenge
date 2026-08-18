@@ -32,7 +32,6 @@ code/src/data/splits/split_local_test.json
 
 # Training history figures/logs (saved inside checkpoint dirs above, but
 # listed explicitly in case a run ever writes them elsewhere)
-**/*_history.json
 **/*_history.png*.zip
 *.pt
 *.zip
