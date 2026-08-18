@@ -1,0 +1,7 @@
+Working dir: /home/people/23225831/scratch/segmentation-assignment/code
+QC excluded 1/80 case(s):
+  sub-022 (mial): implausible_volume_class_1: 0.83cm3 not in [2.03, 5915.10]; implausible_volume_class_2: 3.93cm3 not in [7.28, 375.52]; implausible_volume_class_7: 0.43cm3 not in [0.54, 48.24]
+
+Train-split median spacing: (0.5, 0.5, 0.5) -- copy this into config.yaml's preprocessing.target_spacing_mm by hand (not done automatically, to avoid a script clobbering config.yaml's comments).
+QC/split done. Review exclusions above, then check:
+  src/data/splits/split_v1.json

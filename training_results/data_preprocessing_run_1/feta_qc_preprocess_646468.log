@@ -1,0 +1,9 @@
+Working dir: /home/people/23225831/scratch/segmentation-assignment/code
+Validating preprocessing for 79 case(s) across train/val/test...
+
+79/79 case(s) preprocessed successfully.
+Per-case time (s): min=0.35 median=0.54 max=2.44
+Peak memory so far: 962 MB
+
+Preprocessing validation passed for every case in every split/mode.
+Preprocessing validation done. Review failures/timing summary above.

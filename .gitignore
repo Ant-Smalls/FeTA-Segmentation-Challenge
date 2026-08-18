@@ -27,7 +27,6 @@ code/src/data/splits/split_local_test.json
 # Model checkpoints / experiment outputs (large, role-generated)
 **/checkpoints/
 **/checkpoints_local_test/
-**/checkpoints_comparative/
 **/*.pt
 **/*.pth
 
