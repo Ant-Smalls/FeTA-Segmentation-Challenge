@@ -12,6 +12,9 @@ venv/
 .pytest_cache/
 .ipynb_checkpoints/
 
+# Local unit tests (not shared)
+code/src/tests/
+
 # Raw MRI data (huge, pulled from the HPC / challenge data drop, never committed).
 # Generated artifacts that other roles depend on (code/src/data/splits/split_v1.json,
 # code/src/data/config.yaml) are intentionally NOT covered by this rule and must stay tracked.
@@ -24,7 +27,6 @@ code/src/data/splits/split_local_test.json
 # Model checkpoints / experiment outputs (large, role-generated)
 **/checkpoints/
 **/checkpoints_local_test/
-**/checkpoints_comparative/
 **/*.pt
 **/*.pth
 
@@ -41,3 +43,8 @@ code/src/explainability/figures/
 # Personal draft/notes, not part of the shared report or codebase
 code/docs/role6_clinical_framing.md
 sonic.md
+
+# Local agent-skills config, markdown issue tracker, and docs (not shared)
+AGENTS.md
+docs/
+.scratch/

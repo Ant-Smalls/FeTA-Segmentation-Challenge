@@ -287,6 +287,36 @@ def plot_training_history(history: dict, out_dir: Path, run_name: str = "run"):
     print(f"Saved training history to {out_dir / (run_name + '_history.png')}")
 
 
+def run_refinement_sweep(config: dict, model_type: str, ckpt_dir: Path):
+    """Sweep the refinement threshold after comparative training finishes.
+
+    Runs whether the epoch loop ended by early stopping or max_epochs.
+    Loads best_model.pt rather than the in-memory last-epoch weights.
+    """
+    if model_type != "comparative":
+        return
+    if not config.get("run_refinement_sweep", True):
+        print("Skipping refinement threshold sweep (run_refinement_sweep=false).")
+        return
+
+    best_ckpt = ckpt_dir / "best_model.pt"
+    if not best_ckpt.exists():
+        print("Skipping refinement threshold sweep: best_model.pt not found.")
+        return
+
+    # Lazy import - tune_refinement_threshold.py imports sliding_window_coords
+    # from this module, so a top-level import would be circular
+    from src.training.tune_refinement_threshold import run_sweep, save_outputs
+
+    thresholds = config.get("refinement_thresholds", [0.3, 0.4, 0.5, 0.6, 0.7])
+    n_mc_samples = config.get("n_mc_samples", 10)
+    out_dir = Path(config.get("tuning_out_dir", "src/training/tuning_results"))
+
+    print("Running refinement threshold sweep on validation (best checkpoint)...")
+    results, no_refine, best = run_sweep(config, str(best_ckpt), thresholds, n_mc_samples)
+    save_outputs(results, no_refine, best, out_dir)
+
+
 def train(config: dict):
     global MODEL_RETURNS_UNCERTAINTY
 
@@ -396,6 +426,9 @@ def train(config: dict):
 
     run_name = config.get("run_name", "run")
     plot_training_history(history, ckpt_dir, run_name=run_name)
+
+    # threshold tuning - reached after early stopping and after hitting max_epochs
+    run_refinement_sweep(config, model_type, ckpt_dir)
 
 
 def main():

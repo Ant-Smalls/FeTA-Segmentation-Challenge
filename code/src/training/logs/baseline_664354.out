@@ -1,0 +1,84 @@
+Using device: cuda
+Epoch 001 | train_loss=2.5916 train_dice=0.1849 | val_loss=2.4403 val_dice=0.1558 | lr=1.00e-04 | 131.2s
+  -> new best val_dice=0.1558, checkpoint saved
+Epoch 002 | train_loss=2.2674 train_dice=0.3040 | val_loss=2.0182 val_dice=0.2895 | lr=1.00e-04 | 123.2s
+  -> new best val_dice=0.2895, checkpoint saved
+Epoch 003 | train_loss=2.1747 train_dice=0.3381 | val_loss=1.9892 val_dice=0.3421 | lr=1.00e-04 | 124.1s
+  -> new best val_dice=0.3421, checkpoint saved
+Epoch 004 | train_loss=2.0802 train_dice=0.3748 | val_loss=1.8384 val_dice=0.3749 | lr=1.00e-04 | 123.5s
+  -> new best val_dice=0.3749, checkpoint saved
+Epoch 005 | train_loss=1.9994 train_dice=0.4002 | val_loss=1.7169 val_dice=0.4124 | lr=1.00e-04 | 124.0s
+  -> new best val_dice=0.4124, checkpoint saved
+Epoch 006 | train_loss=1.9241 train_dice=0.4251 | val_loss=1.8813 val_dice=0.3787 | lr=1.00e-04 | 124.5s
+Epoch 007 | train_loss=1.8687 train_dice=0.4356 | val_loss=1.7266 val_dice=0.4035 | lr=1.00e-04 | 125.6s
+Epoch 008 | train_loss=1.8343 train_dice=0.4373 | val_loss=1.7223 val_dice=0.4474 | lr=1.00e-04 | 124.9s
+  -> new best val_dice=0.4474, checkpoint saved
+Epoch 009 | train_loss=1.7423 train_dice=0.4685 | val_loss=1.6036 val_dice=0.3836 | lr=1.00e-04 | 124.6s
+Epoch 010 | train_loss=1.7106 train_dice=0.4607 | val_loss=1.5133 val_dice=0.4500 | lr=1.00e-04 | 123.5s
+  -> new best val_dice=0.4500, checkpoint saved
+Epoch 011 | train_loss=1.6750 train_dice=0.4696 | val_loss=1.6218 val_dice=0.4509 | lr=1.00e-04 | 123.6s
+  -> new best val_dice=0.4509, checkpoint saved
+Epoch 012 | train_loss=1.6463 train_dice=0.4824 | val_loss=1.5322 val_dice=0.4309 | lr=1.00e-04 | 123.3s
+Epoch 013 | train_loss=1.5600 train_dice=0.5169 | val_loss=1.4206 val_dice=0.5043 | lr=1.00e-04 | 122.7s
+  -> new best val_dice=0.5043, checkpoint saved
+Epoch 014 | train_loss=1.5341 train_dice=0.5321 | val_loss=1.3935 val_dice=0.5335 | lr=1.00e-04 | 123.6s
+  -> new best val_dice=0.5335, checkpoint saved
+Epoch 015 | train_loss=1.4609 train_dice=0.5573 | val_loss=1.3001 val_dice=0.4917 | lr=1.00e-04 | 124.6s
+Epoch 016 | train_loss=1.4538 train_dice=0.5563 | val_loss=1.3134 val_dice=0.5388 | lr=1.00e-04 | 124.1s
+  -> new best val_dice=0.5388, checkpoint saved
+Epoch 017 | train_loss=1.4072 train_dice=0.5836 | val_loss=1.2832 val_dice=0.4984 | lr=1.00e-04 | 123.2s
+Epoch 018 | train_loss=1.4185 train_dice=0.5837 | val_loss=1.2204 val_dice=0.5671 | lr=1.00e-04 | 123.2s
+  -> new best val_dice=0.5671, checkpoint saved
+Epoch 019 | train_loss=1.3524 train_dice=0.6248 | val_loss=1.1979 val_dice=0.5757 | lr=1.00e-04 | 125.9s
+  -> new best val_dice=0.5757, checkpoint saved
+Epoch 020 | train_loss=1.2742 train_dice=0.6932 | val_loss=1.1966 val_dice=0.6424 | lr=1.00e-04 | 124.5s
+  -> new best val_dice=0.6424, checkpoint saved
+Epoch 021 | train_loss=1.3148 train_dice=0.6342 | val_loss=1.2036 val_dice=0.6279 | lr=1.00e-04 | 124.4s
+Epoch 022 | train_loss=1.2709 train_dice=0.6704 | val_loss=1.1135 val_dice=0.6583 | lr=1.00e-04 | 123.8s
+  -> new best val_dice=0.6583, checkpoint saved
+Epoch 023 | train_loss=1.2169 train_dice=0.6953 | val_loss=1.1009 val_dice=0.6665 | lr=1.00e-04 | 122.7s
+  -> new best val_dice=0.6665, checkpoint saved
+Epoch 024 | train_loss=1.1956 train_dice=0.7010 | val_loss=1.0902 val_dice=0.6520 | lr=1.00e-04 | 122.2s
+Epoch 025 | train_loss=1.1818 train_dice=0.7066 | val_loss=1.0627 val_dice=0.5952 | lr=1.00e-04 | 123.3s
+Epoch 026 | train_loss=1.1708 train_dice=0.6830 | val_loss=1.0233 val_dice=0.6835 | lr=1.00e-04 | 125.4s
+  -> new best val_dice=0.6835, checkpoint saved
+Epoch 027 | train_loss=1.1405 train_dice=0.7175 | val_loss=0.9872 val_dice=0.6538 | lr=1.00e-04 | 124.1s
+Epoch 028 | train_loss=1.1476 train_dice=0.7058 | val_loss=0.9841 val_dice=0.6972 | lr=1.00e-04 | 124.8s
+  -> new best val_dice=0.6972, checkpoint saved
+Epoch 029 | train_loss=1.0843 train_dice=0.7338 | val_loss=0.9609 val_dice=0.7116 | lr=1.00e-04 | 123.4s
+  -> new best val_dice=0.7116, checkpoint saved
+Epoch 030 | train_loss=1.0494 train_dice=0.7466 | val_loss=0.9165 val_dice=0.7202 | lr=1.00e-04 | 124.8s
+  -> new best val_dice=0.7202, checkpoint saved
+Epoch 031 | train_loss=1.0368 train_dice=0.7526 | val_loss=0.8928 val_dice=0.7363 | lr=1.00e-04 | 124.0s
+  -> new best val_dice=0.7363, checkpoint saved
+Epoch 032 | train_loss=1.0130 train_dice=0.7582 | val_loss=0.8871 val_dice=0.7135 | lr=1.00e-04 | 123.2s
+Epoch 033 | train_loss=0.9937 train_dice=0.7662 | val_loss=0.8654 val_dice=0.7174 | lr=1.00e-04 | 125.0s
+Epoch 034 | train_loss=0.9963 train_dice=0.7541 | val_loss=0.8725 val_dice=0.7113 | lr=1.00e-04 | 123.4s
+Epoch 035 | train_loss=0.9235 train_dice=0.7732 | val_loss=0.8287 val_dice=0.7394 | lr=1.00e-04 | 124.1s
+  -> new best val_dice=0.7394, checkpoint saved
+Epoch 036 | train_loss=0.8967 train_dice=0.7821 | val_loss=0.8418 val_dice=0.6915 | lr=1.00e-04 | 123.0s
+Epoch 037 | train_loss=0.8665 train_dice=0.7888 | val_loss=0.7900 val_dice=0.7501 | lr=1.00e-04 | 124.3s
+  -> new best val_dice=0.7501, checkpoint saved
+Epoch 038 | train_loss=0.8728 train_dice=0.7733 | val_loss=0.8023 val_dice=0.7436 | lr=1.00e-04 | 123.2s
+Epoch 039 | train_loss=0.8582 train_dice=0.7746 | val_loss=0.7590 val_dice=0.7529 | lr=1.00e-04 | 125.7s
+  -> new best val_dice=0.7529, checkpoint saved
+Epoch 040 | train_loss=0.8259 train_dice=0.7857 | val_loss=0.7565 val_dice=0.7497 | lr=1.00e-04 | 123.2s
+Epoch 041 | train_loss=0.8227 train_dice=0.7853 | val_loss=0.7483 val_dice=0.7418 | lr=1.00e-04 | 126.3s
+Epoch 042 | train_loss=0.8060 train_dice=0.7866 | val_loss=0.7607 val_dice=0.7450 | lr=1.00e-04 | 125.8s
+Epoch 043 | train_loss=0.7709 train_dice=0.7906 | val_loss=0.7541 val_dice=0.7141 | lr=1.00e-04 | 126.4s
+Epoch 044 | train_loss=0.7865 train_dice=0.7872 | val_loss=0.6976 val_dice=0.7515 | lr=1.00e-04 | 124.1s
+Epoch 045 | train_loss=0.7364 train_dice=0.7972 | val_loss=0.6614 val_dice=0.7790 | lr=1.00e-04 | 124.3s
+  -> new best val_dice=0.7790, checkpoint saved
+Epoch 046 | train_loss=0.7482 train_dice=0.7943 | val_loss=0.7262 val_dice=0.7261 | lr=1.00e-04 | 122.8s
+Epoch 047 | train_loss=0.7433 train_dice=0.7830 | val_loss=0.6642 val_dice=0.7558 | lr=1.00e-04 | 123.4s
+Epoch 048 | train_loss=0.7411 train_dice=0.7950 | val_loss=0.8482 val_dice=0.6128 | lr=1.00e-04 | 126.4s
+Epoch 049 | train_loss=0.7491 train_dice=0.7814 | val_loss=0.6684 val_dice=0.7494 | lr=1.00e-04 | 122.9s
+Epoch 050 | train_loss=0.7026 train_dice=0.8021 | val_loss=0.6345 val_dice=0.7711 | lr=1.00e-04 | 124.4s
+Epoch 051 | train_loss=0.6906 train_dice=0.7955 | val_loss=0.6443 val_dice=0.7667 | lr=1.00e-04 | 125.7s
+Epoch 052 | train_loss=0.7037 train_dice=0.7991 | val_loss=0.6206 val_dice=0.7616 | lr=1.00e-04 | 123.8s
+Epoch 053 | train_loss=0.6981 train_dice=0.7965 | val_loss=0.6194 val_dice=0.7602 | lr=1.00e-04 | 125.2s
+Epoch 054 | train_loss=0.6728 train_dice=0.7987 | val_loss=0.6068 val_dice=0.7701 | lr=1.00e-04 | 123.8s
+Epoch 055 | train_loss=0.6806 train_dice=0.7927 | val_loss=0.6144 val_dice=0.7545 | lr=1.00e-04 | 124.0s
+Early stopping at epoch 55 (no improvement for 10 epochs)
+Training complete. Best val_dice=0.7790
+Saved training history to src/training/checkpoints/baseline_history.png
