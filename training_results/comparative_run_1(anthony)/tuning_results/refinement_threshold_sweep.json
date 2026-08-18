@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "threshold": 0.3,
+      "target_dice_eCSF_GM_dGM": 0.7648640883465609,
+      "overall_dice": 0.7883833735471679
+    },
+    {
+      "threshold": 0.4,
+      "target_dice_eCSF_GM_dGM": 0.7648640883465609,
+      "overall_dice": 0.7883833735471679
+    },
+    {
+      "threshold": 0.5,
+      "target_dice_eCSF_GM_dGM": 0.7648642323911191,
+      "overall_dice": 0.7883834544391859
+    },
+    {
+      "threshold": 0.6,
+      "target_dice_eCSF_GM_dGM": 0.7647942490875722,
+      "overall_dice": 0.7883567625568025
+    },
+    {
+      "threshold": 0.7,
+      "target_dice_eCSF_GM_dGM": 0.7647317300240198,
+      "overall_dice": 0.788285451808146
+    }
+  ],
+  "no_refinement_reference": {
+    "threshold": null,
+    "target_dice_eCSF_GM_dGM": 0.7641456106470691,
+    "overall_dice": 0.7880005488793055
+  },
+  "selected": {
+    "threshold": 0.5,
+    "target_dice_eCSF_GM_dGM": 0.7648642323911191,
+    "overall_dice": 0.7883834544391859
+  }
+}
