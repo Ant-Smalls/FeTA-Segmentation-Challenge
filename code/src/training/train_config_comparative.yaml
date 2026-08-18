@@ -22,6 +22,14 @@ patch_size: [128, 128, 128]
 # of this config with different values and separate run_names/checkpoint dirs.
 uncertainty_loss_weight: 0.1
 
+# After training ends (early stop or max_epochs), sweep refine_prediction()
+# on the validation set using best_model.pt. Standalone equivalent:
+# python -m src.training.tune_refinement_threshold ...
+run_refinement_sweep: true
+refinement_thresholds: [0.3, 0.4, 0.5, 0.6, 0.7]
+n_mc_samples: 10
+tuning_out_dir: src/training/tuning_results
+
 lr_scheduler: false
 lr_scheduler_factor: 0.5
 lr_scheduler_patience: 5

@@ -1,0 +1,7 @@
+# Link to the Google Drive where baseline and comparative models live (free to add):
+
+https://drive.google.com/drive/folders/1_3NFIKvh4PCQ1G0voYH4MGWHbudMnHYX?usp=sharing
+
+Official baseline: job 716641, validation DSC 0.7890 (epoch 59). Local logs: training_results/baseline_run_1(anthony)/
+Official comparative: job 717089, validation DSC 0.7881 (epoch 56). Selected refinement threshold 0.5. Local logs: training_results/comparative_run_1(anthony)/
+Old comparative (not official): job 688160, validation DSC 0.7322. NLL at 0.1 without Dropout in the forward pass.

@@ -42,4 +42,6 @@ python3 -u -m src.training.train --config src/training/train_config_comparative.
 echo "Comparative training done. Check:"
 echo "  src/training/checkpoints_comparative/best_model.pt"
 echo "  src/training/checkpoints_comparative/comparative_history.png"
+echo "  src/training/tuning_results/refinement_threshold_sweep.json"
+echo "  src/training/tuning_results/refinement_threshold_sweep.png"
 date

@@ -131,6 +131,7 @@ single-channel uncertainty head.
         x, skips = self.encoder(x)
         x = self.bottleneck(x)
         x = self.decoder(x, list(reversed(skips)))
+        x = self.mc_dropout(x)  # once before both heads
 
         logits = self.head(x)
         uncertainty = self.uncertainty_head(x)
@@ -148,7 +149,7 @@ def mc_dropout_predict(model, x, n_samples=10):
     """
     model.eval()
 
-    # Keep only Dropout3d layers active during inference.
+    # Keep only Dropout3d layers active during inference
     for module in model.modules():
         if isinstance(module, nn.Dropout3d):
             module.train()
@@ -167,13 +168,13 @@ def mc_dropout_predict(model, x, n_samples=10):
 
     prediction = torch.argmax(mean_probability, dim=1)
 
-    # Predictive entropy.
+    # Predictive entropy
     entropy = -torch.sum(
         mean_probability * torch.log(mean_probability + 1e-8),
         dim=1,
     )
 
-    # Normalize entropy to [0, 1].
+    # Normalize entropy to [0, 1]
     uncertainty = entropy / torch.log(
         torch.tensor(
             mean_probability.shape[1],
@@ -198,13 +199,13 @@ def refine_prediction(prediction, uncertainty, threshold=0.5, enabled=True):
         Refined prediction with the same shape as prediction.
     """
 
-    # Refinement can be switched off completely.
+    # Refinement can be switched off completely
     if not enabled:
         return prediction
 
     refined = prediction.clone()
 
-    # Identify voxels where a neighbouring voxel has a different class.
+    # Identify voxels where a neighbouring voxel has a different class
     boundary = torch.zeros_like(prediction, dtype=torch.bool)
 
     boundary[:, 1:, :, :] |= prediction[:, 1:, :, :] != prediction[:, :-1, :, :]
@@ -214,10 +215,10 @@ def refine_prediction(prediction, uncertainty, threshold=0.5, enabled=True):
     boundary[:, :, :, 1:] |= prediction[:, :, :, 1:] != prediction[:, :, :, :-1]
     boundary[:, :, :, :-1] |= prediction[:, :, :, :-1] != prediction[:, :, :, 1:]
 
-    # Only refine high-uncertainty boundary voxels.
+    # Only refine high-uncertainty boundary voxels
     uncertain_boundary = boundary & (uncertainty >= threshold)
 
-    # One-hot encode the segmentation.
+    # One-hot encode the segmentation
     num_classes = int(prediction.max().item()) + 1
 
     one_hot = F.one_hot(
@@ -225,7 +226,7 @@ def refine_prediction(prediction, uncertainty, threshold=0.5, enabled=True):
         num_classes=num_classes
     ).permute(0, 4, 1, 2, 3).float()
 
-    # Count neighbouring class labels in a 3x3x3 neighbourhood.
+    # Count neighbouring class labels in a 3x3x3 neighbourhood
     kernel = torch.ones(
         (num_classes, 1, 3, 3, 3),
         device=prediction.device
@@ -238,10 +239,10 @@ def refine_prediction(prediction, uncertainty, threshold=0.5, enabled=True):
         groups=num_classes
     )
 
-    # Choose the local majority class.
+    # Choose the local majority class
     local_majority = neighbour_counts.argmax(dim=1)
 
-    # Apply refinement only at uncertain boundary voxels.
+    # Apply refinement only at uncertain boundary voxels
     refined[uncertain_boundary] = local_majority[uncertain_boundary]
 
     return refined
