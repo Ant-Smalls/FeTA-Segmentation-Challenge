@@ -1,0 +1,13 @@
+Evaluation report -- 12 test cases, patch_size=(128, 128, 128), aggregation='gaussian'
+
+Baseline mean Dice (foreground):     0.7797
+Comparative mean Dice (foreground):  0.7807
+
+=== Calibration (review before trusting the refinement numbers below) ===
+Spearman rho=0.417 (p=0), ECE-style score=0.1637, n_voxels=16832053
+Gate: PASSES
+
+=== Before/after refinement (eCSF/GM/dGM), threshold=0.5 ===
+      eCSF: Dice 0.7004 -> 0.7021, ED 253.67 -> 172.08
+        GM: Dice 0.6976 -> 0.6982, ED 129.83 -> 129.75
+       dGM: Dice 0.8283 -> 0.8283, ED 1.25 -> 1.08
