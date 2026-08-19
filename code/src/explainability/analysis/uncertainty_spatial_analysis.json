@@ -1,0 +1,886 @@
+{
+  "split": "test",
+  "checkpoint": "src/training/checkpoints_comparative/best_model_comp.pt",
+  "mc_samples": 10,
+  "refined": false,
+  "summary": {
+    "n_subjects": 12,
+    "uncertainty_by_boundary_distance": [
+      {
+        "bin_mm": "<1",
+        "mean": 0.4321240385373433,
+        "std": 0.06979917906637773,
+        "n_subjects": 12,
+        "within_bin_auroc": {
+          "mean": 0.7357561659180369,
+          "std": 0.028572806003793808,
+          "n_subjects": 12
+        }
+      },
+      {
+        "bin_mm": "1-2",
+        "mean": 0.2853718226154645,
+        "std": 0.06539568600547786,
+        "n_subjects": 12,
+        "within_bin_auroc": {
+          "mean": 0.9262233967563175,
+          "std": 0.042496641521996684,
+          "n_subjects": 12
+        }
+      },
+      {
+        "bin_mm": "2-3",
+        "mean": 0.23282327254613241,
+        "std": 0.04838359926046277,
+        "n_subjects": 12,
+        "within_bin_auroc": {
+          "mean": 0.967133282580065,
+          "std": 0.023424496537698444,
+          "n_subjects": 12
+        }
+      },
+      {
+        "bin_mm": "3-5",
+        "mean": 0.21255126098791757,
+        "std": 0.040489740045748,
+        "n_subjects": 12,
+        "within_bin_auroc": {
+          "mean": 0.9778339956147083,
+          "std": 0.023834308972667664,
+          "n_subjects": 11
+        }
+      },
+      {
+        "bin_mm": "5-10",
+        "mean": 0.20461386566360792,
+        "std": 0.09254978383367057,
+        "n_subjects": 12,
+        "within_bin_auroc": {
+          "mean": 0.9913878175782841,
+          "std": 0.01099947682290993,
+          "n_subjects": 8
+        }
+      },
+      {
+        "bin_mm": ">=10",
+        "mean": NaN,
+        "std": NaN,
+        "n_subjects": 0,
+        "within_bin_auroc": {
+          "mean": NaN,
+          "std": NaN,
+          "n_subjects": 0
+        }
+      }
+    ],
+    "mean_uncertainty_correct": {
+      "mean": 0.3111004903912544,
+      "std": 0.03287843219823559,
+      "n_subjects": 12
+    },
+    "mean_uncertainty_error": {
+      "mean": 0.5241829430063566,
+      "std": 0.04914689197200521,
+      "n_subjects": 12
+    },
+    "correct_vs_error_wilcoxon": {
+      "statistic": 0.0,
+      "pvalue": 0.00048828125,
+      "n_pairs": 12,
+      "n_subjects_error_higher": 12
+    },
+    "error_detection_auroc": {
+      "mean": 0.8379035573075254,
+      "std": 0.01646655075748847,
+      "n_subjects": 12
+    },
+    "mean_uncertainty_by_gt_class": {
+      "Brainstem": {
+        "mean": 0.4870576560497284,
+        "std": 0.11002319856531195,
+        "n_subjects": 12
+      },
+      "Cerebellum": {
+        "mean": 0.39965274060765904,
+        "std": 0.15818247894284607,
+        "n_subjects": 12
+      },
+      "GM": {
+        "mean": 0.4326922843853633,
+        "std": 0.08965390169811108,
+        "n_subjects": 12
+      },
+      "Ventricles": {
+        "mean": 0.2931307690838973,
+        "std": 0.055508317336034056,
+        "n_subjects": 12
+      },
+      "WM": {
+        "mean": 0.2868647128343582,
+        "std": 0.051959029685776904,
+        "n_subjects": 12
+      },
+      "background": {
+        "mean": 0.1523437723517418,
+        "std": 0.010602560450417737,
+        "n_subjects": 12
+      },
+      "dGM": {
+        "mean": 0.37135589371124905,
+        "std": 0.043008892807837366,
+        "n_subjects": 12
+      },
+      "eCSF": {
+        "mean": 0.40514549364646274,
+        "std": 0.11995569791078749,
+        "n_subjects": 12
+      }
+    }
+  },
+  "per_case": [
+    {
+      "n_region_voxels": 2067439,
+      "error_rate": 0.13841133885933274,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 1119351,
+          "mean_uncertainty": 0.3799659013748169,
+          "error_detection_auroc": 0.7429818424636025,
+          "error_rate": 0.2418937402119621
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 493554,
+          "mean_uncertainty": 0.2519885301589966,
+          "error_detection_auroc": 0.9483801413647849,
+          "error_rate": 0.023436138700121973
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 248069,
+          "mean_uncertainty": 0.21706567704677582,
+          "error_detection_auroc": 0.980366857161838,
+          "error_rate": 0.007800249124235595
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 174821,
+          "mean_uncertainty": 0.19628505408763885,
+          "error_detection_auroc": 0.9916149857405724,
+          "error_rate": 0.010244764644979722
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 31644,
+          "mean_uncertainty": 0.15765753388404846,
+          "error_detection_auroc": 0.9974131372051738,
+          "error_rate": 0.003160156743774491
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.2838613986968994,
+      "mean_uncertainty_error": 0.4794532060623169,
+      "error_detection_auroc": 0.844853801703798,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.1493239402770996,
+        "eCSF": 0.3314461410045624,
+        "GM": 0.36392709612846375,
+        "WM": 0.2315315306186676,
+        "Ventricles": 0.3380317986011505,
+        "Cerebellum": 0.27652913331985474,
+        "dGM": 0.3606448471546173,
+        "Brainstem": 0.44552096724510193
+      },
+      "subject_id": "sub-079"
+    },
+    {
+      "n_region_voxels": 998296,
+      "error_rate": 0.15277933598852445,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 623492,
+          "mean_uncertainty": 0.3901272118091583,
+          "error_detection_auroc": 0.7653182758383636,
+          "error_rate": 0.2358426411245052
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 239367,
+          "mean_uncertainty": 0.24374695122241974,
+          "error_detection_auroc": 0.9696704908033142,
+          "error_rate": 0.02217515363437734
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 95448,
+          "mean_uncertainty": 0.20044837892055511,
+          "error_detection_auroc": 0.9847248037940619,
+          "error_rate": 0.0016972592406336434
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 38647,
+          "mean_uncertainty": 0.18301691114902496,
+          "error_detection_auroc": NaN,
+          "error_rate": 0.0
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 1342,
+          "mean_uncertainty": 0.12266017496585846,
+          "error_detection_auroc": 1.0,
+          "error_rate": 0.0022354694485842027
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.29671236872673035,
+      "mean_uncertainty_error": 0.5048795938491821,
+      "error_detection_auroc": 0.8466523839304994,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.15387162566184998,
+        "eCSF": 0.3473031222820282,
+        "GM": 0.3724716603755951,
+        "WM": 0.2737548053264618,
+        "Ventricles": 0.2533741891384125,
+        "Cerebellum": 0.2660870850086212,
+        "dGM": 0.33057475090026855,
+        "Brainstem": 0.4197462499141693
+      },
+      "subject_id": "sub-043"
+    },
+    {
+      "n_region_voxels": 917401,
+      "error_rate": 0.16460631719389884,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 588168,
+          "mean_uncertainty": 0.39158469438552856,
+          "error_detection_auroc": 0.7590846966804805,
+          "error_rate": 0.2460674501162933
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 197516,
+          "mean_uncertainty": 0.2492983341217041,
+          "error_detection_auroc": 0.9188008007059252,
+          "error_rate": 0.027137042062415198
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 86057,
+          "mean_uncertainty": 0.21335630118846893,
+          "error_detection_auroc": 0.9798554495585265,
+          "error_rate": 0.008308446727169202
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 44539,
+          "mean_uncertainty": 0.18898895382881165,
+          "error_detection_auroc": 0.9981051394137791,
+          "error_rate": 0.004625159972159231
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 1121,
+          "mean_uncertainty": 0.16745248436927795,
+          "error_detection_auroc": NaN,
+          "error_rate": 0.0
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.3015100955963135,
+      "mean_uncertainty_error": 0.4996306598186493,
+      "error_detection_auroc": 0.8377665884366825,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.15962818264961243,
+        "eCSF": 0.3477286398410797,
+        "GM": 0.37419307231903076,
+        "WM": 0.256610631942749,
+        "Ventricles": 0.3643178343772888,
+        "Cerebellum": 0.29790395498275757,
+        "dGM": 0.40124836564064026,
+        "Brainstem": 0.4120955169200897
+      },
+      "subject_id": "sub-074"
+    },
+    {
+      "n_region_voxels": 1073246,
+      "error_rate": 0.15492440689273476,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 649705,
+          "mean_uncertainty": 0.3930700123310089,
+          "error_detection_auroc": 0.7480455876490014,
+          "error_rate": 0.24759852548464303
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 249129,
+          "mean_uncertainty": 0.24911411106586456,
+          "error_detection_auroc": 0.957169943980639,
+          "error_rate": 0.020346888559742142
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 112216,
+          "mean_uncertainty": 0.21119064092636108,
+          "error_detection_auroc": 0.9856913768413352,
+          "error_rate": 0.0028962001853568117
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 60706,
+          "mean_uncertainty": 0.19912764430046082,
+          "error_detection_auroc": 0.9753778517371294,
+          "error_rate": 0.00019767403551543505
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 1490,
+          "mean_uncertainty": 0.12925855815410614,
+          "error_detection_auroc": NaN,
+          "error_rate": 0.0
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.2986864745616913,
+      "mean_uncertainty_error": 0.4962954521179199,
+      "error_detection_auroc": 0.8350224335665793,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.15228842198848724,
+        "eCSF": 0.34631356596946716,
+        "GM": 0.3874923586845398,
+        "WM": 0.26234525442123413,
+        "Ventricles": 0.27681034803390503,
+        "Cerebellum": 0.23812000453472137,
+        "dGM": 0.3061281144618988,
+        "Brainstem": 0.5188449025154114
+      },
+      "subject_id": "sub-042"
+    },
+    {
+      "n_region_voxels": 2927788,
+      "error_rate": 0.14890763948755853,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 1690320,
+          "mean_uncertainty": 0.38358771800994873,
+          "error_detection_auroc": 0.7357703712985244,
+          "error_rate": 0.2453346111978797
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 689526,
+          "mean_uncertainty": 0.24857087433338165,
+          "error_detection_auroc": 0.9311326049845142,
+          "error_rate": 0.026735757607399865
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 327988,
+          "mean_uncertainty": 0.2086455374956131,
+          "error_detection_auroc": 0.9605452666449658,
+          "error_rate": 0.007494176616217666
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 199831,
+          "mean_uncertainty": 0.19663149118423462,
+          "error_detection_auroc": 0.9926793833595099,
+          "error_rate": 0.001791513829185662
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 20101,
+          "mean_uncertainty": 0.19209985435009003,
+          "error_detection_auroc": 0.9897170531064451,
+          "error_rate": 0.0001492463061539227
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 22,
+          "mean_uncertainty": 0.54951012134552,
+          "error_detection_auroc": NaN,
+          "error_rate": 1.0
+        }
+      ],
+      "mean_uncertainty_correct": 0.290096253156662,
+      "mean_uncertainty_error": 0.4782775342464447,
+      "error_detection_auroc": 0.8327904419247556,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.1465434432029724,
+        "eCSF": 0.3276575207710266,
+        "GM": 0.3877738118171692,
+        "WM": 0.2478022575378418,
+        "Ventricles": 0.30758991837501526,
+        "Cerebellum": 0.3407111167907715,
+        "dGM": 0.3422423005104065,
+        "Brainstem": 0.443783700466156
+      },
+      "subject_id": "sub-054"
+    },
+    {
+      "n_region_voxels": 2155296,
+      "error_rate": 0.14739831559099076,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 1204014,
+          "mean_uncertainty": 0.37122127413749695,
+          "error_detection_auroc": 0.748898394243771,
+          "error_rate": 0.24996470140712648
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 492791,
+          "mean_uncertainty": 0.23952718079090118,
+          "error_detection_auroc": 0.9401812952099189,
+          "error_rate": 0.02923551769411373
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 251711,
+          "mean_uncertainty": 0.19489067792892456,
+          "error_detection_auroc": 0.9558375145593756,
+          "error_rate": 0.0068451517812094026
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 182252,
+          "mean_uncertainty": 0.17499707639217377,
+          "error_detection_auroc": 0.9700736446557352,
+          "error_rate": 0.003264710400983254
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 24528,
+          "mean_uncertainty": 0.16968686878681183,
+          "error_detection_auroc": 0.9999184572104212,
+          "error_rate": 4.0769732550554466e-05
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.2723522186279297,
+      "mean_uncertainty_error": 0.4709894359111786,
+      "error_detection_auroc": 0.850488087775787,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.14681972563266754,
+        "eCSF": 0.30926191806793213,
+        "GM": 0.3650314211845398,
+        "WM": 0.2406817078590393,
+        "Ventricles": 0.3085479736328125,
+        "Cerebellum": 0.27451300621032715,
+        "dGM": 0.34846773743629456,
+        "Brainstem": 0.39367079734802246
+      },
+      "subject_id": "sub-049"
+    },
+    {
+      "n_region_voxels": 1008773,
+      "error_rate": 0.38393077530822095,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 479715,
+          "mean_uncertainty": 0.5569092035293579,
+          "error_detection_auroc": 0.664675309907401,
+          "error_rate": 0.54632021095859
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 219860,
+          "mean_uncertainty": 0.4425004720687866,
+          "error_detection_auroc": 0.8292953886572703,
+          "error_rate": 0.327367415628127
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 139403,
+          "mean_uncertainty": 0.3496645390987396,
+          "error_detection_auroc": 0.9131822526193761,
+          "error_rate": 0.2034246034877298
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 131479,
+          "mean_uncertainty": 0.2960415482521057,
+          "error_detection_auroc": 0.9274804130167026,
+          "error_rate": 0.13179290989435574
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 38316,
+          "mean_uncertainty": 0.2939799427986145,
+          "error_detection_auroc": 0.9665349377348662,
+          "error_rate": 0.19730660820544943
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.37447822093963623,
+      "mean_uncertainty_error": 0.5955321788787842,
+      "error_detection_auroc": 0.8061918263087611,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.1749303638935089,
+        "eCSF": 0.5613471269607544,
+        "GM": 0.5923953056335449,
+        "WM": 0.36673176288604736,
+        "Ventricles": 0.3563537895679474,
+        "Cerebellum": 0.6478108167648315,
+        "dGM": 0.37401434779167175,
+        "Brainstem": 0.6234360933303833
+      },
+      "subject_id": "sub-020"
+    },
+    {
+      "n_region_voxels": 2021438,
+      "error_rate": 0.13491336365498224,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 1108211,
+          "mean_uncertainty": 0.39631906151771545,
+          "error_detection_auroc": 0.7580050816730078,
+          "error_rate": 0.23745929249935255
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 462582,
+          "mean_uncertainty": 0.25049546360969543,
+          "error_detection_auroc": 0.9644803824603445,
+          "error_rate": 0.017488791176483304
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 233316,
+          "mean_uncertainty": 0.20743604004383087,
+          "error_detection_auroc": 0.9889231047277155,
+          "error_rate": 0.0017186991033619641
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 180189,
+          "mean_uncertainty": 0.20621979236602783,
+          "error_detection_auroc": 0.9949767698064139,
+          "error_rate": 0.004223343267347063
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 37140,
+          "mean_uncertainty": 0.20587286353111267,
+          "error_detection_auroc": 0.9934578936595065,
+          "error_rate": 0.00840064620355412
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.29184502363204956,
+      "mean_uncertainty_error": 0.5057500600814819,
+      "error_detection_auroc": 0.8567369255724175,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.1399436891078949,
+        "eCSF": 0.32144778966903687,
+        "GM": 0.39190831780433655,
+        "WM": 0.27576324343681335,
+        "Ventricles": 0.2110472023487091,
+        "Cerebellum": 0.3850412368774414,
+        "dGM": 0.3919556438922882,
+        "Brainstem": 0.3771635591983795
+      },
+      "subject_id": "sub-034"
+    },
+    {
+      "n_region_voxels": 1047698,
+      "error_rate": 0.14845308476297558,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 624676,
+          "mean_uncertainty": 0.40291357040405273,
+          "error_detection_auroc": 0.7539371158916438,
+          "error_rate": 0.23886622825272621
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 241005,
+          "mean_uncertainty": 0.25043976306915283,
+          "error_detection_auroc": 0.9536169859993003,
+          "error_rate": 0.02335636190120537
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 110585,
+          "mean_uncertainty": 0.21017730236053467,
+          "error_detection_auroc": 0.9830501882970205,
+          "error_rate": 0.005660803906497264
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 67062,
+          "mean_uncertainty": 0.19282051920890808,
+          "error_detection_auroc": 0.9967638045790799,
+          "error_rate": 0.000969252333661388
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 4370,
+          "mean_uncertainty": 0.19865413010120392,
+          "error_detection_auroc": NaN,
+          "error_rate": 0.0
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.30218636989593506,
+      "mean_uncertainty_error": 0.5110740661621094,
+      "error_detection_auroc": 0.8457857382134462,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.14440256357192993,
+        "eCSF": 0.33659234642982483,
+        "GM": 0.37803685665130615,
+        "WM": 0.29266783595085144,
+        "Ventricles": 0.2347015142440796,
+        "Cerebellum": 0.3587905168533325,
+        "dGM": 0.41738536953926086,
+        "Brainstem": 0.36111682653427124
+      },
+      "subject_id": "sub-039"
+    },
+    {
+      "n_region_voxels": 936490,
+      "error_rate": 0.3001569691080524,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 512505,
+          "mean_uncertainty": 0.5159140229225159,
+          "error_detection_auroc": 0.7280648128115221,
+          "error_rate": 0.4909259421859299
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 234410,
+          "mean_uncertainty": 0.30093759298324585,
+          "error_detection_auroc": 0.9108185758213128,
+          "error_rate": 0.10860031568619086
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 114467,
+          "mean_uncertainty": 0.2062518447637558,
+          "error_detection_auroc": 0.9767253086724526,
+          "error_rate": 0.02758000122305992
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 72609,
+          "mean_uncertainty": 0.18182308971881866,
+          "error_detection_auroc": 0.9961836345732216,
+          "error_rate": 0.012092164883141208
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 2499,
+          "mean_uncertainty": 0.16062812507152557,
+          "error_detection_auroc": NaN,
+          "error_rate": 0.0
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.31285664439201355,
+      "mean_uncertainty_error": 0.5945297479629517,
+      "error_detection_auroc": 0.8568742138971448,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.15547330677509308,
+        "eCSF": 0.5476669669151306,
+        "GM": 0.5863378643989563,
+        "WM": 0.38210824131965637,
+        "Ventricles": 0.2068638652563095,
+        "Cerebellum": 0.6215776205062866,
+        "dGM": 0.32248184084892273,
+        "Brainstem": 0.6398588418960571
+      },
+      "subject_id": "sub-025"
+    },
+    {
+      "n_region_voxels": 1909147,
+      "error_rate": 0.15155930894792283,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 956395,
+          "mean_uncertainty": 0.4499855041503906,
+          "error_detection_auroc": 0.7203407003177027,
+          "error_rate": 0.2702418979605707
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 488371,
+          "mean_uncertainty": 0.312328040599823,
+          "error_detection_auroc": 0.9311294057061398,
+          "error_rate": 0.03743465521089499
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 229646,
+          "mean_uncertainty": 0.2797415256500244,
+          "error_detection_auroc": 0.9631362082630517,
+          "error_rate": 0.02517788247999094
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 196483,
+          "mean_uncertainty": 0.25862470269203186,
+          "error_detection_auroc": 0.9697838531293143,
+          "error_rate": 0.03245573408386476
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 38252,
+          "mean_uncertainty": 0.1943463236093521,
+          "error_detection_auroc": 0.9876656144001787,
+          "error_rate": 0.01176409076649587
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.3377426862716675,
+      "mean_uncertainty_error": 0.5471308827400208,
+      "error_detection_auroc": 0.833093134616948,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.13882863521575928,
+        "eCSF": 0.41324955224990845,
+        "GM": 0.44101735949516296,
+        "WM": 0.2565189301967621,
+        "Ventricles": 0.3196914494037628,
+        "Cerebellum": 0.4177747368812561,
+        "dGM": 0.42349401116371155,
+        "Brainstem": 0.5269480347633362
+      },
+      "subject_id": "sub-038"
+    },
+    {
+      "n_region_voxels": 533888,
+      "error_rate": 0.376786891632702,
+      "uncertainty_by_boundary_distance": [
+        {
+          "bin_mm": "<1",
+          "n_voxels": 299229,
+          "mean_uncertainty": 0.5538902878761292,
+          "error_detection_auroc": 0.7039518022414233,
+          "error_rate": 0.5231411393949116
+        },
+        {
+          "bin_mm": "1-2",
+          "n_voxels": 113883,
+          "mean_uncertainty": 0.3855145573616028,
+          "error_detection_auroc": 0.8600047453823456,
+          "error_rate": 0.20619407637663215
+        },
+        {
+          "bin_mm": "2-3",
+          "n_voxels": 67880,
+          "mean_uncertainty": 0.2950108051300049,
+          "error_detection_auroc": 0.9335610598210601,
+          "error_rate": 0.10668827342368886
+        },
+        {
+          "bin_mm": "3-5",
+          "n_voxels": 46662,
+          "mean_uncertainty": 0.27603834867477417,
+          "error_detection_auroc": 0.9431344717503344,
+          "error_rate": 0.17045990313317047
+        },
+        {
+          "bin_mm": "5-10",
+          "n_voxels": 6234,
+          "mean_uncertainty": 0.46306952834129333,
+          "error_detection_auroc": 0.9963954473096813,
+          "error_rate": 0.9536413217837665
+        },
+        {
+          "bin_mm": ">=10",
+          "n_voxels": 0,
+          "mean_uncertainty": NaN,
+          "error_detection_auroc": NaN,
+          "error_rate": NaN
+        }
+      ],
+      "mean_uncertainty_correct": 0.370878130197525,
+      "mean_uncertainty_error": 0.6066524982452393,
+      "error_detection_auroc": 0.8085871117434862,
+      "mean_uncertainty_by_gt_class": {
+        "background": 0.16607137024402618,
+        "eCSF": 0.6717312335968018,
+        "GM": 0.5517222881317139,
+        "WM": 0.3558603525161743,
+        "Ventricles": 0.34023934602737427,
+        "Cerebellum": 0.6709736585617065,
+        "dGM": 0.4376333951950073,
+        "Brainstem": 0.6825063824653625
+      },
+      "subject_id": "sub-017"
+    }
+  ]
+}

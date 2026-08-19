@@ -24,24 +24,22 @@ code/src/data/mri_gz/
 # the real split_v1.json above stays tracked and frozen.
 code/src/data/splits/split_local_test.json
 
-# Model checkpoints / experiment outputs (large, role-generated)
+# Model checkpoints / experiment outputs
 **/checkpoints/
+**/checkpoints_comparative/
 **/checkpoints_local_test/
 **/*.pt
 **/*.pth
 
-# Training history figures/logs (saved inside checkpoint dirs above, but
-# listed explicitly in case a run ever writes them elsewhere)
-**/*_history.png*.zip
-*.pt
 *.zip
 
 # Generated explainability figures (role-generated, per-checkpoint output)
-code/src/explainability/figures/
+code/src/explainability/figures*/
 
 # Personal draft/notes, not part of the shared report or codebase
 code/docs/role6_clinical_framing.md
 sonic.md
+overview.md
 
 # Local agent-skills config, markdown issue tracker, and docs (not shared)
 AGENTS.md
