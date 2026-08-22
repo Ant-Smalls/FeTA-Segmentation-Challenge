@@ -1,0 +1,104 @@
+{
+  "n_cases": 12,
+  "n_mc_samples": 10,
+  "pooled_spearman_rho": 0.38313647133513606,
+  "pooled_spearman_pvalue": 0.0,
+  "per_case": [
+    {
+      "subject_id": "sub-041",
+      "mean_entropy": 0.38529542088508606,
+      "std_entropy": 0.1658945381641388,
+      "spearman_rho": 0.3335849586893452,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 4010914
+    },
+    {
+      "subject_id": "sub-056",
+      "mean_entropy": 0.3617950677871704,
+      "std_entropy": 0.16135847568511963,
+      "spearman_rho": 0.38504813953843164,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1200130
+    },
+    {
+      "subject_id": "sub-058",
+      "mean_entropy": 0.374236524105072,
+      "std_entropy": 0.16223089396953583,
+      "spearman_rho": 0.36871954367629267,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1948388
+    },
+    {
+      "subject_id": "sub-075",
+      "mean_entropy": 0.3447720408439636,
+      "std_entropy": 0.1464049369096756,
+      "spearman_rho": 0.3747396938445468,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1984043
+    },
+    {
+      "subject_id": "sub-053",
+      "mean_entropy": 0.36072206497192383,
+      "std_entropy": 0.1620510220527649,
+      "spearman_rho": 0.3784453475197123,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 2079023
+    },
+    {
+      "subject_id": "sub-055",
+      "mean_entropy": 0.3583225607872009,
+      "std_entropy": 0.14944380521774292,
+      "spearman_rho": 0.39415365635105204,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1265204
+    },
+    {
+      "subject_id": "sub-010",
+      "mean_entropy": 0.3620891869068146,
+      "std_entropy": 0.14551003277301788,
+      "spearman_rho": 0.36338036600214985,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1871501
+    },
+    {
+      "subject_id": "sub-003",
+      "mean_entropy": 0.42067280411720276,
+      "std_entropy": 0.16535194218158722,
+      "spearman_rho": 0.3860196049121229,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1936274
+    },
+    {
+      "subject_id": "sub-004",
+      "mean_entropy": 0.4800318777561188,
+      "std_entropy": 0.21008238196372986,
+      "spearman_rho": 0.3508577662341588,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 713786
+    },
+    {
+      "subject_id": "sub-012",
+      "mean_entropy": 0.3696973919868469,
+      "std_entropy": 0.1503874510526657,
+      "spearman_rho": 0.4093898054317397,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1462781
+    },
+    {
+      "subject_id": "sub-015",
+      "mean_entropy": 0.4835757911205292,
+      "std_entropy": 0.2086942493915558,
+      "spearman_rho": 0.46946861220650526,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 557502
+    },
+    {
+      "subject_id": "sub-021",
+      "mean_entropy": 0.44169336557388306,
+      "std_entropy": 0.17459075152873993,
+      "spearman_rho": 0.4068143281463514,
+      "spearman_pvalue": 0.0,
+      "n_voxels": 1002450
+    }
+  ]
+}
