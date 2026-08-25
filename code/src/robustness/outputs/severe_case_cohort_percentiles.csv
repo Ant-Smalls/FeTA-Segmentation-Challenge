@@ -1,0 +1,19 @@
+subject_id,feature,display_name,value,unit,percentile
+sub-017,brain_volume_cm3,Total brain volume,58.94598935990274,cm3,3.79746835443038
+sub-017,ecsf_volume_cm3,eCSF volume,4.375535983649564,cm3,6.329113924050633
+sub-017,ecsf_fraction_of_brain,eCSF fraction of brain,0.07422957916499008,fraction,8.860759493670885
+sub-017,ecsf_connected_components,eCSF connected components,542.0,count,100.0
+sub-017,ecsf_euler_number,eCSF Euler number,373.0,count,100.0
+sub-017,ecsf_surface_to_volume_mm_inv,eCSF surface-to-volume ratio,1.9661687844930353,mm^-1,100.0
+sub-020,brain_volume_cm3,Total brain volume,107.79585994236193,cm3,20.253164556962027
+sub-020,ecsf_volume_cm3,eCSF volume,4.018116478925639,cm3,5.063291139240507
+sub-020,ecsf_fraction_of_brain,eCSF fraction of brain,0.03727523933733737,fraction,3.79746835443038
+sub-020,ecsf_connected_components,eCSF connected components,191.0,count,89.87341772151899
+sub-020,ecsf_euler_number,eCSF Euler number,96.0,count,92.40506329113924
+sub-020,ecsf_surface_to_volume_mm_inv,eCSF surface-to-volume ratio,1.4868089786661132,mm^-1,93.67088607594937
+sub-025,brain_volume_cm3,Total brain volume,108.76968700382369,cm3,22.78481012658228
+sub-025,ecsf_volume_cm3,eCSF volume,2.2078254586766057,cm3,1.2658227848101267
+sub-025,ecsf_fraction_of_brain,eCSF fraction of brain,0.020298168722311317,fraction,1.2658227848101267
+sub-025,ecsf_connected_components,eCSF connected components,171.0,count,87.34177215189874
+sub-025,ecsf_euler_number,eCSF Euler number,106.0,count,93.67088607594937
+sub-025,ecsf_surface_to_volume_mm_inv,eCSF surface-to-volume ratio,1.907203500052589,mm^-1,98.73417721518987
