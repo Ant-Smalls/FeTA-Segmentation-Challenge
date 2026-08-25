@@ -1,0 +1,2870 @@
+{
+  "split": "test",
+  "n_subjects": 12,
+  "summary": {
+    "baseline": {
+      "mean_dice": 0.7790222819597532,
+      "mean_surface_distance_mm": 0.9464923975347058,
+      "hd95_mm": 2.5640171345232914,
+      "hd100_mm": 8.165337196511457,
+      "n_components": 42.214285714285715
+    },
+    "baseline_smoothed": {
+      "mean_dice": 0.7791127280086272,
+      "mean_surface_distance_mm": 0.9504327869823296,
+      "hd95_mm": 2.5994249977248427,
+      "hd100_mm": 7.924525688768205,
+      "n_components": 12.083333333333334
+    },
+    "comparative": {
+      "mean_dice": 0.7807485063472654,
+      "mean_surface_distance_mm": 0.9649346510880049,
+      "hd95_mm": 2.6270630975680436,
+      "hd100_mm": 8.819312465786782,
+      "n_components": 35.607142857142854
+    },
+    "comparative_refined": {
+      "mean_dice": 0.7812424273098815,
+      "mean_surface_distance_mm": 0.9671589770011441,
+      "hd95_mm": 2.642656978039966,
+      "hd100_mm": 8.548461292405516,
+      "n_components": 17.05952380952381
+    },
+    "smoothing_effect_on_baseline_pct": {
+      "mean_dice": 0.011610200499843336,
+      "mean_surface_distance_mm": 0.41631496015046165,
+      "hd95_mm": 1.3809526748008427,
+      "hd100_mm": -2.9491924454281646,
+      "n_components": -71.37619853355893
+    },
+    "refinement_effect_on_comparative_pct": {
+      "mean_dice": 0.06326249215984216,
+      "mean_surface_distance_mm": 0.2305157049372333,
+      "hd95_mm": 0.5935860652284372,
+      "hd100_mm": -3.07111438031017,
+      "n_components": -52.089602139752586
+    }
+  },
+  "per_case": [
+    {
+      "subject_id": "sub-079",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8989531407064244,
+            "mean_surface_distance_mm": 0.4413018924063576,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 5.787918451395113,
+            "n_components": 4
+          },
+          "GM": {
+            "dice": 0.7826870261884433,
+            "mean_surface_distance_mm": 0.4361083950243291,
+            "hd95_mm": 1.0,
+            "hd100_mm": 7.44983221287567,
+            "n_components": 3
+          },
+          "WM": {
+            "dice": 0.9262552732354664,
+            "mean_surface_distance_mm": 0.5194177377357914,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 5.0990195135927845,
+            "n_components": 6
+          },
+          "Ventricles": {
+            "dice": 0.8225522653168441,
+            "mean_surface_distance_mm": 0.5595742097605383,
+            "hd95_mm": 1.5,
+            "hd100_mm": 8.774964387392123,
+            "n_components": 13
+          },
+          "Cerebellum": {
+            "dice": 0.9110031391838123,
+            "mean_surface_distance_mm": 0.545774693323156,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 4.527692569068709,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8545271839845483,
+            "mean_surface_distance_mm": 0.833857759902741,
+            "hd95_mm": 2.23606797749979,
+            "hd100_mm": 4.06201920231798,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8355302413886628,
+            "mean_surface_distance_mm": 0.7647647460985515,
+            "hd95_mm": 2.23606797749979,
+            "hd100_mm": 4.358898943540674,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8616440385720289,
+        "mean_surface_distance_mm": 0.5858284906073521,
+        "hd95_mm": 1.5597995812136662,
+        "hd100_mm": 5.722906468597579,
+        "n_components": 4.142857142857143
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8994117904143433,
+            "mean_surface_distance_mm": 0.44181833616711075,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 5.787918451395113,
+            "n_components": 4
+          },
+          "GM": {
+            "dice": 0.7839944716551088,
+            "mean_surface_distance_mm": 0.43697221975879147,
+            "hd95_mm": 1.0,
+            "hd100_mm": 8.440971508067067,
+            "n_components": 1
+          },
+          "WM": {
+            "dice": 0.9265854067870366,
+            "mean_surface_distance_mm": 0.5250769375408111,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 5.338539126015656,
+            "n_components": 3
+          },
+          "Ventricles": {
+            "dice": 0.8204629645149936,
+            "mean_surface_distance_mm": 0.5814052039836655,
+            "hd95_mm": 1.5,
+            "hd100_mm": 9.354143466934854,
+            "n_components": 2
+          },
+          "Cerebellum": {
+            "dice": 0.9112885473574673,
+            "mean_surface_distance_mm": 0.5459189783511058,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 4.242640687119285,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8541646282199304,
+            "mean_surface_distance_mm": 0.8399145104578487,
+            "hd95_mm": 2.23606797749979,
+            "hd100_mm": 4.5,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8351346947642841,
+            "mean_surface_distance_mm": 0.7716701609440683,
+            "hd95_mm": 2.23606797749979,
+            "hd100_mm": 4.58257569495584,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8615775005304521,
+        "mean_surface_distance_mm": 0.5918251924576288,
+        "hd95_mm": 1.5597995812136662,
+        "hd100_mm": 6.035255562069688,
+        "n_components": 1.8571428571428572
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8890182952456667,
+            "mean_surface_distance_mm": 0.49173605135641774,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.041522986797286,
+            "n_components": 8
+          },
+          "GM": {
+            "dice": 0.7893437353903693,
+            "mean_surface_distance_mm": 0.45474020946026933,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 9.013878188659973,
+            "n_components": 7
+          },
+          "WM": {
+            "dice": 0.9260982323463646,
+            "mean_surface_distance_mm": 0.5226520429945051,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 10.21028892833107,
+            "n_components": 11
+          },
+          "Ventricles": {
+            "dice": 0.8372072253109161,
+            "mean_surface_distance_mm": 0.6040115802223136,
+            "hd95_mm": 1.5243416490249027,
+            "hd100_mm": 9.513148795220223,
+            "n_components": 18
+          },
+          "Cerebellum": {
+            "dice": 0.89689296931626,
+            "mean_surface_distance_mm": 1.1885223899443906,
+            "hd95_mm": 1.8027756377319946,
+            "hd100_mm": 31.18092365533773,
+            "n_components": 2
+          },
+          "dGM": {
+            "dice": 0.8481482257760264,
+            "mean_surface_distance_mm": 0.8594957161331803,
+            "hd95_mm": 2.5,
+            "hd100_mm": 4.716990566028302,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8276772896927935,
+            "mean_surface_distance_mm": 0.7821683671060445,
+            "hd95_mm": 2.5,
+            "hd100_mm": 4.6097722286464435,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.8591979961540567,
+        "mean_surface_distance_mm": 0.7004751938881603,
+        "hd95_mm": 1.711056975232826,
+        "hd100_mm": 10.755217907003004,
+        "n_components": 7.0
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8897246914470944,
+            "mean_surface_distance_mm": 0.4912215408789476,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.324555320336759,
+            "n_components": 5
+          },
+          "GM": {
+            "dice": 0.7907976176573631,
+            "mean_surface_distance_mm": 0.4529088158046561,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 8.73212459828649,
+            "n_components": 4
+          },
+          "WM": {
+            "dice": 0.9266220395216074,
+            "mean_surface_distance_mm": 0.5228662438846671,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 8.916277250063503,
+            "n_components": 3
+          },
+          "Ventricles": {
+            "dice": 0.8387275200693645,
+            "mean_surface_distance_mm": 0.5924563300436936,
+            "hd95_mm": 1.5,
+            "hd100_mm": 9.513148795220223,
+            "n_components": 10
+          },
+          "Cerebellum": {
+            "dice": 0.8976332220124873,
+            "mean_surface_distance_mm": 1.1419378395660076,
+            "hd95_mm": 1.8027756377319946,
+            "hd100_mm": 31.060424980994707,
+            "n_components": 2
+          },
+          "dGM": {
+            "dice": 0.8476936831223982,
+            "mean_surface_distance_mm": 0.8651383386323617,
+            "hd95_mm": 2.5495097567963922,
+            "hd100_mm": 4.716990566028302,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8269905145156654,
+            "mean_surface_distance_mm": 0.7924524119582894,
+            "hd95_mm": 2.5,
+            "hd100_mm": 4.5,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8597413269065685,
+        "mean_surface_distance_mm": 0.6941402172526605,
+        "hd95_mm": 1.7146524192001817,
+        "hd100_mm": 10.537645930132856,
+        "n_components": 3.7142857142857144
+      }
+    },
+    {
+      "subject_id": "sub-043",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8835991653628249,
+            "mean_surface_distance_mm": 0.4296678481988315,
+            "hd95_mm": 1.0,
+            "hd100_mm": 3.640054944640259,
+            "n_components": 16
+          },
+          "GM": {
+            "dice": 0.8032509998919036,
+            "mean_surface_distance_mm": 0.35364498451327436,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 5.522680508593631,
+            "n_components": 3
+          },
+          "WM": {
+            "dice": 0.9134662083734152,
+            "mean_surface_distance_mm": 0.43808532040040743,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 5.70087712549569,
+            "n_components": 23
+          },
+          "Ventricles": {
+            "dice": 0.9064671298770711,
+            "mean_surface_distance_mm": 0.46287760548140383,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 5.244044240850758,
+            "n_components": 8
+          },
+          "Cerebellum": {
+            "dice": 0.8703310867055127,
+            "mean_surface_distance_mm": 0.5959716440594989,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 5.5,
+            "n_components": 2
+          },
+          "dGM": {
+            "dice": 0.7804166444290264,
+            "mean_surface_distance_mm": 0.8842926396228522,
+            "hd95_mm": 2.449489742783178,
+            "hd100_mm": 4.387482193696061,
+            "n_components": 2
+          },
+          "Brainstem": {
+            "dice": 0.8264045273855914,
+            "mean_surface_distance_mm": 0.7500686409230998,
+            "hd95_mm": 2.449489742783178,
+            "hd100_mm": 4.58257569495584,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8548479660036207,
+        "mean_surface_distance_mm": 0.559229811885624,
+        "hd95_mm": 1.5031424731236247,
+        "hd100_mm": 4.939673529747464,
+        "n_components": 7.857142857142857
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.884330310487362,
+            "mean_surface_distance_mm": 0.4301877623698496,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 3.640054944640259,
+            "n_components": 2
+          },
+          "GM": {
+            "dice": 0.8036756362457449,
+            "mean_surface_distance_mm": 0.3542898935542492,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 5.678908345800274,
+            "n_components": 4
+          },
+          "WM": {
+            "dice": 0.9136249526246862,
+            "mean_surface_distance_mm": 0.44843070707047916,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 6.519202405202649,
+            "n_components": 4
+          },
+          "Ventricles": {
+            "dice": 0.9054302056190777,
+            "mean_surface_distance_mm": 0.48354706346179843,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 6.670832032063167,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.871681772948549,
+            "mean_surface_distance_mm": 0.5854800224904146,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 5.5,
+            "n_components": 2
+          },
+          "dGM": {
+            "dice": 0.7804036018080223,
+            "mean_surface_distance_mm": 0.8833588922672608,
+            "hd95_mm": 2.449489742783178,
+            "hd100_mm": 4.301162633521313,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8269208142134369,
+            "mean_surface_distance_mm": 0.7530708078659605,
+            "hd95_mm": 2.5,
+            "hd100_mm": 4.743416490252569,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8551524705638398,
+        "mean_surface_distance_mm": 0.562623592725716,
+        "hd95_mm": 1.5695315902078986,
+        "hd100_mm": 5.293368121640033,
+        "n_components": 2.4285714285714284
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8683922626893041,
+            "mean_surface_distance_mm": 0.48398618586476555,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 8.170067319184096,
+            "n_components": 11
+          },
+          "GM": {
+            "dice": 0.8126853693713638,
+            "mean_surface_distance_mm": 0.355717551857356,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 7.582875444051551,
+            "n_components": 5
+          },
+          "WM": {
+            "dice": 0.9159523845837083,
+            "mean_surface_distance_mm": 0.4324913133094501,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.4031242374328485,
+            "n_components": 17
+          },
+          "Ventricles": {
+            "dice": 0.9096412073786527,
+            "mean_surface_distance_mm": 0.4678106239249182,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 4.743416490252569,
+            "n_components": 15
+          },
+          "Cerebellum": {
+            "dice": 0.8310481413772091,
+            "mean_surface_distance_mm": 0.7503274129452324,
+            "hd95_mm": 1.7320508075688772,
+            "hd100_mm": 6.5,
+            "n_components": 2
+          },
+          "dGM": {
+            "dice": 0.7942905756687778,
+            "mean_surface_distance_mm": 0.8062237502513265,
+            "hd95_mm": 2.0615528128088303,
+            "hd100_mm": 3.905124837953327,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8479449038018779,
+            "mean_surface_distance_mm": 0.6428521650347742,
+            "hd95_mm": 2.0615528128088303,
+            "hd100_mm": 4.301162633521313,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.8542792635529848,
+        "mean_surface_distance_mm": 0.5627727147411176,
+        "hd95_mm": 1.4393262576029517,
+        "hd100_mm": 5.94368156605653,
+        "n_components": 7.571428571428571
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8691981474175433,
+            "mean_surface_distance_mm": 0.4843286973738572,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 4.9749371855331,
+            "n_components": 3
+          },
+          "GM": {
+            "dice": 0.8128022704046762,
+            "mean_surface_distance_mm": 0.35769785027766743,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 5.408326913195984,
+            "n_components": 1
+          },
+          "WM": {
+            "dice": 0.9161209092036361,
+            "mean_surface_distance_mm": 0.4413835441771506,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.4031242374328485,
+            "n_components": 5
+          },
+          "Ventricles": {
+            "dice": 0.9093043282143809,
+            "mean_surface_distance_mm": 0.47481622741431845,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 5.244044240850758,
+            "n_components": 2
+          },
+          "Cerebellum": {
+            "dice": 0.8321301474326386,
+            "mean_surface_distance_mm": 0.7432580593551025,
+            "hd95_mm": 1.7320508075688772,
+            "hd100_mm": 3.905124837953327,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7942288782996748,
+            "mean_surface_distance_mm": 0.8061100220716901,
+            "hd95_mm": 2.0615528128088303,
+            "hd100_mm": 3.905124837953327,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8492332364438208,
+            "mean_surface_distance_mm": 0.6421422086759936,
+            "hd95_mm": 2.0615528128088303,
+            "hd100_mm": 4.5,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.854716845345196,
+        "mean_surface_distance_mm": 0.5642480870493971,
+        "hd95_mm": 1.4545706694089078,
+        "hd100_mm": 4.90581175041705,
+        "n_components": 2.0
+      }
+    },
+    {
+      "subject_id": "sub-074",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8713486039829462,
+            "mean_surface_distance_mm": 0.4154278510252481,
+            "hd95_mm": 1.0,
+            "hd100_mm": 6.5,
+            "n_components": 11
+          },
+          "GM": {
+            "dice": 0.7992849422133533,
+            "mean_surface_distance_mm": 0.37625582579251415,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 4.949747468305833,
+            "n_components": 6
+          },
+          "WM": {
+            "dice": 0.9184057757221822,
+            "mean_surface_distance_mm": 0.4660624094505164,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 4.636809247747852,
+            "n_components": 5
+          },
+          "Ventricles": {
+            "dice": 0.7661167727042396,
+            "mean_surface_distance_mm": 0.6425763181839478,
+            "hd95_mm": 1.8708286933869707,
+            "hd100_mm": 6.103277807866851,
+            "n_components": 10
+          },
+          "Cerebellum": {
+            "dice": 0.8979972895648246,
+            "mean_surface_distance_mm": 0.43149454497100564,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 1.8708286933869707,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8524720042660167,
+            "mean_surface_distance_mm": 0.6550081813346506,
+            "hd95_mm": 1.5,
+            "hd100_mm": 2.9154759474226504,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8506981265464828,
+            "mean_surface_distance_mm": 0.5968821028709325,
+            "hd95_mm": 1.5811388300841898,
+            "hd100_mm": 4.031128874149275,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8509033592857208,
+        "mean_surface_distance_mm": 0.5119581762326878,
+        "hd95_mm": 1.308681683913869,
+        "hd100_mm": 4.429609719839919,
+        "n_components": 5.0
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8716799811337441,
+            "mean_surface_distance_mm": 0.41657856557769435,
+            "hd95_mm": 1.0,
+            "hd100_mm": 6.519202405202649,
+            "n_components": 9
+          },
+          "GM": {
+            "dice": 0.799544717734587,
+            "mean_surface_distance_mm": 0.37770439114557086,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 5.024937810560445,
+            "n_components": 2
+          },
+          "WM": {
+            "dice": 0.9183828211619244,
+            "mean_surface_distance_mm": 0.46971766019265376,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 5.024937810560445,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.7620059498512537,
+            "mean_surface_distance_mm": 0.659635773652081,
+            "hd95_mm": 2.0,
+            "hd100_mm": 6.2048368229954285,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.8975109367928797,
+            "mean_surface_distance_mm": 0.4341129024480377,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 1.8708286933869707,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8519703757886075,
+            "mean_surface_distance_mm": 0.6571894425531526,
+            "hd95_mm": 1.5,
+            "hd100_mm": 2.9154759474226504,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8492702344095533,
+            "mean_surface_distance_mm": 0.6075956564412045,
+            "hd95_mm": 1.5811388300841898,
+            "hd100_mm": 4.031128874149275,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.850052145267507,
+        "mean_surface_distance_mm": 0.5175049131443421,
+        "hd95_mm": 1.3271347277157304,
+        "hd100_mm": 4.513049766325409,
+        "n_components": 2.5714285714285716
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8515488492461406,
+            "mean_surface_distance_mm": 0.4759203097657964,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.041522986797286,
+            "n_components": 17
+          },
+          "GM": {
+            "dice": 0.8037502926066012,
+            "mean_surface_distance_mm": 0.38351980136921643,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 5.315072906367325,
+            "n_components": 4
+          },
+          "WM": {
+            "dice": 0.9199516630789774,
+            "mean_surface_distance_mm": 0.460289845298943,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 5.0990195135927845,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.7755868307986947,
+            "mean_surface_distance_mm": 0.6648089065502992,
+            "hd95_mm": 2.0,
+            "hd100_mm": 5.678908345800274,
+            "n_components": 5
+          },
+          "Cerebellum": {
+            "dice": 0.8594704684317719,
+            "mean_surface_distance_mm": 0.6112100298122454,
+            "hd95_mm": 1.6583123951777,
+            "hd100_mm": 3.082207001484488,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8512660309108846,
+            "mean_surface_distance_mm": 0.6387931564866889,
+            "hd95_mm": 1.5,
+            "hd100_mm": 2.5495097567963922,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8562905143216024,
+            "mean_surface_distance_mm": 0.5623773638874499,
+            "hd95_mm": 1.5,
+            "hd100_mm": 4.031128874149275,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.8454092356278105,
+        "mean_surface_distance_mm": 0.542417059024377,
+        "hd95_mm": 1.4095880941576604,
+        "hd100_mm": 4.542481340712547,
+        "n_components": 4.428571428571429
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8519849310339652,
+            "mean_surface_distance_mm": 0.47738587318710174,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.082762530298219,
+            "n_components": 1
+          },
+          "GM": {
+            "dice": 0.8038150242749084,
+            "mean_surface_distance_mm": 0.3855266398360267,
+            "hd95_mm": 0.8660254037844386,
+            "hd100_mm": 5.408326913195984,
+            "n_components": 3
+          },
+          "WM": {
+            "dice": 0.9200011273401114,
+            "mean_surface_distance_mm": 0.46294661715245417,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 5.172040216394301,
+            "n_components": 2
+          },
+          "Ventricles": {
+            "dice": 0.7729868682647622,
+            "mean_surface_distance_mm": 0.6748065926239081,
+            "hd95_mm": 2.0,
+            "hd100_mm": 6.041522986797286,
+            "n_components": 2
+          },
+          "Cerebellum": {
+            "dice": 0.8598485906640221,
+            "mean_surface_distance_mm": 0.6095330910499945,
+            "hd95_mm": 1.5811388300841898,
+            "hd100_mm": 3.082207001484488,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8502747704761592,
+            "mean_surface_distance_mm": 0.6439328641864638,
+            "hd95_mm": 1.5,
+            "hd100_mm": 2.5495097567963922,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8558210564139418,
+            "mean_surface_distance_mm": 0.5695183140921771,
+            "hd95_mm": 1.5,
+            "hd100_mm": 4.031128874149275,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8449617669239815,
+        "mean_surface_distance_mm": 0.5462357131611608,
+        "hd95_mm": 1.3985632991443018,
+        "hd100_mm": 4.623928325587992,
+        "n_components": 1.5714285714285714
+      }
+    },
+    {
+      "subject_id": "sub-042",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8766983547648767,
+            "mean_surface_distance_mm": 0.44836508099416983,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.892024376045111,
+            "n_components": 14
+          },
+          "GM": {
+            "dice": 0.7878157621877552,
+            "mean_surface_distance_mm": 0.3907794515649675,
+            "hd95_mm": 1.0,
+            "hd100_mm": 6.442049363362563,
+            "n_components": 6
+          },
+          "WM": {
+            "dice": 0.9109766840506313,
+            "mean_surface_distance_mm": 0.4680331777939911,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 4.716990566028302,
+            "n_components": 21
+          },
+          "Ventricles": {
+            "dice": 0.8970208821484666,
+            "mean_surface_distance_mm": 0.5050322423541637,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 6.5,
+            "n_components": 5
+          },
+          "Cerebellum": {
+            "dice": 0.8746022981252136,
+            "mean_surface_distance_mm": 0.5733477737663444,
+            "hd95_mm": 1.5,
+            "hd100_mm": 2.23606797749979,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7695622368034473,
+            "mean_surface_distance_mm": 1.089641650367586,
+            "hd95_mm": 2.5495097567963922,
+            "hd100_mm": 4.847679857416329,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8164814775320438,
+            "mean_surface_distance_mm": 0.7977434818437291,
+            "hd95_mm": 2.5,
+            "hd100_mm": 5.916079783099616,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8475939565160621,
+        "mean_surface_distance_mm": 0.6104204083835646,
+        "hd95_mm": 1.5729032293839675,
+        "hd100_mm": 5.3644131319216735,
+        "n_components": 7.0
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8772763383818969,
+            "mean_surface_distance_mm": 0.451053130419997,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 7.0,
+            "n_components": 6
+          },
+          "GM": {
+            "dice": 0.7889706871461241,
+            "mean_surface_distance_mm": 0.3907692918645745,
+            "hd95_mm": 1.0,
+            "hd100_mm": 6.745368781616021,
+            "n_components": 1
+          },
+          "WM": {
+            "dice": 0.9115534083082384,
+            "mean_surface_distance_mm": 0.47750436312002703,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 5.338539126015656,
+            "n_components": 9
+          },
+          "Ventricles": {
+            "dice": 0.8962937005277045,
+            "mean_surface_distance_mm": 0.5176776121543197,
+            "hd95_mm": 1.2342183059405265,
+            "hd100_mm": 6.87386354243376,
+            "n_components": 2
+          },
+          "Cerebellum": {
+            "dice": 0.8743914313534566,
+            "mean_surface_distance_mm": 0.5766766196928167,
+            "hd95_mm": 1.5,
+            "hd100_mm": 2.23606797749979,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7691511242322061,
+            "mean_surface_distance_mm": 1.08904063744521,
+            "hd95_mm": 2.5495097567963922,
+            "hd100_mm": 4.847679857416329,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8157771035425837,
+            "mean_surface_distance_mm": 0.8099955706352152,
+            "hd95_mm": 2.5,
+            "hd100_mm": 5.916079783099616,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8476305419274585,
+        "mean_surface_distance_mm": 0.6161024607617371,
+        "hd95_mm": 1.5742565771766728,
+        "hd100_mm": 5.565371295440167,
+        "n_components": 3.0
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8656002503371356,
+            "mean_surface_distance_mm": 0.49164661638516355,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 7.826237921249264,
+            "n_components": 7
+          },
+          "GM": {
+            "dice": 0.7994805982034878,
+            "mean_surface_distance_mm": 0.38918592984525474,
+            "hd95_mm": 1.0,
+            "hd100_mm": 7.762087348130012,
+            "n_components": 7
+          },
+          "WM": {
+            "dice": 0.9172248447373234,
+            "mean_surface_distance_mm": 0.4402239993063679,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 5.385164807134504,
+            "n_components": 13
+          },
+          "Ventricles": {
+            "dice": 0.9076092908415718,
+            "mean_surface_distance_mm": 0.4701184410483652,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 3.570714214271425,
+            "n_components": 16
+          },
+          "Cerebellum": {
+            "dice": 0.8391156294724375,
+            "mean_surface_distance_mm": 0.7572233142253011,
+            "hd95_mm": 1.8027756377319946,
+            "hd100_mm": 2.7386127875258306,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8062138047393941,
+            "mean_surface_distance_mm": 0.9036332523105671,
+            "hd95_mm": 2.310159858829768,
+            "hd100_mm": 5.0990195135927845,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8045140791059494,
+            "mean_surface_distance_mm": 0.8139196125183467,
+            "hd95_mm": 2.29128784747792,
+            "hd100_mm": 6.041522986797286,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.8485369282053286,
+        "mean_surface_distance_mm": 0.6094215950913381,
+        "hd95_mm": 1.5369036157556237,
+        "hd100_mm": 5.489051368385873,
+        "n_components": 6.714285714285714
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.866339024247939,
+            "mean_surface_distance_mm": 0.493669883462675,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 7.874007874011811,
+            "n_components": 5
+          },
+          "GM": {
+            "dice": 0.8002495951507228,
+            "mean_surface_distance_mm": 0.3897078014439512,
+            "hd95_mm": 1.0,
+            "hd100_mm": 7.566372975210778,
+            "n_components": 3
+          },
+          "WM": {
+            "dice": 0.9178248092346519,
+            "mean_surface_distance_mm": 0.4453456008569401,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 5.766281297335398,
+            "n_components": 7
+          },
+          "Ventricles": {
+            "dice": 0.9075943438530757,
+            "mean_surface_distance_mm": 0.47536943628833983,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 5.123475382979799,
+            "n_components": 4
+          },
+          "Cerebellum": {
+            "dice": 0.8401770042767793,
+            "mean_surface_distance_mm": 0.7542765180445224,
+            "hd95_mm": 1.8027756377319946,
+            "hd100_mm": 2.8284271247461903,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8062503803785528,
+            "mean_surface_distance_mm": 0.9023814235616435,
+            "hd95_mm": 2.449489742783178,
+            "hd100_mm": 4.743416490252569,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8033336988704902,
+            "mean_surface_distance_mm": 0.8276507059491933,
+            "hd95_mm": 2.449489742783178,
+            "hd100_mm": 6.041522986797286,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8488241222874588,
+        "mean_surface_distance_mm": 0.6126287670867522,
+        "hd95_mm": 1.5794081556497193,
+        "hd100_mm": 5.706214875904834,
+        "n_components": 3.142857142857143
+      }
+    },
+    {
+      "subject_id": "sub-054",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8759638105594624,
+            "mean_surface_distance_mm": 0.48412128566451396,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 8.0156097709407,
+            "n_components": 11
+          },
+          "GM": {
+            "dice": 0.7587497265410611,
+            "mean_surface_distance_mm": 0.5000404062032245,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 15.724185193516387,
+            "n_components": 40
+          },
+          "WM": {
+            "dice": 0.9076700844424661,
+            "mean_surface_distance_mm": 0.6073487419813647,
+            "hd95_mm": 1.6583123951777,
+            "hd100_mm": 10.04987562112089,
+            "n_components": 6
+          },
+          "Ventricles": {
+            "dice": 0.8609857374977433,
+            "mean_surface_distance_mm": 0.6465101233795658,
+            "hd95_mm": 1.6583123951777,
+            "hd100_mm": 17.45709025009609,
+            "n_components": 21
+          },
+          "Cerebellum": {
+            "dice": 0.9243382092812207,
+            "mean_surface_distance_mm": 0.5514279975057182,
+            "hd95_mm": 1.5,
+            "hd100_mm": 4.031128874149275,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.781877922406167,
+            "mean_surface_distance_mm": 1.3800025988240399,
+            "hd95_mm": 4.031128874149275,
+            "hd100_mm": 14.815532390029054,
+            "n_components": 3
+          },
+          "Brainstem": {
+            "dice": 0.7919817615658363,
+            "mean_surface_distance_mm": 1.1887755908259277,
+            "hd95_mm": 4.153311931459037,
+            "hd100_mm": 15.116216457830975,
+            "n_components": 23
+          }
+        },
+        "mean_dice": 0.8430810360419938,
+        "mean_surface_distance_mm": 0.7654609634834791,
+        "hd95_mm": 2.176733367637643,
+        "hd100_mm": 12.172805508240481,
+        "n_components": 15.0
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8765891618274453,
+            "mean_surface_distance_mm": 0.4856608084387188,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 8.18535277187245,
+            "n_components": 11
+          },
+          "GM": {
+            "dice": 0.7597527036652507,
+            "mean_surface_distance_mm": 0.5044035893065126,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 11.247221879201993,
+            "n_components": 8
+          },
+          "WM": {
+            "dice": 0.9077598559911065,
+            "mean_surface_distance_mm": 0.6186234908204366,
+            "hd95_mm": 1.8027756377319946,
+            "hd100_mm": 10.594810050208546,
+            "n_components": 2
+          },
+          "Ventricles": {
+            "dice": 0.8598178174267254,
+            "mean_surface_distance_mm": 0.656456257409736,
+            "hd95_mm": 1.7320508075688772,
+            "hd100_mm": 17.240939649566666,
+            "n_components": 11
+          },
+          "Cerebellum": {
+            "dice": 0.9247048328967133,
+            "mean_surface_distance_mm": 0.5525048941960673,
+            "hd95_mm": 1.5,
+            "hd100_mm": 4.123105625617661,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7816353393355446,
+            "mean_surface_distance_mm": 1.3838787157544674,
+            "hd95_mm": 4.031128874149275,
+            "hd100_mm": 6.745368781616021,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7938488429390927,
+            "mean_surface_distance_mm": 1.1420434399390191,
+            "hd95_mm": 4.031128874149275,
+            "hd100_mm": 14.739402972983676,
+            "n_components": 8
+          }
+        },
+        "mean_dice": 0.8434440791545541,
+        "mean_surface_distance_mm": 0.7633673136949941,
+        "hd95_mm": 2.19045031015703,
+        "hd100_mm": 10.410885961581002,
+        "n_components": 6.0
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8788307736579563,
+            "mean_surface_distance_mm": 0.47989727053986736,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 11.357816691600547,
+            "n_components": 10
+          },
+          "GM": {
+            "dice": 0.7669617729120619,
+            "mean_surface_distance_mm": 0.5086425485747128,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 18.179658962697843,
+            "n_components": 123
+          },
+          "WM": {
+            "dice": 0.9111084065707953,
+            "mean_surface_distance_mm": 0.5916522376811766,
+            "hd95_mm": 1.5811388300841898,
+            "hd100_mm": 11.6081867662439,
+            "n_components": 4
+          },
+          "Ventricles": {
+            "dice": 0.8690986688344681,
+            "mean_surface_distance_mm": 0.6637622690806075,
+            "hd95_mm": 2.1213203435596424,
+            "hd100_mm": 16.38596960817394,
+            "n_components": 29
+          },
+          "Cerebellum": {
+            "dice": 0.9247386192587771,
+            "mean_surface_distance_mm": 0.575202835403551,
+            "hd95_mm": 1.5,
+            "hd100_mm": 5.123475382979799,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8103868281474059,
+            "mean_surface_distance_mm": 1.164637506331947,
+            "hd95_mm": 4.031128874149275,
+            "hd100_mm": 6.726812023536855,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7957687888752426,
+            "mean_surface_distance_mm": 1.151277230735755,
+            "hd95_mm": 4.301162633521313,
+            "hd100_mm": 17.783419243778738,
+            "n_components": 34
+          }
+        },
+        "mean_dice": 0.8509848368938152,
+        "mean_surface_distance_mm": 0.7335816997639454,
+        "hd95_mm": 2.2529740941163157,
+        "hd100_mm": 12.452191239858804,
+        "n_components": 28.857142857142858
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.87928528842798,
+            "mean_surface_distance_mm": 0.48264597956758015,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 7.566372975210778,
+            "n_components": 4
+          },
+          "GM": {
+            "dice": 0.7676210191705881,
+            "mean_surface_distance_mm": 0.504606163929554,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 13.379088160259652,
+            "n_components": 22
+          },
+          "WM": {
+            "dice": 0.910961055681385,
+            "mean_surface_distance_mm": 0.6015725801536379,
+            "hd95_mm": 1.6583123951777,
+            "hd100_mm": 11.6081867662439,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.8692001452615217,
+            "mean_surface_distance_mm": 0.6608123179805955,
+            "hd95_mm": 2.23606797749979,
+            "hd100_mm": 15.75595125658873,
+            "n_components": 7
+          },
+          "Cerebellum": {
+            "dice": 0.924992124223855,
+            "mean_surface_distance_mm": 0.5781008229066624,
+            "hd95_mm": 1.5,
+            "hd100_mm": 5.522680508593631,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8096820068745934,
+            "mean_surface_distance_mm": 1.1686794066954898,
+            "hd95_mm": 4.031128874149275,
+            "hd100_mm": 6.383572667401852,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7971234740804752,
+            "mean_surface_distance_mm": 1.0926239777886164,
+            "hd95_mm": 4.153311931459037,
+            "hd100_mm": 16.232683080747925,
+            "n_components": 4
+          }
+        },
+        "mean_dice": 0.8512664448171997,
+        "mean_surface_distance_mm": 0.727005892717448,
+        "hd95_mm": 2.2592698793979413,
+        "hd100_mm": 10.921219345006637,
+        "n_components": 5.714285714285714
+      }
+    },
+    {
+      "subject_id": "sub-049",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.873593976969276,
+            "mean_surface_distance_mm": 0.46620216392982505,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.87386354243376,
+            "n_components": 35
+          },
+          "GM": {
+            "dice": 0.770299757659859,
+            "mean_surface_distance_mm": 0.421674977753219,
+            "hd95_mm": 1.0,
+            "hd100_mm": 9.233092656309694,
+            "n_components": 3
+          },
+          "WM": {
+            "dice": 0.9272383410583085,
+            "mean_surface_distance_mm": 0.4939176350551716,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 8.958236433584458,
+            "n_components": 11
+          },
+          "Ventricles": {
+            "dice": 0.8413753383631861,
+            "mean_surface_distance_mm": 0.6415067868494799,
+            "hd95_mm": 1.8708286933869707,
+            "hd100_mm": 9.205976319760984,
+            "n_components": 21
+          },
+          "Cerebellum": {
+            "dice": 0.91752467514024,
+            "mean_surface_distance_mm": 0.5167106212572494,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 3.5355339059327378,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8719158545281673,
+            "mean_surface_distance_mm": 0.7754038431033969,
+            "hd95_mm": 2.1213203435596424,
+            "hd100_mm": 5.958187643906492,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8646368081552025,
+            "mean_surface_distance_mm": 0.6906515928970575,
+            "hd95_mm": 2.0615528128088303,
+            "hd100_mm": 6.103277807866851,
+            "n_components": 9
+          }
+        },
+        "mean_dice": 0.8666549645534628,
+        "mean_surface_distance_mm": 0.5722953744064857,
+        "hd95_mm": 1.5443848960385744,
+        "hd100_mm": 7.1240240442564255,
+        "n_components": 11.571428571428571
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8746267943054753,
+            "mean_surface_distance_mm": 0.46420895839321813,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.284902544988268,
+            "n_components": 11
+          },
+          "GM": {
+            "dice": 0.7718946285350198,
+            "mean_surface_distance_mm": 0.4230458105530565,
+            "hd95_mm": 1.0,
+            "hd100_mm": 9.420721840708387,
+            "n_components": 1
+          },
+          "WM": {
+            "dice": 0.927285591477101,
+            "mean_surface_distance_mm": 0.5027839791765691,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 8.958236433584458,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.8402221065417317,
+            "mean_surface_distance_mm": 0.6682083496038251,
+            "hd95_mm": 2.0615528128088303,
+            "hd100_mm": 8.902246907382429,
+            "n_components": 10
+          },
+          "Cerebellum": {
+            "dice": 0.9175191815856778,
+            "mean_surface_distance_mm": 0.518943592850356,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 3.5355339059327378,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8720584739719515,
+            "mean_surface_distance_mm": 0.7791935737218652,
+            "hd95_mm": 2.1213203435596424,
+            "hd100_mm": 5.958187643906492,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8659771153634799,
+            "mean_surface_distance_mm": 0.6862068730598462,
+            "hd95_mm": 2.0,
+            "hd100_mm": 6.363961030678928,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.867083413111491,
+        "mean_surface_distance_mm": 0.5775130196226766,
+        "hd95_mm": 1.562837939840436,
+        "hd100_mm": 7.060541472454529,
+        "n_components": 3.7142857142857144
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8653842414748029,
+            "mean_surface_distance_mm": 0.49526527805370035,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.87386354243376,
+            "n_components": 18
+          },
+          "GM": {
+            "dice": 0.7803768582259077,
+            "mean_surface_distance_mm": 0.4262066759708141,
+            "hd95_mm": 1.0,
+            "hd100_mm": 9.069178573608527,
+            "n_components": 6
+          },
+          "WM": {
+            "dice": 0.9258422220436474,
+            "mean_surface_distance_mm": 0.49483144205071317,
+            "hd95_mm": 1.224744871391589,
+            "hd100_mm": 9.974968671630002,
+            "n_components": 4
+          },
+          "Ventricles": {
+            "dice": 0.8457946421892865,
+            "mean_surface_distance_mm": 0.65369312687547,
+            "hd95_mm": 2.0615528128088303,
+            "hd100_mm": 10.606601717798213,
+            "n_components": 22
+          },
+          "Cerebellum": {
+            "dice": 0.9064798415592801,
+            "mean_surface_distance_mm": 0.6019208695282552,
+            "hd95_mm": 1.5,
+            "hd100_mm": 3.7416573867739413,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8785952389803834,
+            "mean_surface_distance_mm": 0.730224339647983,
+            "hd95_mm": 2.0,
+            "hd100_mm": 5.937171043518958,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8658315130141854,
+            "mean_surface_distance_mm": 0.6605627513255554,
+            "hd95_mm": 2.0,
+            "hd100_mm": 7.582875444051551,
+            "n_components": 13
+          }
+        },
+        "mean_dice": 0.866900651069642,
+        "mean_surface_distance_mm": 0.5803863547789273,
+        "hd95_mm": 1.5577616675643304,
+        "hd100_mm": 7.683759482830708,
+        "n_components": 9.285714285714286
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8663794390796679,
+            "mean_surface_distance_mm": 0.49378780151071555,
+            "hd95_mm": 1.118033988749895,
+            "hd100_mm": 6.18465843842649,
+            "n_components": 30
+          },
+          "GM": {
+            "dice": 0.7817683025228165,
+            "mean_surface_distance_mm": 0.4280523334480468,
+            "hd95_mm": 1.0,
+            "hd100_mm": 9.669539802906858,
+            "n_components": 3
+          },
+          "WM": {
+            "dice": 0.9258202965700372,
+            "mean_surface_distance_mm": 0.5004209264979315,
+            "hd95_mm": 1.4142135623730951,
+            "hd100_mm": 10.111874208078342,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.8457245184085097,
+            "mean_surface_distance_mm": 0.6588962638254173,
+            "hd95_mm": 2.1213203435596424,
+            "hd100_mm": 10.27131929208707,
+            "n_components": 6
+          },
+          "Cerebellum": {
+            "dice": 0.9062772754250602,
+            "mean_surface_distance_mm": 0.6055191418192477,
+            "hd95_mm": 1.5,
+            "hd100_mm": 3.7416573867739413,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8786814140099761,
+            "mean_surface_distance_mm": 0.732698992943856,
+            "hd95_mm": 2.0,
+            "hd100_mm": 5.937171043518958,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.8667018052444327,
+            "mean_surface_distance_mm": 0.6557801549182046,
+            "hd95_mm": 1.8708286933869707,
+            "hd100_mm": 7.648529270389178,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.8673361501800715,
+        "mean_surface_distance_mm": 0.582165087851917,
+        "hd95_mm": 1.5749137982956576,
+        "hd100_mm": 7.652107063168692,
+        "n_components": 6.285714285714286
+      }
+    },
+    {
+      "subject_id": "sub-020",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.17773579780469434,
+            "mean_surface_distance_mm": 4.980426427210077,
+            "hd95_mm": 15.2311459300698,
+            "hd100_mm": 24.85763215402676,
+            "n_components": 638
+          },
+          "GM": {
+            "dice": 0.4589093688281911,
+            "mean_surface_distance_mm": 1.0967808236433367,
+            "hd95_mm": 3.416354765793406,
+            "hd100_mm": 17.241793939920903,
+            "n_components": 130
+          },
+          "WM": {
+            "dice": 0.8647022207679129,
+            "mean_surface_distance_mm": 1.2989696504398454,
+            "hd95_mm": 4.101300060749054,
+            "hd100_mm": 19.308050101031938,
+            "n_components": 58
+          },
+          "Ventricles": {
+            "dice": 0.7369916921731526,
+            "mean_surface_distance_mm": 0.843296771778395,
+            "hd95_mm": 2.6849311394442177,
+            "hd100_mm": 17.0314592164951,
+            "n_components": 5
+          },
+          "Cerebellum": {
+            "dice": 0.36378366002712176,
+            "mean_surface_distance_mm": 3.8497102056284858,
+            "hd95_mm": 9.429168278478883,
+            "hd100_mm": 12.470176644167251,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7910259572951786,
+            "mean_surface_distance_mm": 1.615085350329567,
+            "hd95_mm": 4.7236768846959105,
+            "hd100_mm": 16.16277148724522,
+            "n_components": 11
+          },
+          "Brainstem": {
+            "dice": 0.5334437086092715,
+            "mean_surface_distance_mm": 1.9823516106396393,
+            "hd95_mm": 5.43341315699144,
+            "hd100_mm": 8.610936369326428,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.5609417722150746,
+        "mean_surface_distance_mm": 2.238088691381335,
+        "hd95_mm": 6.431427173746102,
+        "hd100_mm": 16.52611713031623,
+        "n_components": 120.57142857142857
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.18140141988475375,
+            "mean_surface_distance_mm": 4.829741894611507,
+            "hd95_mm": 15.06344250601329,
+            "hd100_mm": 24.607800364494324,
+            "n_components": 177
+          },
+          "GM": {
+            "dice": 0.4542523656344883,
+            "mean_surface_distance_mm": 1.1685990568117508,
+            "hd95_mm": 3.7515905462810117,
+            "hd100_mm": 11.644532363599224,
+            "n_components": 53
+          },
+          "WM": {
+            "dice": 0.8644895546475133,
+            "mean_surface_distance_mm": 1.3072710787188004,
+            "hd95_mm": 4.101300060749054,
+            "hd100_mm": 19.308050101031938,
+            "n_components": 10
+          },
+          "Ventricles": {
+            "dice": 0.7352677016698133,
+            "mean_surface_distance_mm": 0.8492767874209538,
+            "hd95_mm": 2.9295000433921814,
+            "hd100_mm": 16.49909404768418,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.3646159805613269,
+            "mean_surface_distance_mm": 3.9333842874554215,
+            "hd95_mm": 9.662910487325988,
+            "hd100_mm": 12.525111608980257,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7911296956402523,
+            "mean_surface_distance_mm": 1.596035086849004,
+            "hd95_mm": 4.68720006942749,
+            "hd100_mm": 13.827736721327579,
+            "n_components": 4
+          },
+          "Brainstem": {
+            "dice": 0.5333997454203332,
+            "mean_surface_distance_mm": 2.003939986280533,
+            "hd95_mm": 5.527369627144168,
+            "hd100_mm": 8.866275983680561,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.5606509233512116,
+        "mean_surface_distance_mm": 2.241178311163996,
+        "hd95_mm": 6.531901905761884,
+        "hd100_mm": 15.325514455828296,
+        "n_components": 35.57142857142857
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.12252966085690184,
+            "mean_surface_distance_mm": 5.8896142786511945,
+            "hd95_mm": 15.677615738411388,
+            "hd100_mm": 27.286842267792924,
+            "n_components": 340
+          },
+          "GM": {
+            "dice": 0.4780148474784405,
+            "mean_surface_distance_mm": 1.028904389648527,
+            "hd95_mm": 3.1551681072349154,
+            "hd100_mm": 11.008061751270986,
+            "n_components": 203
+          },
+          "WM": {
+            "dice": 0.8686583673551476,
+            "mean_surface_distance_mm": 1.0752767458902817,
+            "hd95_mm": 3.416354765793406,
+            "hd100_mm": 14.694297461483057,
+            "n_components": 71
+          },
+          "Ventricles": {
+            "dice": 0.6397693060125256,
+            "mean_surface_distance_mm": 2.1976042227917993,
+            "hd95_mm": 9.977517619584722,
+            "hd100_mm": 18.976287370233724,
+            "n_components": 14
+          },
+          "Cerebellum": {
+            "dice": 0.6061896279561484,
+            "mean_surface_distance_mm": 2.2876826300111364,
+            "hd95_mm": 4.500383360336551,
+            "hd100_mm": 7.079456740791004,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7645478594327821,
+            "mean_surface_distance_mm": 1.6653384902008497,
+            "hd95_mm": 4.68720006942749,
+            "hd100_mm": 8.306566249302278,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.5056205551732048,
+            "mean_surface_distance_mm": 2.4942936054311313,
+            "hd95_mm": 8.19107665423174,
+            "hd100_mm": 12.634264971844114,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.5693328891807359,
+        "mean_surface_distance_mm": 2.376959194660703,
+        "hd95_mm": 7.0864737592886025,
+        "hd100_mm": 14.28368240181687,
+        "n_components": 90.28571428571429
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.12421250508061238,
+            "mean_surface_distance_mm": 5.818644837190892,
+            "hd95_mm": 15.607939877359122,
+            "hd100_mm": 27.148105401734462,
+            "n_components": 175
+          },
+          "GM": {
+            "dice": 0.4761155818234394,
+            "mean_surface_distance_mm": 1.0966365645736362,
+            "hd95_mm": 3.416354765793406,
+            "hd100_mm": 11.17825972777778,
+            "n_components": 76
+          },
+          "WM": {
+            "dice": 0.8697365265014015,
+            "mean_surface_distance_mm": 1.0889738372567142,
+            "hd95_mm": 3.5154000520706177,
+            "hd100_mm": 13.42465569722109,
+            "n_components": 13
+          },
+          "Ventricles": {
+            "dice": 0.6449858240644524,
+            "mean_surface_distance_mm": 2.0794166616161656,
+            "hd95_mm": 9.609474627968293,
+            "hd100_mm": 18.537046663089594,
+            "n_components": 10
+          },
+          "Cerebellum": {
+            "dice": 0.6085749804851254,
+            "mean_surface_distance_mm": 2.2829148337262364,
+            "hd95_mm": 4.500383360336551,
+            "hd100_mm": 7.103660082302683,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7642621920391348,
+            "mean_surface_distance_mm": 1.6757843984818557,
+            "hd95_mm": 4.7236768846959105,
+            "hd100_mm": 8.368325956519374,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.505992164093109,
+            "mean_surface_distance_mm": 2.564674848907099,
+            "hd95_mm": 8.710029808068143,
+            "hd100_mm": 13.192511581419271,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.5705542534410393,
+        "mean_surface_distance_mm": 2.372435140250371,
+        "hd95_mm": 7.154751339470293,
+        "hd100_mm": 14.136080730009178,
+        "n_components": 39.57142857142857
+      }
+    },
+    {
+      "subject_id": "sub-034",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.9037670534986486,
+            "mean_surface_distance_mm": 0.40509823826071517,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 4.8441031028602275,
+            "n_components": 21
+          },
+          "GM": {
+            "dice": 0.774154031626894,
+            "mean_surface_distance_mm": 0.4531827899778705,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 10.181358001240897,
+            "n_components": 9
+          },
+          "WM": {
+            "dice": 0.9196990804367925,
+            "mean_surface_distance_mm": 0.5026184396743902,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 7.288300864297173,
+            "n_components": 4
+          },
+          "Ventricles": {
+            "dice": 0.8765698149661886,
+            "mean_surface_distance_mm": 0.553769011180206,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 6.463238606695914,
+            "n_components": 11
+          },
+          "Cerebellum": {
+            "dice": 0.9309045464013179,
+            "mean_surface_distance_mm": 0.42385879575441926,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 2.5892820224445057,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8888747077558551,
+            "mean_surface_distance_mm": 0.7313862742382036,
+            "hd95_mm": 2.2134488095358886,
+            "hd100_mm": 5.397987863255648,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7900418200664832,
+            "mean_surface_distance_mm": 1.0305660588629846,
+            "hd95_mm": 3.2515063790727874,
+            "hd100_mm": 7.2171937896578475,
+            "n_components": 7
+          }
+        },
+        "mean_dice": 0.8691444363931685,
+        "mean_surface_distance_mm": 0.5857828011355414,
+        "hd95_mm": 1.5403865212555334,
+        "hd100_mm": 6.283066321493173,
+        "n_components": 7.714285714285714
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.9041547526588313,
+            "mean_surface_distance_mm": 0.4061734807467949,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 5.001249824563733,
+            "n_components": 5
+          },
+          "GM": {
+            "dice": 0.7750338958066392,
+            "mean_surface_distance_mm": 0.4538330028017436,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 10.181358001240897,
+            "n_components": 2
+          },
+          "WM": {
+            "dice": 0.9201608979800291,
+            "mean_surface_distance_mm": 0.5028079425624928,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 7.4110967641661105,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.877112740845885,
+            "mean_surface_distance_mm": 0.5605093905001596,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 7.751230334793891,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.9298823796806637,
+            "mean_surface_distance_mm": 0.42987256417437614,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 2.638606112043647,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8893581718078286,
+            "mean_surface_distance_mm": 0.7318683283167017,
+            "hd95_mm": 2.2134488095358886,
+            "hd100_mm": 4.7091433145893085,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7906210256685833,
+            "mean_surface_distance_mm": 1.0079787056535072,
+            "hd95_mm": 3.046799898147583,
+            "hd100_mm": 6.79390074066444,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8694748377783516,
+        "mean_surface_distance_mm": 0.5847204878222537,
+        "hd95_mm": 1.5111427382662188,
+        "hd100_mm": 6.355226441723147,
+        "n_components": 2.0
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.9024793082059521,
+            "mean_surface_distance_mm": 0.42394964214553443,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 5.878209782732382,
+            "n_components": 9
+          },
+          "GM": {
+            "dice": 0.7735969417890912,
+            "mean_surface_distance_mm": 0.46371630821523896,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 10.09232505372838,
+            "n_components": 7
+          },
+          "WM": {
+            "dice": 0.9115386715174034,
+            "mean_surface_distance_mm": 0.5477901726850815,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 10.38199517980954,
+            "n_components": 4
+          },
+          "Ventricles": {
+            "dice": 0.8417929417978938,
+            "mean_surface_distance_mm": 0.7136469726297315,
+            "hd95_mm": 1.4362752459324255,
+            "hd100_mm": 7.548989457530832,
+            "n_components": 22
+          },
+          "Cerebellum": {
+            "dice": 0.9166216129534771,
+            "mean_surface_distance_mm": 1.4325932662583953,
+            "hd95_mm": 1.4362752459324255,
+            "hd100_mm": 32.97573486031808,
+            "n_components": 3
+          },
+          "dGM": {
+            "dice": 0.880926184014279,
+            "mean_surface_distance_mm": 0.7663436458823808,
+            "hd95_mm": 2.154412868898638,
+            "hd100_mm": 4.817413626457697,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.790709706029083,
+            "mean_surface_distance_mm": 1.0117839264776753,
+            "hd95_mm": 3.2515063790727874,
+            "hd100_mm": 6.850596305598526,
+            "n_components": 5
+          }
+        },
+        "mean_dice": 0.8596664809010257,
+        "mean_surface_distance_mm": 0.7656891334705768,
+        "hd95_mm": 1.6676279766722761,
+        "hd100_mm": 11.220752038025063,
+        "n_components": 7.285714285714286
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.902685589721938,
+            "mean_surface_distance_mm": 0.42703861112640357,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 5.986873504894652,
+            "n_components": 1
+          },
+          "GM": {
+            "dice": 0.7743831601217781,
+            "mean_surface_distance_mm": 0.4640502336114967,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 10.23188614286101,
+            "n_components": 3
+          },
+          "WM": {
+            "dice": 0.911924995271847,
+            "mean_surface_distance_mm": 0.5498457731780751,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 10.38199517980954,
+            "n_components": 5
+          },
+          "Ventricles": {
+            "dice": 0.8428980280571731,
+            "mean_surface_distance_mm": 0.704913061744187,
+            "hd95_mm": 1.4362752459324255,
+            "hd100_mm": 5.700040672462998,
+            "n_components": 5
+          },
+          "Cerebellum": {
+            "dice": 0.9165672326755392,
+            "mean_surface_distance_mm": 1.3407474538521065,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 32.89352538570534,
+            "n_components": 3
+          },
+          "dGM": {
+            "dice": 0.8813930177977704,
+            "mean_surface_distance_mm": 0.7687429804494077,
+            "hd95_mm": 2.2134488095358886,
+            "hd100_mm": 4.817413626457697,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7907648977171657,
+            "mean_surface_distance_mm": 0.9823663827670248,
+            "hd95_mm": 3.046799898147583,
+            "hd100_mm": 6.503012758145575,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.860088131623316,
+        "mean_surface_distance_mm": 0.7482434995326717,
+        "hd95_mm": 1.6193287000413965,
+        "hd100_mm": 10.930678181476685,
+        "n_components": 2.857142857142857
+      }
+    },
+    {
+      "subject_id": "sub-039",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8869573776691573,
+            "mean_surface_distance_mm": 0.4072370306436126,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 6.601399779319763,
+            "n_components": 29
+          },
+          "GM": {
+            "dice": 0.7834697708165744,
+            "mean_surface_distance_mm": 0.3945682717346859,
+            "hd95_mm": 0.8795353706812157,
+            "hd100_mm": 6.888134100596455,
+            "n_components": 1
+          },
+          "WM": {
+            "dice": 0.917834617271571,
+            "mean_surface_distance_mm": 0.49757351516992554,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 9.714785696559646,
+            "n_components": 7
+          },
+          "Ventricles": {
+            "dice": 0.8547353204116181,
+            "mean_surface_distance_mm": 0.4971931875502107,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 6.542545114718252,
+            "n_components": 19
+          },
+          "Cerebellum": {
+            "dice": 0.8799947163331352,
+            "mean_surface_distance_mm": 0.5996275831088216,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 4.790575458712714,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.822523813537891,
+            "mean_surface_distance_mm": 0.9561716148409996,
+            "hd95_mm": 2.5892820224445057,
+            "hd100_mm": 5.4455481466400455,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.6646310798189525,
+            "mean_surface_distance_mm": 1.204151529115717,
+            "hd95_mm": 4.062399864196777,
+            "hd100_mm": 6.620901741391636,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8300209565512713,
+        "mean_surface_distance_mm": 0.6509318188805676,
+        "hd95_mm": 1.723088376458342,
+        "hd100_mm": 6.657698576848358,
+        "n_components": 8.428571428571429
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8871514082272127,
+            "mean_surface_distance_mm": 0.4093187224740048,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 6.219254249021113,
+            "n_components": 7
+          },
+          "GM": {
+            "dice": 0.7832363565300166,
+            "mean_surface_distance_mm": 0.39600825891563096,
+            "hd95_mm": 0.8795353706812157,
+            "hd100_mm": 6.888134100596455,
+            "n_components": 1
+          },
+          "WM": {
+            "dice": 0.9179963761762815,
+            "mean_surface_distance_mm": 0.500313326955512,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 9.780918425376976,
+            "n_components": 3
+          },
+          "Ventricles": {
+            "dice": 0.8561663452542341,
+            "mean_surface_distance_mm": 0.49739697847903913,
+            "hd95_mm": 1.1354752810162385,
+            "hd100_mm": 6.114721522699809,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.8793122451228921,
+            "mean_surface_distance_mm": 0.604417566566667,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 4.790575458712714,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8228352761692838,
+            "mean_surface_distance_mm": 0.9654929371939661,
+            "hd95_mm": 2.5892820224445057,
+            "hd100_mm": 5.4455481466400455,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.6646993198258179,
+            "mean_surface_distance_mm": 1.197269839119225,
+            "hd95_mm": 4.062399864196777,
+            "hd100_mm": 6.114721522699809,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8301996181865341,
+        "mean_surface_distance_mm": 0.6528882328148635,
+        "hd95_mm": 1.723088376458342,
+        "hd100_mm": 6.479124775106704,
+        "n_components": 2.4285714285714284
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8926494280242773,
+            "mean_surface_distance_mm": 0.3986723414449325,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 6.15674759476851,
+            "n_components": 11
+          },
+          "GM": {
+            "dice": 0.7778409266409266,
+            "mean_surface_distance_mm": 0.41045254259903996,
+            "hd95_mm": 0.8795353706812157,
+            "hd100_mm": 6.79390074066444,
+            "n_components": 6
+          },
+          "WM": {
+            "dice": 0.9075239154198745,
+            "mean_surface_distance_mm": 0.5516046027749617,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 9.976686703774732,
+            "n_components": 6
+          },
+          "Ventricles": {
+            "dice": 0.8179665270487603,
+            "mean_surface_distance_mm": 0.6623864070206762,
+            "hd95_mm": 1.4362752459324255,
+            "hd100_mm": 7.817481371520379,
+            "n_components": 19
+          },
+          "Cerebellum": {
+            "dice": 0.8898364116094987,
+            "mean_surface_distance_mm": 0.5769812391473012,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 5.128528436257098,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8140710453220158,
+            "mean_surface_distance_mm": 0.9898708435030212,
+            "hd95_mm": 2.5892820224445057,
+            "hd100_mm": 5.02696336076349,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.685558134311597,
+            "mean_surface_distance_mm": 1.1110142461102899,
+            "hd95_mm": 4.062399864196777,
+            "hd100_mm": 6.601399779319763,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.8264923411967071,
+        "mean_surface_distance_mm": 0.6715688889428889,
+        "hd95_mm": 1.7815420241303663,
+        "hd100_mm": 6.785958283866917,
+        "n_components": 6.571428571428571
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8926536503836512,
+            "mean_surface_distance_mm": 0.40254516408008295,
+            "hd95_mm": 1.0155999660491943,
+            "hd100_mm": 5.252723868175119,
+            "n_components": 6
+          },
+          "GM": {
+            "dice": 0.7772491950346837,
+            "mean_surface_distance_mm": 0.4115432579851121,
+            "hd95_mm": 0.8795353706812157,
+            "hd100_mm": 6.9068264934454175,
+            "n_components": 2
+          },
+          "WM": {
+            "dice": 0.9076889630590065,
+            "mean_surface_distance_mm": 0.5552841174283023,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 10.09232505372838,
+            "n_components": 3
+          },
+          "Ventricles": {
+            "dice": 0.82011107759462,
+            "mean_surface_distance_mm": 0.6446971464816919,
+            "hd95_mm": 1.4362752459324255,
+            "hd100_mm": 7.2171937896578475,
+            "n_components": 9
+          },
+          "Cerebellum": {
+            "dice": 0.889663476772926,
+            "mean_surface_distance_mm": 0.5789687868936189,
+            "hd95_mm": 1.2438508498042227,
+            "hd100_mm": 5.103326669804501,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.814803956229682,
+            "mean_surface_distance_mm": 0.9972446489067975,
+            "hd95_mm": 2.5892820224445057,
+            "hd100_mm": 5.103326669804501,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.6861478365384616,
+            "mean_surface_distance_mm": 1.097023399648283,
+            "hd95_mm": 4.062399864196777,
+            "hd100_mm": 6.093599796295166,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8269025936590043,
+        "mean_surface_distance_mm": 0.6696152173462698,
+        "hd95_mm": 1.7815420241303663,
+        "hd100_mm": 6.538474620130133,
+        "n_components": 3.2857142857142856
+      }
+    },
+    {
+      "subject_id": "sub-025",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.2066548620333481,
+            "mean_surface_distance_mm": 4.141712866792042,
+            "hd95_mm": 13.259666595483791,
+            "hd100_mm": 20.02714513347086,
+            "n_components": 1119
+          },
+          "GM": {
+            "dice": 0.4879273858392188,
+            "mean_surface_distance_mm": 0.6527558704352069,
+            "hd95_mm": 1.9329119514988287,
+            "hd100_mm": 12.5179258771809,
+            "n_components": 159
+          },
+          "WM": {
+            "dice": 0.8663103803611455,
+            "mean_surface_distance_mm": 0.6951509630703312,
+            "hd95_mm": 1.6902824678526565,
+            "hd100_mm": 14.172964801699806,
+            "n_components": 67
+          },
+          "Ventricles": {
+            "dice": 0.9130108675710386,
+            "mean_surface_distance_mm": 0.5364167985014346,
+            "hd95_mm": 1.3259666595483792,
+            "hd100_mm": 4.640883308419327,
+            "n_components": 2
+          },
+          "Cerebellum": {
+            "dice": 0.5406306075365291,
+            "mean_surface_distance_mm": 1.9092309645861787,
+            "hd95_mm": 3.808549271498213,
+            "hd100_mm": 5.683898030713402,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8635301968635302,
+            "mean_surface_distance_mm": 0.6704096460013129,
+            "hd95_mm": 1.75408901396403,
+            "hd100_mm": 4.664501187709609,
+            "n_components": 6
+          },
+          "Brainstem": {
+            "dice": 0.5485241759503847,
+            "mean_surface_distance_mm": 1.4643907428162741,
+            "hd95_mm": 4.113703377615013,
+            "hd100_mm": 6.679371968919299,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.632369782307885,
+        "mean_surface_distance_mm": 1.4385811217432543,
+        "hd95_mm": 3.9835956196372733,
+        "hd100_mm": 9.769527186873315,
+        "n_components": 193.71428571428572
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.2223309306551125,
+            "mean_surface_distance_mm": 3.717621259868817,
+            "hd95_mm": 13.101261874933394,
+            "hd100_mm": 20.02714513347086,
+            "n_components": 335
+          },
+          "GM": {
+            "dice": 0.4936393041275454,
+            "mean_surface_distance_mm": 0.6830069356844576,
+            "hd95_mm": 2.0434518608975063,
+            "hd100_mm": 6.376369487346121,
+            "n_components": 58
+          },
+          "WM": {
+            "dice": 0.8669259652673745,
+            "mean_surface_distance_mm": 0.6942626585463406,
+            "hd95_mm": 1.6902824678526565,
+            "hd100_mm": 14.172964801699806,
+            "n_components": 4
+          },
+          "Ventricles": {
+            "dice": 0.9131335808652102,
+            "mean_surface_distance_mm": 0.5468879628978889,
+            "hd95_mm": 1.4064000248908997,
+            "hd100_mm": 4.7113817745649555,
+            "n_components": 1
+          },
+          "Cerebellum": {
+            "dice": 0.543347573610294,
+            "mean_surface_distance_mm": 1.916027015031685,
+            "hd95_mm": 3.8372934473674025,
+            "hd100_mm": 5.6645320526737635,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8636644850379342,
+            "mean_surface_distance_mm": 0.666640547293406,
+            "hd95_mm": 1.75408901396403,
+            "hd100_mm": 3.9778999786451377,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.5523919308357349,
+            "mean_surface_distance_mm": 1.4485977562389345,
+            "hd95_mm": 4.032770156562789,
+            "hd100_mm": 6.254572223957765,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.636490538628458,
+        "mean_surface_distance_mm": 1.381863447937361,
+        "hd95_mm": 3.980792692352668,
+        "hd100_mm": 8.74069506462263,
+        "n_components": 57.42857142857143
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.1599792553772246,
+            "mean_surface_distance_mm": 4.900598677298764,
+            "hd95_mm": 12.932424125429792,
+            "hd100_mm": 19.906067576142767,
+            "n_components": 614
+          },
+          "GM": {
+            "dice": 0.4456725524952277,
+            "mean_surface_distance_mm": 0.7142848279818096,
+            "hd95_mm": 2.096537372808965,
+            "hd100_mm": 5.985237838884555,
+            "n_components": 182
+          },
+          "WM": {
+            "dice": 0.8455268530613079,
+            "mean_surface_distance_mm": 0.7500738280917572,
+            "hd95_mm": 1.8752000331878662,
+            "hd100_mm": 6.88992487044053,
+            "n_components": 19
+          },
+          "Ventricles": {
+            "dice": 0.8900984263263039,
+            "mean_surface_distance_mm": 0.7110405952039552,
+            "hd95_mm": 1.6902824678526565,
+            "hd100_mm": 9.480893425290018,
+            "n_components": 8
+          },
+          "Cerebellum": {
+            "dice": 0.6141728708915926,
+            "mean_surface_distance_mm": 1.6689935523822608,
+            "hd95_mm": 3.66144511286642,
+            "hd100_mm": 5.7416040587004415,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.85851511892349,
+            "mean_surface_distance_mm": 0.6887272465937245,
+            "hd95_mm": 2.0434518608975063,
+            "hd100_mm": 3.6009211903310128,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.5250423011844332,
+            "mean_surface_distance_mm": 1.947501881813354,
+            "hd95_mm": 6.512777857519211,
+            "hd100_mm": 9.844800174236298,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.6198581968942257,
+        "mean_surface_distance_mm": 1.6258886584808037,
+        "hd95_mm": 4.401731261508917,
+        "hd100_mm": 8.778492733432232,
+        "n_components": 118.0
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.1658842162830174,
+            "mean_surface_distance_mm": 4.672235433597261,
+            "hd95_mm": 12.692278645782244,
+            "hd100_mm": 19.334803714350976,
+            "n_components": 484
+          },
+          "GM": {
+            "dice": 0.45335737203450294,
+            "mean_surface_distance_mm": 0.7504128747123129,
+            "hd95_mm": 2.3440000414848328,
+            "hd100_mm": 6.376369487346121,
+            "n_components": 67
+          },
+          "WM": {
+            "dice": 0.8466659304569941,
+            "mean_surface_distance_mm": 0.7736150785975764,
+            "hd95_mm": 1.9329119514988287,
+            "hd100_mm": 8.399242628781165,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.8902904720170277,
+            "mean_surface_distance_mm": 0.7166438150934333,
+            "hd95_mm": 1.75408901396403,
+            "hd100_mm": 9.198520391617656,
+            "n_components": 4
+          },
+          "Cerebellum": {
+            "dice": 0.6139670002950455,
+            "mean_surface_distance_mm": 1.6740861593796594,
+            "hd95_mm": 3.691334956667117,
+            "hd100_mm": 5.779754671475586,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8584656301817406,
+            "mean_surface_distance_mm": 0.6920130910416005,
+            "hd95_mm": 2.0434518608975063,
+            "hd100_mm": 3.6009211903310128,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.528311555213938,
+            "mean_surface_distance_mm": 1.8891608863432692,
+            "hd95_mm": 6.393579692702506,
+            "hd100_mm": 9.317215886347068,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.622420310926038,
+        "mean_surface_distance_mm": 1.5954524769664447,
+        "hd95_mm": 4.407378023285295,
+        "hd100_mm": 8.858118281464227,
+        "n_components": 79.85714285714286
+      }
+    },
+    {
+      "subject_id": "sub-038",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8616858371228421,
+            "mean_surface_distance_mm": 0.6793336429986325,
+            "hd95_mm": 1.7488562525869984,
+            "hd100_mm": 13.443564952450181,
+            "n_components": 58
+          },
+          "GM": {
+            "dice": 0.7371429868679843,
+            "mean_surface_distance_mm": 0.5395440974743332,
+            "hd95_mm": 1.4914296234181457,
+            "hd100_mm": 10.399981629226417,
+            "n_components": 35
+          },
+          "WM": {
+            "dice": 0.910812596696751,
+            "mean_surface_distance_mm": 0.7644878426778638,
+            "hd95_mm": 2.6365000009536743,
+            "hd100_mm": 11.284712797059845,
+            "n_components": 26
+          },
+          "Ventricles": {
+            "dice": 0.8045032567193232,
+            "mean_surface_distance_mm": 0.6922797951377521,
+            "hd95_mm": 2.1741135971746126,
+            "hd100_mm": 10.032566723068227,
+            "n_components": 30
+          },
+          "Cerebellum": {
+            "dice": 0.9176509695290859,
+            "mean_surface_distance_mm": 0.5227048895812729,
+            "hd95_mm": 1.291615941836773,
+            "hd100_mm": 5.479862346968589,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8370400053429506,
+            "mean_surface_distance_mm": 0.9847788070995677,
+            "hd95_mm": 2.8395974038291625,
+            "hd100_mm": 5.727944155081785,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7776220164533146,
+            "mean_surface_distance_mm": 1.1888540247278065,
+            "hd95_mm": 4.251228512215579,
+            "hd100_mm": 8.031594320349264,
+            "n_components": 7
+          }
+        },
+        "mean_dice": 0.8352082383903217,
+        "mean_surface_distance_mm": 0.7674261570996042,
+        "hd95_mm": 2.347620190287849,
+        "hd100_mm": 9.200032417743472,
+        "n_components": 22.571428571428573
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8620041616131869,
+            "mean_surface_distance_mm": 0.6805020965166725,
+            "hd95_mm": 1.7488562525869984,
+            "hd100_mm": 13.474552849773913,
+            "n_components": 12
+          },
+          "GM": {
+            "dice": 0.7377241695852992,
+            "mean_surface_distance_mm": 0.5356685745624807,
+            "hd95_mm": 1.4914296234181457,
+            "hd100_mm": 10.399981629226417,
+            "n_components": 9
+          },
+          "WM": {
+            "dice": 0.9108700678144267,
+            "mean_surface_distance_mm": 0.7648850385477658,
+            "hd95_mm": 2.6365000009536743,
+            "hd100_mm": 11.516405838018564,
+            "n_components": 6
+          },
+          "Ventricles": {
+            "dice": 0.8019408163841011,
+            "mean_surface_distance_mm": 0.7231373375292753,
+            "hd95_mm": 2.583231883673546,
+            "hd100_mm": 9.63675915062651,
+            "n_components": 5
+          },
+          "Cerebellum": {
+            "dice": 0.9173277199202304,
+            "mean_surface_distance_mm": 0.5265216861255145,
+            "hd95_mm": 1.291615941836773,
+            "hd100_mm": 5.479862346968589,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8369159720507464,
+            "mean_surface_distance_mm": 0.9925852834579524,
+            "hd95_mm": 2.8395974038291625,
+            "hd100_mm": 5.824218866469578,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.7783447969824717,
+            "mean_surface_distance_mm": 1.1700745543709186,
+            "hd95_mm": 4.218400001525879,
+            "hd100_mm": 7.549787049396529,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8350182434786374,
+        "mean_surface_distance_mm": 0.7704820815872256,
+        "hd95_mm": 2.401375872546311,
+        "hd100_mm": 9.125938247211442,
+        "n_components": 5.0
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8790571777612762,
+            "mean_surface_distance_mm": 0.6390969906445914,
+            "hd95_mm": 1.5819000005722046,
+            "hd100_mm": 13.709800004959106,
+            "n_components": 6
+          },
+          "GM": {
+            "dice": 0.7524523722471587,
+            "mean_surface_distance_mm": 0.533367418097232,
+            "hd95_mm": 1.291615941836773,
+            "hd100_mm": 11.022966561588678,
+            "n_components": 23
+          },
+          "WM": {
+            "dice": 0.9157181936113835,
+            "mean_surface_distance_mm": 0.6961007062705025,
+            "hd95_mm": 2.1741135971746126,
+            "hd100_mm": 10.767770707712861,
+            "n_components": 41
+          },
+          "Ventricles": {
+            "dice": 0.7629716981132075,
+            "mean_surface_distance_mm": 0.9125765933724193,
+            "hd95_mm": 3.691100001335144,
+            "hd100_mm": 11.431591594985365,
+            "n_components": 36
+          },
+          "Cerebellum": {
+            "dice": 0.9014561607209434,
+            "mean_surface_distance_mm": 0.6348853005572661,
+            "hd95_mm": 1.5819000005722046,
+            "hd100_mm": 4.745700001716614,
+            "n_components": 2
+          },
+          "dGM": {
+            "dice": 0.8359282857500544,
+            "mean_surface_distance_mm": 0.9888407287660806,
+            "hd95_mm": 2.583231883673546,
+            "hd100_mm": 4.28380545231408,
+            "n_components": 2
+          },
+          "Brainstem": {
+            "dice": 0.8269396869535908,
+            "mean_surface_distance_mm": 0.8540161929061815,
+            "hd95_mm": 3.163800001144409,
+            "hd100_mm": 7.713733992240456,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8392176535939451,
+        "mean_surface_distance_mm": 0.7512691329448963,
+        "hd95_mm": 2.2953802037584135,
+        "hd100_mm": 9.096481187931023,
+        "n_components": 15.857142857142858
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.8795040384129582,
+            "mean_surface_distance_mm": 0.6405216831385788,
+            "hd95_mm": 1.5819000005722046,
+            "hd100_mm": 13.840997252676255,
+            "n_components": 4
+          },
+          "GM": {
+            "dice": 0.7528307581466445,
+            "mean_surface_distance_mm": 0.5317988207073975,
+            "hd95_mm": 1.291615941836773,
+            "hd100_mm": 11.022966561588678,
+            "n_components": 7
+          },
+          "WM": {
+            "dice": 0.9160829932466539,
+            "mean_surface_distance_mm": 0.6927946492389083,
+            "hd95_mm": 2.1741135971746126,
+            "hd100_mm": 10.767770707712861,
+            "n_components": 17
+          },
+          "Ventricles": {
+            "dice": 0.7636392330150714,
+            "mean_surface_distance_mm": 0.8874982533045402,
+            "hd95_mm": 3.3763674116196403,
+            "hd100_mm": 10.292485393073811,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.9010433874388515,
+            "mean_surface_distance_mm": 0.6397757934664224,
+            "hd95_mm": 1.5819000005722046,
+            "hd100_mm": 4.745700001716614,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.8357436042719445,
+            "mean_surface_distance_mm": 0.9929703446983701,
+            "hd95_mm": 2.583231883673546,
+            "hd100_mm": 4.28380545231408,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.826503481747204,
+            "mean_surface_distance_mm": 0.857654730172246,
+            "hd95_mm": 3.163800001144409,
+            "hd100_mm": 7.623087671805968,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.8393353566113325,
+        "mean_surface_distance_mm": 0.7490020392466378,
+        "hd95_mm": 2.2504184052276273,
+        "hd100_mm": 8.939544720126895,
+        "n_components": 4.857142857142857
+      }
+    },
+    {
+      "subject_id": "sub-017",
+      "baseline": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.17522842146189735,
+            "mean_surface_distance_mm": 1.997174361057579,
+            "hd95_mm": 6.307158187170953,
+            "hd100_mm": 12.542981308299527,
+            "n_components": 623
+          },
+          "GM": {
+            "dice": 0.3475928093315624,
+            "mean_surface_distance_mm": 1.1643418523747366,
+            "hd95_mm": 3.6687165585927204,
+            "hd100_mm": 9.167714138491265,
+            "n_components": 52
+          },
+          "WM": {
+            "dice": 0.827001811019738,
+            "mean_surface_distance_mm": 1.039317114194857,
+            "hd95_mm": 3.235503881607021,
+            "hd100_mm": 11.12776828133522,
+            "n_components": 41
+          },
+          "Ventricles": {
+            "dice": 0.8244742811599534,
+            "mean_surface_distance_mm": 0.5276294949506887,
+            "hd95_mm": 1.2229055195309069,
+            "hd100_mm": 6.585547766228376,
+            "n_components": 2
+          },
+          "Cerebellum": {
+            "dice": 0.3941245990207665,
+            "mean_surface_distance_mm": 2.747093390906348,
+            "hd95_mm": 5.496276719373123,
+            "hd100_mm": 7.458721220209845,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.780021479741771,
+            "mean_surface_distance_mm": 1.183928240168968,
+            "hd95_mm": 3.326662671773885,
+            "hd100_mm": 6.960900248836547,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.1225547350693095,
+            "mean_surface_distance_mm": 5.843850232585641,
+            "hd95_mm": 12.27787397303275,
+            "hd100_mm": 14.71557329241501,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.4958568766864283,
+        "mean_surface_distance_mm": 2.071904955176974,
+        "hd95_mm": 5.076442501583052,
+        "hd100_mm": 9.7941723222594,
+        "n_components": 103.0
+      },
+      "baseline_smoothed": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.16910002179123992,
+            "mean_surface_distance_mm": 2.278197189268163,
+            "hd95_mm": 6.960900248836546,
+            "hd100_mm": 15.32296224046668,
+            "n_components": 115
+          },
+          "GM": {
+            "dice": 0.3439298692342378,
+            "mean_surface_distance_mm": 1.220431472973856,
+            "hd95_mm": 3.9056470243650288,
+            "hd100_mm": 9.409222935725888,
+            "n_components": 40
+          },
+          "WM": {
+            "dice": 0.8262929776890385,
+            "mean_surface_distance_mm": 1.0465152415443437,
+            "hd95_mm": 3.235503881607021,
+            "hd100_mm": 10.730952383028969,
+            "n_components": 1
+          },
+          "Ventricles": {
+            "dice": 0.8224483502929386,
+            "mean_surface_distance_mm": 0.5369000686284935,
+            "hd95_mm": 1.3396258774893044,
+            "hd100_mm": 6.330824905171317,
+            "n_components": 2
+          },
+          "Cerebellum": {
+            "dice": 0.3928462760742419,
+            "mean_surface_distance_mm": 2.773700216249011,
+            "hd95_mm": 5.577307282348936,
+            "hd100_mm": 7.7536453342867135,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7796738270409429,
+            "mean_surface_distance_mm": 1.1946610881574233,
+            "hd95_mm": 3.3713178600828484,
+            "hd100_mm": 6.960900248836547,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.11375764675257061,
+            "mean_surface_distance_mm": 5.96546545356483,
+            "hd95_mm": 12.435211452279082,
+            "hd100_mm": 14.816851660991828,
+            "n_components": 1
+          }
+        },
+        "mean_dice": 0.49257842412503,
+        "mean_surface_distance_mm": 2.1451243900551598,
+        "hd95_mm": 5.2607876610012525,
+        "hd100_mm": 10.18933710121542,
+        "n_components": 23.0
+      },
+      "comparative": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.22976931676309068,
+            "mean_surface_distance_mm": 1.9370613905786926,
+            "hd95_mm": 6.76477908263043,
+            "hd100_mm": 13.94326820587234,
+            "n_components": 751
+          },
+          "GM": {
+            "dice": 0.3943323695838038,
+            "mean_surface_distance_mm": 0.9458050826814859,
+            "hd95_mm": 2.9451464948717088,
+            "hd100_mm": 7.981742350714166,
+            "n_components": 98
+          },
+          "WM": {
+            "dice": 0.849233626076773,
+            "mean_surface_distance_mm": 0.8809155433522644,
+            "hd95_mm": 2.679251754978609,
+            "hd100_mm": 6.608217532982354,
+            "n_components": 18
+          },
+          "Ventricles": {
+            "dice": 0.7813193057057497,
+            "mean_surface_distance_mm": 0.779354833748959,
+            "hd95_mm": 2.25492636087681,
+            "hd100_mm": 9.425103492064686,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.5182680901542112,
+            "mean_surface_distance_mm": 2.166061462871915,
+            "hd95_mm": 4.409248555716614,
+            "hd100_mm": 6.960900248836547,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7899318277707459,
+            "mean_surface_distance_mm": 1.077202247261904,
+            "hd95_mm": 2.7344998717308044,
+            "hd100_mm": 4.736292711128331,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.14088468422398365,
+            "mean_surface_distance_mm": 3.8251027503830684,
+            "hd95_mm": 8.902886566392684,
+            "hd100_mm": 11.944475735054242,
+            "n_components": 6
+          }
+        },
+        "mean_dice": 0.5291056028969082,
+        "mean_surface_distance_mm": 1.658786187268327,
+        "hd95_mm": 4.384391241028237,
+        "hd100_mm": 8.800000039521809,
+        "n_components": 125.42857142857143
+      },
+      "comparative_refined": {
+        "per_class": {
+          "eCSF": {
+            "dice": 0.23764769519430687,
+            "mean_surface_distance_mm": 1.9250736387490301,
+            "hd95_mm": 6.698129387446521,
+            "hd100_mm": 13.932538486541159,
+            "n_components": 303
+          },
+          "GM": {
+            "dice": 0.39117083541114406,
+            "mean_surface_distance_mm": 0.9910228940747992,
+            "hd95_mm": 3.188947441704593,
+            "hd100_mm": 8.64724785610762,
+            "n_components": 50
+          },
+          "WM": {
+            "dice": 0.8493646321424078,
+            "mean_surface_distance_mm": 0.8844728202358276,
+            "hd95_mm": 2.679251754978609,
+            "hd100_mm": 6.040707656943798,
+            "n_components": 3
+          },
+          "Ventricles": {
+            "dice": 0.7825012904653049,
+            "mean_surface_distance_mm": 0.7575006964603808,
+            "hd95_mm": 2.0957629778296347,
+            "hd100_mm": 9.200281609221117,
+            "n_components": 3
+          },
+          "Cerebellum": {
+            "dice": 0.5200272762311364,
+            "mean_surface_distance_mm": 2.1728473181971095,
+            "hd95_mm": 4.409248555716614,
+            "hd100_mm": 6.960900248836547,
+            "n_components": 1
+          },
+          "dGM": {
+            "dice": 0.7904496316953126,
+            "mean_surface_distance_mm": 1.0774725181256564,
+            "hd95_mm": 2.7344998717308044,
+            "hd100_mm": 4.799027798353227,
+            "n_components": 1
+          },
+          "Brainstem": {
+            "dice": 0.13017141384198994,
+            "mean_surface_distance_mm": 4.4047592130212,
+            "hd95_mm": 9.813769173188541,
+            "hd100_mm": 12.241278142083676,
+            "n_components": 2
+          }
+        },
+        "mean_dice": 0.5287618249973718,
+        "mean_surface_distance_mm": 1.7447355855520004,
+        "hd95_mm": 4.517087023227902,
+        "hd100_mm": 8.831711685441022,
+        "n_components": 51.857142857142854
+      }
+    }
+  ]
+}

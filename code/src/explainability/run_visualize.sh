@@ -4,7 +4,7 @@
 #SBATCH --ntasks-per-node=4
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-#SBATCH -t 00:30:00              # inference-only
+#SBATCH -t 01:00:00              # inference-only, two passes per case
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=25274799@ucdconnect.ie
 #SBATCH --output=logs/feta_visualize_%j.log
@@ -28,14 +28,23 @@ echo "PyTorch: $(python3 -c 'import torch; print(torch.__version__)')"
 echo "CUDA available: $(python3 -c 'import torch; print(torch.cuda.is_available())')"
 echo ""
 
-# Generates comparative-model figures (T2w / GT / refined prediction / uncertainty)
-# across several test cases. Requires src/training/checkpoints_comparative/best_model_comp.pt.
+CHECKPOINT=src/training/checkpoints_comparative/best_model_comp.pt
+
+# Comparative-model figures (T2w / GT / prediction / uncertainty) per test case,
+# once with refinement applied to the prediction panel and once without.
+# MC-Dropout sampling is unseeded; repeat runs are not pixel-identical.
 for i in 0 1 2 3 4; do
   PYTHONUNBUFFERED=1 python3 -m src.explainability.visualize \
-    --checkpoint src/training/checkpoints_comparative/best_model_comp.pt \
+    --checkpoint "$CHECKPOINT" \
     --model-type comparative --refine \
     --split test --case-index $i \
     --out-dir src/explainability/figures
+
+  PYTHONUNBUFFERED=1 python3 -m src.explainability.visualize \
+    --checkpoint "$CHECKPOINT" \
+    --model-type comparative \
+    --split test --case-index $i \
+    --out-dir src/explainability/figures_norefine
 done
 
-echo "Done. Figures in src/explainability/figures/."
+echo "Done. Figures in src/explainability/figures/ and src/explainability/figures_norefine/."
