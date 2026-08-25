@@ -39,7 +39,7 @@ import numpy as np
 
 
 # FeTA README label-statistics table (computed over the full 120-case set, NOT
-# 80-case subset -- used as a generous plausibility reference only. The
+# 80-case subset. The
 # README's "mean" column is inconsistent with its own "median"/"max" columns
 # (e.g. eCSF mean=0.83cm3 vs median=60.79cm3) so plausibility bounds below use
 # median/max, not mean.
@@ -65,9 +65,7 @@ IRTK_SUBJECT_RANGE = (41, 80)
 
 def _assert_rec_type_matches_expected_range(subject_id: str, subject_num: int, rec_type: str) -> None:
     """The mial/irtk boundary is a site/institution proxy label the whole
-    stratified-split design depends on -- verify it against reality on every
-    discover_cases() call instead of just documenting it, so a real HPC data
-    drop that breaks the convention fails loudly here, not silently later."""
+    stratified-split design depends on."""
 
     expected_range = MIAL_SUBJECT_RANGE if rec_type == "mial" else IRTK_SUBJECT_RANGE
     if not (expected_range[0] <= subject_num <= expected_range[1]):
@@ -160,24 +158,24 @@ def _class_volume_multiplier(qc_config: dict, label_id: int) -> float:
 
 def run_qc_checks(case: CaseFiles, qc_config: dict) -> QCResult:
     """Run the 5-check QC checklist against one case. Never raises: load
-    failures and every other check become a logged failure reason instead."""
+    failures and every other check become a logged failure instead."""
 
     reasons: list[str] = []
 
     try:
         t2w_img = nib.load(case.t2w_path)
         dseg_img = nib.load(case.dseg_path)
-    except Exception as exc:  # QC must log failures
+    except Exception as exc:  
         return QCResult(case.subject_id, case.rec_type, passed=False, failure_reasons=[f"failed_to_load: {exc}"])
 
-    # (a) T2w/dseg agreement
+    # T2w/dseg agreement
     if t2w_img.shape != dseg_img.shape:
         reasons.append(f"shape_mismatch: T2w={t2w_img.shape} dseg={dseg_img.shape}")
     affine_atol = qc_config.get("affine_atol", DEFAULT_AFFINE_ATOL)
     if not np.allclose(t2w_img.affine, dseg_img.affine, atol=affine_atol):
         reasons.append("affine_mismatch")
 
-    # (d) spacing range
+    # spacing range
     spacing = tuple(float(s) for s in t2w_img.header.get_zooms()[:3])
     spacing_min = qc_config.get("spacing_min_mm", SPACING_MIN_MM)
     spacing_max = qc_config.get("spacing_max_mm", SPACING_MAX_MM)
@@ -187,7 +185,7 @@ def run_qc_checks(case: CaseFiles, qc_config: dict) -> QCResult:
     dseg = np.asarray(dseg_img.get_fdata()).astype(np.int32)
     unique_labels = set(np.unique(dseg).tolist())
 
-    # (b) label identity + presence + non-degeneracy
+    # label identity + presence + non-degeneracy
     unexpected = sorted(unique_labels - set(range(8)))
     if unexpected:
         reasons.append(f"unexpected_labels: {unexpected}")
@@ -206,7 +204,7 @@ def run_qc_checks(case: CaseFiles, qc_config: dict) -> QCResult:
         missing = sorted(set(range(1, 8)) - present_classes)
         reasons.append(f"insufficient_classes_present ({len(present_classes)}/7): missing {missing}")
 
-    # (c) per-class volume plausibility (median/max reference, see module docstring above)
+    # per-class volume plausibility (median/max reference)
     voxel_vol_mm3 = float(np.prod(spacing))
     for label_id, stats in FETA_LABEL_VOLUME_STATS_CM3.items():
         if label_id not in present_classes:
@@ -220,7 +218,7 @@ def run_qc_checks(case: CaseFiles, qc_config: dict) -> QCResult:
                 f"implausible_volume_class_{label_id}: {volume_cm3:.2f}cm3 not in [{lower:.2f}, {upper:.2f}]"
             )
 
-    # (e) blank/constant image
+    # blank/constant image
     t2w = np.asarray(t2w_img.get_fdata())
     if float(np.std(t2w)) == 0.0:
         reasons.append("blank_or_constant_image")
@@ -238,10 +236,7 @@ def generate_stratified_split(
     """Produce a seeded, mial/irtk-stratified split.
 
     Groups are split proportionally within each rec_type so both sites are
-    represented in every split at any N (56/12/12 exactly at the real N=80).
-    A group too small to fill all three splits (e.g. a 1-2 case smoke test)
-    puts its remainder into train rather than raising.
-    """
+    represented in every split at any N (56/12/12 exactly at the real N=80)"""
 
     if abs((train_frac + val_frac + test_frac) - 1.0) > 1e-6:
         raise ValueError("train/val/test fractions must sum to 1.0")
@@ -282,10 +277,8 @@ def generate_stratified_split(
 
 def compute_median_spacing(cases: list[CaseFiles]) -> tuple[float, float, float]:
     """Per-axis median voxel spacing across ``cases``. Must be called with
-    TRAIN cases only -- this becomes config.yaml's preprocessing.target_spacing_mm,
-    and computing it from val/test would leak split information into
-    preprocessing. Reads only the NIfTI header (no full array load), so this
-    is cheap even across 56 cases."""
+    TRAIN cases only -- this becomes config.yaml's preprocessing.target_spacing_mm.
+    Reads only the NIfTI header."""
 
     spacings = [nib.load(case.t2w_path).header.get_zooms()[:3] for case in cases]
     return tuple(float(np.median(axis_spacings)) for axis_spacings in zip(*spacings))
@@ -332,9 +325,8 @@ def run_pipeline(data_root: Path, config: dict, output_path: Path) -> dict:
 
     if median_spacing is not None:
         print(
-            f"\nTrain-split median spacing: {median_spacing} -- copy this into "
-            f"config.yaml's preprocessing.target_spacing_mm by hand (not done "
-            f"automatically, to avoid a script clobbering config.yaml's comments)."
+            f"\nTrain-split median spacing: {median_spacing} -- copy into "
+            f"config.yaml's preprocessing.target_spacing_mm manually"
         )
 
     return split

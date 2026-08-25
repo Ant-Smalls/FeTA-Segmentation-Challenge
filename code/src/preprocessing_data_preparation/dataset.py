@@ -8,9 +8,7 @@
   ``(image, label, meta)`` 3-tuple, ``meta = {subject_id, affine, spacing}``.
 - Tensor contract (frozen, both modes): image float32 shaped (1, D, H, W);
   label int64 shaped (D, H, W) with raw class indices 0-7.
-- Train mode: one random patch sampled per case per __getitem__ call (i.e.
-  __len__ == number of cases in the split); training loop should run enough
-  epochs, or wrap with a repeated sampler, to see enough patches per case.
+- Train mode: one random patch sampled per case per __getitem__ call;
 """
 
 from __future__ import annotations
@@ -52,7 +50,6 @@ class FeTADataset(Dataset):
         if not self.cases:
             raise ValueError(f"Split '{split_name}' has zero cases in {split_path}.")
 
-        # config.yaml's paths are relative to code/ (2 levels above config.yaml).
         code_root = Path(config_path).resolve().parents[2]
         self.data_root = Path(data_root) if data_root is not None else code_root / self.config["paths"]["data_root"]
 
@@ -127,11 +124,8 @@ def sample_foreground_oversampled_patch(
 def _pad_to_at_least(
     image: np.ndarray, label: np.ndarray, patch_size: tuple[int, int, int]
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Pad small (post-crop) volumes up to at least patch_size, e.g. for
-    early-gestational-age brains smaller than the patch. Image padded with
-    its own minimum value (closest available proxy for background after
-    z-score normalization has already shifted 0 away from the pad constant);
-    label padded with background (0)."""
+    """Pad small (post-crop) volumes up to at least patch_size. Image padded with
+    its own minimum value; label padded with background (0)."""
 
     pad_widths = [(0, max(0, p - s)) for s, p in zip(image.shape, patch_size)]
     if all(w == (0, 0) for w in pad_widths):
@@ -149,12 +143,8 @@ def reconstruct_from_patches(
 ) -> torch.Tensor:
     """Stitch overlapping sliding-window patch predictions (each shaped
     (C, *patch_shape)) back into one full preprocessed-space volume shaped
-    (C, *full_volume_shape). Used by role 3 (uncertainty averaging over
-    overlaps) and role 5 (Dice/ED scoring) so nobody reinvents a slightly
-    different stitching scheme. Recommended aggregation is config.yaml's
-    eval.patch_aggregation (default "gaussian") -- callers should pass it
-    explicitly rather than relying on this function's own default, so the
-    choice stays visible in one place."""
+    (C, *full_volume_shape). Used by uncertainty averaging over
+    overlaps and Dice/ED scoring."""
 
     if len(patches) != len(patch_coords):
         raise ValueError("patches and patch_coords must have the same length.")
@@ -187,9 +177,7 @@ def _patch_weight(
         return torch.ones(patch_shape, dtype=dtype, device=device)
 
     if aggregation == "gaussian":
-        # Separable Gaussian peaking at the patch center, downweighting patch
-        # edges so overlapping sliding-window tiles blend smoothly instead of
-        # showing seams at tile boundaries.
+        # Separable Gaussian peaking at the patch center, downweighting patch edges
         def gauss(n: int) -> torch.Tensor:
             coord = torch.arange(n, dtype=dtype, device=device) - (n - 1) / 2
             return torch.exp(-0.5 * (coord / (n / 4)) ** 2)

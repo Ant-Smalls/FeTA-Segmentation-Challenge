@@ -1,13 +1,12 @@
-"""Full-scale preprocessing validation across the entire split (Phase 6)
+"""Full-scale preprocessing validation across the entire split
 
 - Runs preprocess_case (load -> crop -> resample -> normalize) against every
   case in split_v1.json (train+val+test -- QC already ran in qc_and_split.py,
   this validates the transform pipeline itself at real data scale), timing
-  each case and logging failures instead of crashing the whole run.
+  each case and logging failures.
 - Also exercises FeTADataset in both 'train' mode (patch sampling +
   augmentation) and 'eval' mode (full-volume) with one __getitem__ call per
-  split, to catch contract problems a preprocess_case-only sweep wouldn't
-  (shape/dtype, patch padding on small volumes).
+  split.
 - Prints a timing/memory summary at the end.
 """
 
@@ -26,10 +25,7 @@ from .qc_and_split import case_paths
 
 
 def _peak_memory_mb() -> float:
-    """Peak resident set size for this process so far, in MB. ru_maxrss is
-    KB on Linux (the HPC target); macOS reports bytes instead, which just
-    means a harmless overestimate for local runs."""
-
+    """Peak resident set size for this process so far, in MB. macOS reports bytes instead."""
     return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024.0
 
 
@@ -42,7 +38,7 @@ def validate_case(
     start = time.perf_counter()
     try:
         preprocess_case(t2w_path, dseg_path, target_spacing)
-    except Exception as exc:  # a single bad case must not abort the sweep
+    except Exception as exc:  # handle failures without crashing
         return time.perf_counter() - start, f"{type(exc).__name__}: {exc}"
     return time.perf_counter() - start, None
 
@@ -50,8 +46,7 @@ def validate_case(
 def validate_dataset_getitem(split_path: Path, config_path: Path) -> list[str]:
     """One __getitem__ call per split/mode combination as a contract sanity
     check -- validate_case's sweep above already covers every case, this
-    just confirms FeTADataset's patch sampling, padding, and augmentation
-    don't blow up at real data scale."""
+    confirms FeTADataset's patch sampling, padding, and augmentation."""
 
     errors: list[str] = []
     for split_name in ("train", "val", "test"):

@@ -1,8 +1,7 @@
 """Per-case crop / resample / normalize / augment transforms
 
 - Order: load -> crop to non-zero foreground bbox -> resample spacing outliers
-  to the train-split-only median spacing (config.yaml, null until Phase 5's
-  HPC run) -> per-volume z-score normalize.
+  to the train-split-only median spacing (config.yaml) -> per-volume z-score normalize.
 - Evaluation happens in this preprocessed (crop+resample) space, not mapped
   back to original resolution.
 - ``preprocess_case`` is the single shared code path both FeTADataset modes
@@ -25,8 +24,7 @@ _SPACING_TOLERANCE_MM = 1e-3
 
 def load_case(t2w_path: Path, dseg_path: Path) -> tuple[np.ndarray, np.ndarray, dict]:
     """Load a T2w volume + its dseg label map, returning arrays plus metadata
-    (affine, spacing, original_shape) -- the same metadata FeTADataset's
-    eval-mode ``meta`` return value surfaces."""
+    (affine, spacing, original_shape)."""
 
     t2w_img = nib.load(t2w_path)
     dseg_img = nib.load(dseg_path)
@@ -52,8 +50,7 @@ def crop_to_foreground_bbox(
     image: np.ndarray, label: np.ndarray
 ) -> tuple[np.ndarray, np.ndarray, tuple[slice, slice, slice]]:
     """Crop image+label to the non-zero foreground bounding box. Returns the
-    bbox slices too, kept for bookkeeping even though we don't invert back to
-    original space."""
+    bbox slices."""
 
     foreground = image > 0
     if not foreground.any():
@@ -106,8 +103,7 @@ def apply_light_augmentation(
     image: np.ndarray, label: np.ndarray, rng: np.random.Generator, aug_config: dict
 ) -> tuple[np.ndarray, np.ndarray]:
     """Random flips / small rotations / mild noise, applied identically for
-    baseline and comparative model training so it never confounds the Option
-    3 ablation. Operates on whatever is passed in (dataset.py calls this on
+    baseline and comparative model training(dataset.py calls this on
     the sampled patch, not the full volume)."""
 
     for axis in range(image.ndim):
@@ -132,8 +128,7 @@ def preprocess_case(
     dseg_path: Path,
     target_spacing: tuple[float, float, float] | None,
 ) -> tuple[np.ndarray, np.ndarray, dict]:
-    """Full per-case pipeline: load -> crop -> resample -> normalize. Does NOT
-    augment or patch-sample -- both are dataset-owned, train-mode-only steps."""
+    """Full per-case pipeline: load -> crop -> resample -> normalize."""
 
     image, label, meta = load_case(t2w_path, dseg_path)
     image, label, bbox = crop_to_foreground_bbox(image, label)
