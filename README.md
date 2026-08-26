@@ -2,70 +2,108 @@
 
 ## Project goal
 
-Automatic multi-tissue segmentation of fetal brain MRI (FeTA dataset, 80 cases, 7 tissue classes) using a shared 3D U-Net backbone. Full background and the three candidate research directions we considered are in [`code/docs/initial_research_plan.md`](code/docs/initial_research_plan.md).
+Automatic multi-tissue segmentation of fetal brain MRI (FeTA dataset, 80 cases, 7 tissue classes) using a shared 3D U-Net backbone.
 
-**We chose Option 3: Uncertainty-Guided Boundary Refinement** — does a model that predicts its own voxel-wise uncertainty reliably flag the boundaries hardest to segment (eCSF, GM, dGM), and can that signal drive a targeted refinement step that improves boundary accuracy? See [`code/docs/project_roles_q3.md`](code/docs/project_roles_q3.md) for what each of the 6 team roles owns and delivers under this option.
+The experiment compares two models on the same data, split, and training loop:
 
-Shared domain language (dataset terms, anatomy, metrics) is defined once in [`CONTEXT.md`](CONTEXT.md) — use it consistently in code, docs, and discussion.
+- **Baseline model** — one segmentation head; Dice + cross-entropy only.
+- **Comparative model** — the same backbone, plus a predicted-variance head and uncertainty-guided boundary refinement.
 
 ## Repo layout
 
 ```
 code/
-  docs/                                # role definitions, research plan
-  requirements.txt                     # pinned deps for the whole codebase
+  requirements.txt                     # pinned deps
   src/
     data/
-      config.yaml                      # shared pipeline config (frozen, checked in)
-      splits/split_v1.json             # frozen train/val/test split + QC log (checked in)
-      mri_gz/                          # raw *_T2w.nii.gz / *_dseg.nii.gz (HPC-only, NOT checked in)
-    preprocessing_data_preparation/    # QC, split generation, FeTADataset (done — see below)
-    models/                            # baseline / comparative model code (role 2/3, not yet started)
-literature/                            # paper summaries backing the research plan
-assignment_details/                    # FeTA challenge README, rubric, example notebooks
+      config.yaml                      # shared pipeline config (frozen)
+      splits/split_v1.json             # frozen 55/12/12 split + QC log
+      mri_gz/                          # raw *_T2w.nii.gz / *_dseg.nii.gz (HPC-only)
+    preprocessing_data_preparation/    # QC, split, crop/resample/normalize, FeTADataset
+    models/                            # BaselineUNet, UncertaintyUNet + refine_prediction
+    training/                          # shared train loop + refinement-threshold sweep
+    explainability/                    # slice overlays, spatial analysis, refinement control
+    robustness/                        # audits of frozen test-set results
+    tuned_evaluation_outputs/          # frozen held-out evaluation reports
 ```
 
-## HPC setup
 
-Steps 1-5 are one-time setup every team member needs to do on their own HPC account. Steps 6-7 (QC/split + preprocessing validation) have **already been run** against the real 80-case dataset — their outputs are committed to the repo, so you don't need to redo them. They're listed anyway so you know what already happened and can re-run them if the raw data ever changes.
 
-1. **Clone the repo.**
+## Pipeline
 
-   ```bash
-   git clone git@github.com:Ant-Smalls/FeTA-Segmentation-Challenge.git
-   cd FeTA-Segmentation-Challenge
-   ```
+Run all Python commands from `code/` with the venv active. HPC setup (clone, data, venv) is below.
 
-2. **Copy the code to the HPC.**
+`FeTADataset` is the data contract: train mode returns `(image, label)` patches; eval mode returns `(image, label, meta)` full volumes. Image is `(1, D, H, W)` float32; label is `(D, H, W)` int64, classes 0–7.
 
-   ```bash
-   scp -r /path/to/FeTA-Segmentation-Challenge/code <userid>@login.ucd.ie:/home/people/<userid>/scratch/segmentation-assignment/
-   ```
+### 1. Quality control and stratified split
 
-3. **Create the data folder and get the dataset onto the HPC.** `code/src/data/mri_gz/` isn't checked into git (raw MRI data is too large) — download the dataset zip from the shared Google Drive, then upload it:
+Already done. 79/80 cases passed QC (`sub-022` excluded). Split is 55 train / 12 val / 12 test, stratified by `rec_type` (mial vs irtk). Frozen in `code/src/data/splits/split_v1.json`. Re-run only if the raw data changes:
 
-   ```bash
-   ssh <userid>@login.ucd.ie 'mkdir -p /home/people/<userid>/scratch/segmentation-assignment/code/src/data'
-   scp /path/to/downloaded_mri_gz.zip <userid>@login.ucd.ie:/home/people/<userid>/scratch/segmentation-assignment/code/src/data/
-   ```
+```bash
+sbatch src/preprocessing_data_preparation/run_qc_stratify.sh
+```
 
-4. **Unzip on the HPC.** This should produce `code/src/data/mri_gz/` containing all 80 cases as `sub-XXX_rec-{mial|irtk}_{T2w,dseg}.nii.gz` pairs.
 
-   ```bash
-   cd /home/people/<userid>/scratch/segmentation-assignment/code/src/data
-   unzip mri_gz.zip
-   ```
 
-5. **Create a virtual environment in `code/` and install dependencies.**
+### 2. Crop, resample, normalize
 
-   ```bash
-   cd /home/people/<userid>/scratch/segmentation-assignment/code
-   python3 -m venv venv && source venv/bin/activate
-   pip install -r requirements.txt
-   ```
+`FeTADataset` applies this per case (foreground crop, 0.5 mm isotropic, per-volume z-score). Train mode samples a `128³` patch with light augmentation. Eval is in preprocessed space.
 
-6. ~~Run QC + generate the split (`run_qc_stratify.sh`), fill in `config.yaml`.~~ **Already done.** `run_qc_stratify.sh` ran against all 80 real cases: 79 passed, 1 excluded (`sub-022`, simultaneous eCSF/GM/brainstem depletion), split into 55 train / 12 val / 12 test. Results are frozen in `code/src/data/splits/split_v1.json` (checked into git). `config.yaml`'s one HPC-dependent value, `preprocessing.target_spacing_mm`, is filled in as `[0.5, 0.5, 0.5]` (computed from the real train split). Only re-run this if the raw dataset changes.
+Already validated on all 79 cases. Re-run only if the raw data changes:
 
-7. ~~Run preprocessing (`run_preprocessing.sh`).~~ **Already done.** This validated the full crop/resample/normalize pipeline and `FeTADataset` against all 79 QC-passed cases: every case preprocessed successfully (0.35-2.44s/case, 962MB peak memory), confirming the pipeline is safe to build on at real data scale. No output artifact beyond the passing log — this is a sanity check, not a data-generating step.
+```bash
+sbatch src/preprocessing_data_preparation/run_preprocessing.sh
+```
 
-Full detail on what preprocessing produces and how to consume it (`FeTADataset`, tensor contracts, `config.yaml`) is in [`code/docs/data_preprocessing_preparation.md`](code/docs/data_preprocessing_preparation.md) — start there before building the baseline/comparative models, training loop, or evaluation.
+
+
+### 3. Shared 3D U-Net — baseline vs comparative
+
+Same loop, same hyperparameters. Config `model_type` selects the model.
+
+```bash
+python -m src.training.train --config src/training/train_config_baseline.yaml
+python -m src.training.train --config src/training/train_config_comparative.yaml
+```
+
+Comparative SLURM job: edit `CODE_DIR` in `src/training/run_train_comparative.sh`, then `sbatch` it. Checkpoints (gitignored):
+
+- `src/training/checkpoints_baseline/best_model.pt`
+- `src/training/checkpoints_comparative/best_model.pt`
+
+Trained weights also live on the shared [Google Drive](https://drive.google.com/drive/folders/1_3NFIKvh4PCQ1G0voYH4MGWHbudMnHYX?usp=sharing).
+
+### 4. Uncertainty-guided refinement (comparative only)
+
+The variance head is a training loss term. Refinement uses MC-Dropout predictive entropy and a local majority vote on high-uncertainty boundary voxels. Threshold is selected on **validation only** (current value: 0.5). Comparative training runs this sweep when `run_refinement_sweep: true`. Standalone:
+
+```bash
+python -m src.training.tune_refinement_threshold \
+    --config src/training/train_config_comparative.yaml \
+    --checkpoint src/training/checkpoints_comparative/best_model.pt
+```
+
+
+
+### 5. Held-out evaluation
+
+Test-set reports are frozen in `[code/src/tuned_evaluation_outputs/](code/src/tuned_evaluation_outputs/)`.
+
+### 6. Explainability and robustness
+
+```bash
+sbatch src/explainability/run_visualize.sh
+sbatch src/explainability/run_analysis.sh
+sbatch src/explainability/run_control.sh
+```
+
+Those scripts expect named checkpoints (`best_model.pt` / `best_model_comp.pt`).
+
+Robustness reads the frozen evaluation CSVs (no retrain). From `code/`:
+
+```bash
+python src/robustness/01_existing_results_audit.py
+```
+
+More detail: `[code/src/training/README.md](code/src/training/README.md)`, `[code/src/explainability/README.md](code/src/explainability/README.md)`.
+
